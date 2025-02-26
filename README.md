@@ -1,1 +1,1 @@
-# aplicacao-projeto-integrador2
+A equipe **SINAPSE** estudantes do 2º Semestre do curso de Banco de Dados da Fatec São José dos Campos, está comprometida com o desenvolvimento do projeto "Sistema de Horários Fatec" neste repositório. O objetivo do projeto é criar uma aplicação que permita o coordenador da Fatec definir horários específicos para cada professor. O projeto inclui a modelagem de dados relacional e aplicação da linguagem Java.
