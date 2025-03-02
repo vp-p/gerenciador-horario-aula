@@ -9,7 +9,8 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 
 # Índice
 ♦ [Requisitos](#requisitos)</br>
-♦ [IntegrantesdoProjeto](#integrantes-do-projeto)</br>
+♦ [Integrantes do Projeto](#integrantes-do-projeto)</br>
+♦ [Cronograma do Projeto](#cronograma-do-projeto)</br>
 
 ## Requisitos
 
@@ -43,6 +44,13 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 |<a href="https://www.linkedin.com/in/isaac-de-oliveira-841057255/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin"></a> <a href="https://github.com/IsaacOliveiraSouza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a> | Isaac de Oliveira | Developer | <center><img src="assets/Dev Team Profile/Isaac.png" height="55" width="55"></a></center> |
 |<a href="https://www.linkedin.com/in/victor-rodrigues-00a247178/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="Linkedin"></a> <a href="https://github.com/Victorvmor"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a> | Victor Miguel | Developer | <center><img src="assets/Dev Team Profile/Victor.jpg" height="55" width="55"></a></center> |
 
-
+## Cronograma do Projeto 
+| Sprints  |   Início   | Entrega    | Status  |
+| -------- | ---------- | ---------- | ------- |
+| Kick-Off | 26/02/2025 | 28/02/2025 |   ✅   |
+| Sprint 1 | 10/03/2025 | 30/03/2025 |   ⬜   |
+| Sprint 2 | 07/04/2025 | 27/04/2025 |   ⬜   |
+| Sprint 3 | 05/05/2025 | 25/05/2025 |   ⬜   |
+| Feira de Soluções| 29/05/2025 | 29/05/2025 | ⬜ |
 </body>
 </html>
