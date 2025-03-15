@@ -52,5 +52,14 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 | Sprint 2 | 07/04/2025 | 27/04/2025 |   ⬜   |
 | Sprint 3 | 05/05/2025 | 25/05/2025 |   ⬜   |
 | Feira de Soluções| 29/05/2025 | 29/05/2025 | ⬜ |
+
+## Tecnologia Utilizadas
+![Jira](https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white) 
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 </body>
 </html>
