@@ -16,8 +16,8 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 
 ### Requisitos Funcionais
 <ol>
-<li> Definição de horário de aula para um semestre do curso, lembrando que cada disciplina possui uma quantidade de aulas obrigatória por semana. Exemplo: A disciplina Arquitetura e Modelagem de Banco de Dados possui 4 aulas por semana, portanto cada aula precisa ser definida individualmente;</li>
-<li>Mecaniscmo para evitar sobreposição de horários (mesmo professor com disciplinas diferentes em um mesmo horário);</li>
+<li>Definição de horário de aula para um semestre do curso, lembrando que cada disciplina possui uma quantidade de aulas obrigatória por semana. Exemplo: A disciplina Arquitetura e Modelagem de Banco de Dados possui 4 aulas por semana, portanto cada aula precisa ser definida individualmente;</li>
+<li>Mecanismo para evitar sobreposição de horários (mesmo professor com disciplinas diferentes em um mesmo horário);</li>
 <li>Sugestão de alocação, levando em conta os horários de aula já definidos;</li>
 <li>Gerenciamento de semestre letivo, permitindo definir quais disciplinas fazem parte do semestre de um determinado curso;</li>
 <li>Gerenciamento de cursos;</li>
