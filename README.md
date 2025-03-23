@@ -33,6 +33,21 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 <li>Modelo Entidade Relacionamento.</li>
 </ol>
 
+## Backlog do Produto
+
+| Rank | Prioridade | ID       | User Story                                                                                           | Story Points | Sprint |
+|------|------------|----------|-------------------------------------------------------------------------------------------------------|--------------|--------|
+| 1    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 6  | Como coordenador, quero visualizar a grade de aulas com horários em tabela, para possibilitar a fácil identificação e distribuição de disciplinas e horários. | 3            | 1      |
+| 2    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 7  | Como coordenador, quero cadastrar professores para consultar seus dados rapidamente, facilitando alocação de turmas. | 3            | 2      |
+| 3    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 8  | Como coordenador, quero cadastrar aulas no sistema para evitar choques de horários.                   | 5           | 2      |
+| 4    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 9  | Como coordenador, quero cadastrar cursos para garantir que todas as disciplinas estejam vinculadas a uma estrutura curricular específica. | 3            | 2      |
+| 5    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 10 | Como coordenador, quero cadastrar disciplinas no sistema para facilitar a alocação eficiente de professores. | 3            | 2      |
+| 6    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 11 | Como coordenador, quero cadastrar coordenadores para cada curso para que o curso funcione de forma eficiente, alinhado aos objetivos institucionais e às normas educacionais. | 3            | 2      |
+| 7    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 12 | Como coordenador, quero cadastrar semestres para organizar os cursos em níveis de aprendizado, permitindo uma progressão clara e estruturada no desenvolvimento dos alunos ao longo do curso. | 5            | 3      |
+| 8    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 13 | Como coordenador, quero poder exportar a grade horária para Excel, para facilitar a acessibilidade e portabilidade dos horários. | 3            | 3      |
+| 9    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 14 | Como coordenador, quero fazer login no sistema, com e-mail e senha, para que eu possa acessar as funcionalidades e gerenciar as informações de forma segura. | 3            | 2     |
+| 10   | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 15 | Como coordenador, quero poder alterar minha senha para que eu possa manter minha conta segura e atualizada. | 5            | 3      |
+
 ## Integrantes do Projeto 
 | <center>Linkedin & Git hub</center> | Integrante | Função | Identificação |
 |------------------------------------ |------------|--------|---------------|
