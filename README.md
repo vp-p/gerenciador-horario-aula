@@ -78,5 +78,35 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+
+## Termos de Requisitos de Permanência
+
+### Objetivo: 
+
+ - Estabelecer critérios mínimos que os membros da equipe *SINAPSE* devem cumprir para manter sua participação ativa. 
+
+- Garantir a continuidade, qualidade e sucesso do projeto, bem como promover o comprometimento e a responsabilidade de todos os envolvidos.
+
+### 1 - Reuniões
+
+- Comparecer às reuniões semanais agendadas em todas as segundas e quartas, durante as aulas designadas para API.
+- Justificar eventuais ausências ao grupo.
+- A presença nas reuniões é essencial para o compartilhamento de informações e alinhamento das atividades do projeto.
+
+### 2 - Curso Obrigatórios
+
+- Todos os participantes do projeto devem realizar e concluir os cursos de Java POO (Programação Orientada a Objetos) e SQL.
+- A conclusão desses cursos é essencial para a compreensão e execução eficiente das tarefas do projeto.
+- O não cumprimento desta exigência pode impactar negativamente a participação no projeto.
+
+### 3 - Comunicação com o Time
+- Manter uma comunicação efetiva e constante com o time, utilizando os canais oficiais de comunicação: WhatsApp , Slack, Discord ou comunicação presencial.
+- Ausências de comunicação podem prejudicar o andamento do projeto e comprometer os resultados esperados.
+- É responsabilidade de cada membro informar qualquer situação que possa afetar sua capacidade de contribuir ao projeto.
+
+### 4 - Prazos de entrega
+- É fundamental respeitar prazos de entregas estabelecidos pelo time.
+- Os Atrasos de entregas devem ser evitados a todo custo, caso tenha alguma dificuldade informe o time.
+- A ausência de entregas podem causar efeitos negativos ao trabalho da equipe e o andamento do projeto.
 </body>
 </html>
