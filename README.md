@@ -56,7 +56,7 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 ## Backlog do Produto
 
 | Rank | Prioridade | ID       | User Story                                                                                           | Story Points | Sprint | Requisitos do Parceiro|
-|------|------------|----------|-------------------------------------------------------------------------------------------------------|--------------|--------|
+|------|------------|----------|-------------------------------------------------------------------------------------------------------|--------------|--------|--------|
 | 1    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 6  | Como coordenador, quero visualizar a grade de aulas com horários em tabela, para possibilitar a fácil identificação e distribuição de disciplinas e horários. | 3            | 1      | 8 |
 | 2    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 7  | Como coordenador, quero cadastrar professores para consultar seus dados rapidamente, facilitando alocação de turmas. | 3            | 2      | 8 |
 | 3    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 8  | Como coordenador, quero cadastrar aulas no sistema para evitar choques de horários.                   | 5           | 2      | 8 |
