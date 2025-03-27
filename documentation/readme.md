@@ -4,9 +4,9 @@
 
 <body>
 <div align = "center">
-<img src = "images/dctBanner.png" width = 850></div>
+<img src = "images/dctBanner.png" width = 100%></div>
 
-<br><br>
+<br>
 
 # Planejamento de Sprints
 <details>
