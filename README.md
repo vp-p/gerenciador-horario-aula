@@ -11,6 +11,10 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 ♦ [Requisitos](#requisitos)</br>
 ♦ [Integrantes do Projeto](#integrantes-do-projeto)</br>
 ♦ [Cronograma do Projeto](#cronograma-do-projeto)</br>
+♦ [BackLog do Produto](#backlog-do-produto)</br>
+♦ [Cronograma do Projeto](#cronograma-do-projeto)</br>
+♦ [Tecnologias Utilizadas](#tecnologia-utilizadas)</br>
+♦ [Termos de Requisitos de Permanência](#termos-de-requisitos-de-permanência)</br>
 
 ## Requisitos
 
