@@ -116,5 +116,8 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 - É fundamental respeitar prazos de entregas estabelecidos pelo time.
 - Os Atrasos de entregas devem ser evitados a todo custo, caso tenha alguma dificuldade informe o time.
 - A ausência de entregas podem causar efeitos negativos ao trabalho da equipe e o andamento do projeto.
+
+<br>
+<img src = "assets/rodape.png" width = "100%">
 </body>
 </html>

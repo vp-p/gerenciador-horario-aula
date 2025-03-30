@@ -413,6 +413,6 @@
 <img src = "BD_DER.png">
 
 <br>
-<img src = "images/rodape.png">
+<img src = "images/rodape.png" width = "100%">
 </body>
 </html>
