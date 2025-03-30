@@ -127,6 +127,25 @@ public class TelaLogin extends Application {
         });
         colunaEquerda.getChildren().add(entrarButton);
 
+        // Botão "Esqueci minha senha"
+        Button esqueciSenhaButton = new Button("Esqueci minha senha");
+        esqueciSenhaButton.setStyle(
+                "-fx-background-color: transparent; " + // Fundo transparente
+                        "-fx-text-fill: #4A90E2; " +           // Cor azul
+                        "-fx-underline: true; " +              // Sublinhado
+                        "-fx-font-size: 14px;"                 // Tamanho da fonte
+        );
+        esqueciSenhaButton.setOnAction(e -> {
+            // Abre a tela de redefinição de senha
+            Stage redefinicaoSenhaStage = new Stage(); // Cria uma nova janela
+            try {
+                new RecuperarSenha().start(redefinicaoSenhaStage); // Inicializa a tela
+            } catch (Exception ex) {
+                ex.printStackTrace(); // Trata possíveis erros
+            }
+        });
+        colunaEquerda.getChildren().add(esqueciSenhaButton);
+
         // Coluna direita (Quadrado azul)
         Region colunaDireita = new Region();
         colunaDireita.setStyle(
