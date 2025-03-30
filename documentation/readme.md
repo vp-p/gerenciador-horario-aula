@@ -38,6 +38,7 @@
 - Na grade de aulas, será possível visualizar aulas dividas em campos da tabela.
 
 ### WireFrame
+<img src = "wireframe/gradeHoraria.jpeg" width = "60%">
 
 <br>
 </details>
@@ -75,6 +76,7 @@
 
 
 ### WireFrame:
+<img src = "wireframe/cadastroProfessores.png" width = "60%">
 
 <br>
 
@@ -110,6 +112,8 @@
 - Em uma aula, o coordenador irá inserir dados relacionados sobre o professor, disciplina, curso e horário. 
 
 ### Wireframe:
+
+<img src = "wireframe/cadastroAula.png" width = "60%">
 
 <br>
 
@@ -310,10 +314,6 @@
 - Tarefas definidas, atribuidas e relacionadas com as User Stories.
 - Na exportação da grade horária, o arquivo CSV terá a estrutura com as informações dos professores, as disciplinas e os horários de um determinado curso.
 
-### WireFrame: 
-
-<br>
-
 ### Validações:
 
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
@@ -395,10 +395,6 @@
 - User Story atende aos critérios de aceitação.
 - Tarefas definidas, atribuidas e relacionadas com as User Stories.
 - Na alteração de senha, deve ser inserido a senha antiga e a senha nova.
-
-### WireFrame: 
-
-<br>
 
 ### Validações:
 
