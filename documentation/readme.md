@@ -113,6 +113,8 @@
 
 <br>
 
+### Validações: 
+
 | <center >Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
 | O registro do intervalo entra como uma aula? Que teria o tempo reduzido?| Toda aula precisa ter 50 minutos. |
@@ -189,7 +191,9 @@
 <img src = "wireframe/cadastroDisciplina2.png" width = "29%">
 
 
-<br><br>
+<br>
+
+### Validações: 
 
 | <center >Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
@@ -230,7 +234,9 @@
 <img src = "wireframe/cadastroCoordenador.png" width = "60%">
 <img src = "wireframe/cadastroCoordenador2.png" width = "29%">
 
-<br><br>
+<br>
+
+### Validações:
 
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
@@ -308,6 +314,8 @@
 
 <br>
 
+### Validações:
+
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
 |Gostaria que fosse possível dentro da solução, a exportação da grade horária em planilhas de excel para facilitar a acessibilidade e portabilidade de horários?| Seria interessante exportação em csv |
@@ -352,6 +360,8 @@
 
 <br>
 
+### Validações:
+
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
 | Para acesso a plataforma, gostaria que fosse feito por login para segurança das informações? | Não é algo prioritário |
@@ -389,6 +399,8 @@
 ### WireFrame: 
 
 <br>
+
+### Validações:
 
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
