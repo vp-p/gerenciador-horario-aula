@@ -407,10 +407,12 @@
 |  Sobre o login, gostaria que fosse feita uma solução ou função de alteração de senha ou não possui prioridade? | Não tem prioridade |"
 
 </details>
-<br>
+<BR>
 
 # Diagrama de Entidade e Relacionamento
 <img src = "BD_DER.png">
 
+<br>
+<img src = "images/rodape.png">
 </body>
 </html>
