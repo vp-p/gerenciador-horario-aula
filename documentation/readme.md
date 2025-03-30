@@ -79,6 +79,7 @@
 <br>
 
 ---
+
 <br>
 
 | Rank | Prioridade | ID  | User Story | Story Points | Sprint | Requisitos do Parceiro|
@@ -117,7 +118,10 @@
 | O registro do intervalo entra como uma aula? Que teria o tempo reduzido?| Toda aula precisa ter 50 minutos. |
 | Os horários já definidos, posteriormente tem previsão de troca de horários dos professores ou é fixo? | O horário não troca durante o semestre |
 
+<br>
+
 ---
+
 <br>
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
@@ -145,6 +149,9 @@
 - No gerenciamento de curso, possibilita o coordenador a criar e remover curso. Deve-se informar o nome e o período.
 
 ### WireFrame:
+
+<img src = "wireframe/cadastroCurso.png" width = "60%">
+<img src = "wireframe/cadastroCurso2.png" width = "29%">
 
 <br>
 
@@ -178,13 +185,19 @@
 
 ### WireFrame:
 
+<img src = "wireframe/cadastroDisciplina.png" width = "60%">
+<img src = "wireframe/cadastroDisciplina2.png" width = "29%">
+
 <br>
 
 | <center >Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
 | Gerenciamento de semestre letivo,  permitindo definir quais disciplinas fazem parte do semestre de um determinado curso tem limite de materiais no semestre? Qual seria o limite? | Não tem limite de disciplinas, mas tem o limite de 24 horas por semana. |
 
+<br>
+
 ---
+
 <br>
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
@@ -223,8 +236,7 @@
 | Nossa aplicação, terá quantos coordenadores? Pois, na fatec, existem um coordenador por curso. | Sem limites, podem ter vários. |
 | Como funciona na Fatec a troca de coordenadores? | A cada 2 anos tem eleição |
 
-
----
+<br>
 
 </details>
 
@@ -299,7 +311,10 @@
 |------------------------------|-------------------------------------|
 |Gostaria que fosse possível dentro da solução, a exportação da grade horária em planilhas de excel para facilitar a acessibilidade e portabilidade de horários?| Seria interessante exportação em csv |
 
+<br>
+
 ---
+
 <br>
 
 | Rank | Prioridade | ID  | User Story | Story Points | Sprint | Requisitos do Parceiro |
@@ -331,11 +346,16 @@
 
 ### WireFrame: 
 
+<img src = "wireframe/TelaLogin.png" width = "60%">
+
+
 <br>
 
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
 | Para acesso a plataforma, gostaria que fosse feito por login para segurança das informações? | Não é algo prioritário |
+
+<br>
 
 ---
 
