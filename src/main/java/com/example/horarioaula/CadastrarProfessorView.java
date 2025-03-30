@@ -184,10 +184,12 @@ public class CadastrarProfessorView extends Application {
         Label label = new Label("Nome do Professor");
         TextField textField = new TextField();
 
-        Button cadastrar = new Button("Cadastrar");
+        Button cadastrar = new Button("Cadastrar Professor");
         popupLayout.getChildren().addAll(label, textField, cadastrar);
+        cadastrar.getStyleClass().add("popup-button");
 
         Scene popupScene = new Scene(popupLayout, 300, 200);
+        popupScene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         popup.setScene(popupScene);
         popup.show();
     }
