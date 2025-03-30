@@ -40,6 +40,7 @@
 ### WireFrame
 <img src = "wireframe/gradeHoraria.jpeg" width = "60%">
 
+### Burndown Chart
 ![Captura de tela 2025-03-30 185618](https://github.com/user-attachments/assets/cf2fe61c-59c4-4fa7-948b-1d42751c8883)
 ![Captura de tela 2025-03-30 185635](https://github.com/user-attachments/assets/dd5b058d-4957-4130-8259-f96c5813a332)
 
