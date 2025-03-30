@@ -11,8 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 public class CadastrarProfessorView extends Application {
     private TableView<CadastrarProfessor> tabela;
@@ -20,110 +20,39 @@ public class CadastrarProfessorView extends Application {
 
     @Override
     public void start(Stage stage) {
-        // Painel principal (BorderPane)
         BorderPane borderPane = new BorderPane();
 
-        // Menu lateral (fora da área de conteúdo principal)
-        VBox sideMenu = new VBox(20);
-        sideMenu.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 20px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, -4, 4);");
+        // Menu lateral
+        VBox sideMenu = criarMenuLateral();
+        borderPane.setLeft(sideMenu);
 
-        // Logo do menu lateral
-        ImageView logo = new ImageView(new Image(getClass().getResource("/imgs/Sinapse.png").toString()));
-        logo.setFitWidth(124);
-        logo.setFitHeight(35);
-        sideMenu.getChildren().add(logo);
-
-        // Criar ícones para o menu lateral
-        ImageView icon1 = new ImageView(new Image(getClass().getResource("/imgs/Calendar.png").toString()));
-        ImageView icon2 = new ImageView(new Image(getClass().getResource("/imgs/User.png").toString()));
-
-        // Ajustar o tamanho dos ícones
-        for (ImageView icon : new ImageView[]{icon1, icon2}) {
-            icon.setFitWidth(20);
-            icon.setFitHeight(20);
-        }
-
-        // Adicionando os itens ao menu lateral
-        Label separator1 = new Label("Home");
-        separator1.setStyle("-fx-font-size: 18px; -fx-font-weight: normal; -fx-text-fill: #83899F;");
-        Button btn1 = new Button("Grade de aula", icon1);
-
-        Label separator2 = new Label("Funcionários");
-        separator2.setStyle("-fx-font-size: 18px; -fx-font-weight: normal; -fx-text-fill: #83899F;");
-        Button btn2 = new Button("Professores", icon2);
-
-        // Adiciona os botões ao menu lateral
-        sideMenu.getChildren().addAll(separator1, btn1, separator2, btn2);
-
-        // Menu superior dentro da área de conteúdo
+        // Menu superior
         HBox topMenu = new HBox();
         topMenu.setAlignment(Pos.CENTER_RIGHT);
         topMenu.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 10px;");
-        HBox.setMargin(topMenu, new Insets(0, 0, 20, 0));
 
         ImageView profileImage = new ImageView(new Image(getClass().getResource("/imgs/perfil.png").toString()));
         profileImage.setFitWidth(40);
         profileImage.setFitHeight(40);
-        Circle clip = new Circle(20, 20, 20);
-        profileImage.setClip(clip);
+        profileImage.setClip(new Circle(20, 20, 20));
         topMenu.getChildren().add(profileImage);
 
-        // Área de conteúdo principal (contendo o formulário de cadastro de professores e a tabela)
-        VBox contentArea = new VBox(10);
-        contentArea.setPadding(new Insets(20));
+        // Área de conteúdo principal
+        VBox contentArea = new VBox();
+        contentArea.setSpacing(10);
+        contentArea.setPadding(new Insets(20, 10, 10, 10));
 
-        // Formulário de cadastro
-        HBox form = new HBox(10);
-        form.setAlignment(Pos.CENTER);
-
-        TextField nomeField = new TextField();
-        nomeField.setPromptText("Nome");
-
-        TextField emailField = new TextField();
-        emailField.setPromptText("Email");
-
-        Button btnAdicionar = new Button("Adicionar");
-
-        form.getChildren().addAll(nomeField, emailField, btnAdicionar);
+        // Header com título e botões de ação
+        VBox headerBox = criarHeader();
+        contentArea.getChildren().addAll(topMenu, headerBox);
 
         // Criar a tabela de professores
         tabela = new TableView<>();
+        configurarTabela();
 
-        // Colunas da tabela
-        TableColumn<CadastrarProfessor, String> colNome = new TableColumn<>("Nome");
-        colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-
-        TableColumn<CadastrarProfessor, String> colEmail = new TableColumn<>("Email");
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-
-        tabela.getColumns().addAll(colNome, colEmail);
-        tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-        dados = FXCollections.observableArrayList();
-        tabela.setItems(dados);
-
-        // Ação do botão "Adicionar"
-        btnAdicionar.setOnAction(e -> {
-            String nome = nomeField.getText();
-            String email = emailField.getText();
-            if (!nome.isEmpty() && !email.isEmpty()) {
-                dados.add(new CadastrarProfessor(nome, email));
-                nomeField.clear();
-                emailField.clear();
-            }
-        });
-
-        // Adiciona o menu superior e a tabela ao conteúdo principal
-        contentArea.getChildren().add(topMenu);
-        contentArea.getChildren().add(form);
+        // Adiciona a tabela ao conteúdo principal
         contentArea.getChildren().add(tabela);
-
-        // Definir o conteúdo central
         borderPane.setCenter(contentArea);
-
-        // Menu lateral no lado esquerdo
-        borderPane.setLeft(sideMenu);
-
         BorderPane.setMargin(sideMenu, new Insets(0, 20, 0, 0));
 
         // Criar a cena
@@ -131,6 +60,136 @@ public class CadastrarProfessorView extends Application {
         stage.setTitle("Cadastro de Professores");
         stage.setScene(scene);
         stage.show();
+
+        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+
+
+    }
+
+    private VBox criarMenuLateral() {
+        VBox sideMenu = new VBox(10);
+        sideMenu.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 20px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, -4, 4);");
+
+        ImageView logo = new ImageView(new Image(getClass().getResource("/imgs/Sinapse.png").toString()));
+        logo.setFitWidth(124);
+        logo.setFitHeight(35);
+        sideMenu.getChildren().add(logo);
+
+        ImageView[] icons = {
+                new ImageView(new Image(getClass().getResource("/imgs/Calendar.png").toString())),
+                new ImageView(new Image(getClass().getResource("/imgs/User.png").toString())),
+                new ImageView(new Image(getClass().getResource("/imgs/FolderUser.png").toString())),
+                new ImageView(new Image(getClass().getResource("/imgs/red.png").toString())),
+                new ImageView(new Image(getClass().getResource("/imgs/blue.png").toString())),
+                new ImageView(new Image(getClass().getResource("/imgs/purple.png").toString()))
+        };
+
+        for (ImageView icon : icons) {
+            icon.setFitWidth(20);
+            icon.setFitHeight(20);
+        }
+
+        Label separator1 = new Label("Home");
+        separator1.setStyle("-fx-font-size: 14px; -fx-font-weight: normal; -fx-text-fill: #83899F;");
+        Button btn1 = new Button("Grade de aula", icons[0]);
+
+        Label separator2 = new Label("Funcionários");
+        separator2.setStyle("-fx-font-size: 14px; -fx-font-weight: normal; -fx-text-fill: #83899F;");
+        Button btn2 = new Button("Professores", icons[1]);
+        Button btn3 = new Button("Coordenadores", icons[2]);
+
+        Label separator3 = new Label("Geral");
+        separator3.setStyle("-fx-font-size: 14px; -fx-font-weight: normal; -fx-text-fill: #83899F;");
+        Button btn4 = new Button("Cursos", icons[3]);
+        Button btn5 = new Button("Semestres", icons[4]);
+        Button btn6 = new Button("Disciplinas", icons[5]);
+
+        sideMenu.getChildren().addAll(separator1, btn1, separator2, btn2, btn3, separator3, btn4, btn5, btn6);
+        return sideMenu;
+    }
+
+    private VBox criarHeader() {
+        VBox headerBox = new VBox(5);
+        headerBox.setPadding(new Insets(20, 24, 20, 24));
+        headerBox.getStyleClass().add("header-box");
+
+        Label titulo = new Label("Professores");
+        titulo.getStyleClass().add("titulo");
+        Label subtitulo = new Label("Gerencie e consulte os professores cadastrados.");
+        subtitulo.getStyleClass().add("subtitulo");
+
+        HBox actionButtons = criarBotoesAcoes();
+        VBox headerText = new VBox(5);
+        headerText.setAlignment(Pos.CENTER_LEFT);
+        headerText.getChildren().addAll(titulo, subtitulo);
+
+        HBox topContent = new HBox(20);
+        topContent.setAlignment(Pos.CENTER_LEFT);
+        topContent.getChildren().addAll(headerText, actionButtons);
+
+        headerBox.getChildren().add(topContent);
+        return headerBox;
+    }
+
+    private HBox criarBotoesAcoes() {
+        HBox actionButtons = new HBox(10);
+        actionButtons.setAlignment(Pos.CENTER_RIGHT);
+
+        ImageView deletarIcon = new ImageView(new Image(getClass().getResource("/imgs/trash.png").toString()));
+        ImageView filtrosIcon = new ImageView(new Image(getClass().getResource("/imgs/filtros.png").toString()));
+        ImageView exportarIcon = new ImageView(new Image(getClass().getResource("/imgs/export.png").toString()));
+        ImageView addIcon = new ImageView(new Image(getClass().getResource("/imgs/plus.png").toString()));
+
+        for (ImageView icon : new ImageView[]{deletarIcon, filtrosIcon, exportarIcon, addIcon}) {
+            icon.setFitWidth(20);
+            icon.setFitHeight(20);
+        }
+
+        Button deletar = new Button("Deletar", deletarIcon);
+        Button filtros = new Button("Filtros", filtrosIcon);
+        Button exportar = new Button("Exportar", exportarIcon);
+        Button adicionar = new Button("Adicionar professor", addIcon);
+        adicionar.setStyle("-fx-background-color: #1D4ED8; -fx-text-fill: white; -fx-pref-width: 200px;");
+        adicionar.setOnAction(e -> abrirPopupCadastro());
+
+        actionButtons.getChildren().addAll(deletar, filtros, exportar, adicionar);
+        return actionButtons;
+    }
+
+    private void configurarTabela() {
+        TableColumn<CadastrarProfessor, String> colNome = new TableColumn<>("Nome");
+        colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+
+        TableColumn<CadastrarProfessor, String> colEmail = new TableColumn<>("Email");
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        TableColumn<CadastrarProfessor, String> colCurso = new TableColumn<>("Curso");
+        colCurso.setCellValueFactory(new PropertyValueFactory<>("curso"));
+
+        tabela.getColumns().addAll(colNome, colEmail, colCurso);
+        tabela.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        dados = FXCollections.observableArrayList();
+        tabela.setItems(dados);
+    }
+
+    private void abrirPopupCadastro() {
+        Stage popup = new Stage();
+        popup.setTitle("Adicionar Professor");
+
+        VBox popupLayout = new VBox(10);
+        popupLayout.getStyleClass().add("popup-container");
+
+        Label label = new Label("Nome do Professor");
+        TextField textField = new TextField();
+
+        Button cadastrar = new Button("Cadastrar");
+        popupLayout.getChildren().addAll(label, textField, cadastrar);
+
+        Scene popupScene = new Scene(popupLayout, 300, 200);
+        popup.setScene(popupScene);
+        popup.show();
     }
 
     public static void main(String[] args) {
