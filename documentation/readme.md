@@ -233,7 +233,7 @@
 
 ## User Stories
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
-|------|----------------------------------------------------------------------|----------|------------------|--------------|--------|--------|
+|------|------------|----------|------------|--------------|--------|------------------------|
 | 7    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 12 | Como coordenador, quero cadastrar semestres para organizar os cursos em níveis de aprendizado, permitindo uma progressão clara e estruturada no desenvolvimento dos alunos ao longo do curso. | 5            | 3      | 5 |
 
 ### Requisitos: 
@@ -267,6 +267,7 @@
 <br>
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
+|------|-----------|------|------------|--------------|--------|-----------------------------|
 | 8    | ![#ffff00](https://via.placeholder.com/15/ffff00/000000?text=+) MÉDIA | SIN - 13 | Como coordenador, quero poder exportar a grade horária para Excel, para facilitar a acessibilidade e portabilidade dos horários. | 3            | 3      | 2 |
 
 ### Requisitos: 
@@ -301,8 +302,9 @@
 ---
 <br>
 
-| Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
-| 9    | ![#ffff00](https://via.placeholder.com/15/ffff00/000000?text=+) MÉDIA | SIN - 14 | Como coordenador, quero fazer login no sistema, com e-mail e senha, para que eu possa acessar as funcionalidades e gerenciar as informações de forma segura. | 1|3            | 1    |
+| Rank | Prioridade | ID  | User Story | Story Points | Sprint | Requisitos do Parceiro |
+|------|-----------|------|------------|--------------|--------|------------------------|
+| 9    | ![#ffff00](https://via.placeholder.com/15/ffff00/000000?text=+) MÉDIA | SIN - 14 | Como coordenador, quero fazer login no sistema, com e-mail e senha, para que eu possa acessar as funcionalidades e gerenciar as informações de forma segura. | 1|3 | 1    |
 
 ### Requisitos: 
 
@@ -340,6 +342,7 @@
 <br>
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
+|------|-----------|-----------|------------|--------------|--------|------------------------|
 | 10   | ![#0000ff](https://via.placeholder.com/15/0000ff) BAIXA | SIN - 15 | Como coordenador, quero poder alterar minha senha para que eu possa manter minha conta segura e atualizada. | 5            | 3      | 1 |
 
 ### Requisitos: 
