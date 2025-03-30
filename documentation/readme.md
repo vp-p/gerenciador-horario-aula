@@ -188,7 +188,8 @@
 <img src = "wireframe/cadastroDisciplina.png" width = "60%">
 <img src = "wireframe/cadastroDisciplina2.png" width = "29%">
 
-<br>
+
+<br><br>
 
 | <center >Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
@@ -229,7 +230,7 @@
 <img src = "wireframe/cadastroCoordenador.png" width = "60%">
 <img src = "wireframe/cadastroCoordenador2.png" width = "29%">
 
-<br>
+<br><br>
 
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
