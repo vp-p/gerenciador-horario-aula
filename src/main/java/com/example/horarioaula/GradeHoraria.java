@@ -148,6 +148,7 @@ public class GradeHoraria extends Application {
 
         // Criar ComboBox para selecionar curso
         ComboBox<String> cursoComboBox = new ComboBox<>();
+        cursoComboBox.setStyle("-fx-pref-width: 500px; -fx-border-radius: 8px; -fx-font-size: 13px; -fx-text-fill: #333333; -fx-padding: 14px; -fx-border-width: 2px; -fx-border-color: #1D4ED8; -fx-background-color: #FFFFFF; -fx-text-alignment: left;");
         cursoComboBox.setPromptText("Selecione um curso");
         cursoComboBox.setItems(FXCollections.observableArrayList(
                 "Ciência da Computação", "Engenharia de Software", "Sistemas de Informação",
@@ -254,6 +255,7 @@ public class GradeHoraria extends Application {
         Label disciplinaLabel = new Label("Disciplina:");
         disciplinaLabel.getStyleClass().add("popup-label");
         ComboBox<String> disciplinaCombo = new ComboBox<>();
+        disciplinaCombo.setStyle("-fx-pref-width: 500px; -fx-border-radius: 8px; -fx-font-size: 13px; -fx-text-fill: #333333; -fx-padding: 14px; -fx-border-width: 2px; -fx-border-color: #1D4ED8; -fx-background-color: #FFFFFF; -fx-text-alignment: left;");
         disciplinaCombo.setItems(FXCollections.observableArrayList(
                 "Matemática", "Física", "Programação", "Banco de Dados", "Engenharia de Software"
         ));
@@ -263,6 +265,7 @@ public class GradeHoraria extends Application {
         Label professorLabel = new Label("Professor:");
         professorLabel.getStyleClass().add("popup-label");
         ComboBox<String> professorCombo = new ComboBox<>();
+        professorCombo.setStyle("-fx-pref-width: 500px; -fx-border-radius: 8px; -fx-font-size: 13px; -fx-text-fill: #333333; -fx-padding: 14px; -fx-border-width: 2px; -fx-border-color: #1D4ED8; -fx-background-color: #FFFFFF; -fx-text-alignment: left;");
         professorCombo.setItems(FXCollections.observableArrayList(
                 "Prof. João", "Prof. Maria", "Prof. Carlos", "Prof. Ana", "Prof. Roberto"
         ));
@@ -272,6 +275,7 @@ public class GradeHoraria extends Application {
         Label horarioLabel = new Label("Horário:");
         horarioLabel.getStyleClass().add("popup-label");
         ComboBox<String> horarioCombo = new ComboBox<>();
+        horarioCombo.setStyle("-fx-pref-width: 500px; -fx-border-radius: 8px; -fx-font-size: 13px; -fx-text-fill: #333333; -fx-padding: 14px; -fx-border-width: 2px; -fx-border-color: #1D4ED8; -fx-background-color: #FFFFFF; -fx-text-alignment: left;");
         horarioCombo.setItems(FXCollections.observableArrayList(
                 "07:00 - 07:50", "08:00 - 08:50", "09:00 - 09:50",
                 "10:00 - 10:50", "11:00 - 11:50", "13:00 - 13:50",
