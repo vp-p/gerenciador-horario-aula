@@ -163,7 +163,7 @@
 ### WireFrame:
 
 <img src = "wireframe/cadastroCurso.png" width = "60%">
-<img src = "wireframe/cadastroCurso2.png" width = "29%">
+
 
 <br>
 
@@ -198,8 +198,6 @@
 ### WireFrame:
 
 <img src = "wireframe/cadastroDisciplina.png" width = "60%">
-<img src = "wireframe/cadastroDisciplina2.png" width = "29%">
-
 
 <br>
 
@@ -242,7 +240,6 @@
 ### WireFrame: 
 
 <img src = "wireframe/cadastroCoordenador.png" width = "60%">
-<img src = "wireframe/cadastroCoordenador2.png" width = "29%">
 
 <br>
 
@@ -288,7 +285,6 @@
 ### WireFrame: 
 
 <img src = "wireframe/cadastroSemestre.png" width = "60%">
-<img src = "wireframe/cadastroSemestre2.png" width = "29%">
 
 <br>
 
