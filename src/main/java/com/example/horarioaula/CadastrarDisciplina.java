@@ -118,7 +118,7 @@ public class CadastrarDisciplina extends Application {
         Button exportar = new Button("Exportar", exportarIcon);
         exportar.getStyleClass().add("botao-acao");
         exportar.setStyle("-fx-border-color: #D0D5DD; -fx-text-fill: #344054;");
-        Button adicionar = new Button("Adicionar semestre", addIcon);
+        Button adicionar = new Button("Adicionar disciplina", addIcon);
         adicionar.getStyleClass().add("botao-acao");
         adicionar.setStyle("-fx-background-color: #1D4ED8; -fx-text-fill: white; -fx-pref-width: 200px;");
 
