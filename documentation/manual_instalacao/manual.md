@@ -56,7 +56,7 @@
 
  #### Problema com o acesso ao banco de dados
  - Verifique no Windows em área de serviços, se o MySQL está em execução.
- - Caso não esteja, clique em cima do serviço 'MySQL' e em 'Iniciar Serviço'
+ - Caso em execução, clique em cima do serviço 'MySQL' e em 'Iniciar o serviço'
 
  <br>
  <img src = "images/iniciarMySQL-Manual.png" width="600" >
