@@ -7,7 +7,12 @@
 <img src = "images/instalacao_banner.png" width = 100%></div>
 
 ## índice de instalação
-
+‣ [Introdução](#1---introdução)<br>
+‣ [Requisitos para o funcionamento](#2---requisitos-para-o-funcionamento)<br>
+‣ [Preparação e Download](#3---preparação-e-download)<br>
+‣ [Configuração Inicial](#4---configuração-inicial)<br>
+‣ [Problemas Possíveis](#5---problemas-possíveis)<br>
+‣ [Suporte Cliente](#6---suporte)
 
 ### 1 - Introdução
 
