@@ -3,13 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.GradeHorariaController">
    <children>
@@ -237,5 +238,14 @@
             </ImageView>
          </children>
       </HBox>
+      <TableView fx:id="tblViewGrade" layoutX="238.0" layoutY="186.0" prefHeight="298.0" prefWidth="919.0" style="-fx-background-color: white;">
+        <columns>
+          <TableColumn fx:id="tblColSeg" prefWidth="190.0" text="Segunda" />
+          <TableColumn fx:id="tblColTer" prefWidth="190.0" text="Terça" />
+            <TableColumn fx:id="tblColQuar" prefWidth="190.0" text="Quarta" />
+            <TableColumn fx:id="tblColQui" prefWidth="190.0" text="Quinta" />
+            <TableColumn fx:id="tblColSex" prefWidth="190.0" text="Sexta" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
