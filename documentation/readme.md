@@ -31,8 +31,6 @@
 
 - Ok, pode ser essa proposta.
 
-<br>
-
 </details>
 
 <details>
