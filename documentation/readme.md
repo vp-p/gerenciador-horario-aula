@@ -23,9 +23,9 @@
 
 ***Proposta de Dados***
 
-1 - Poderá ser definido 3 cursos;
-2 - 10 professores referente ao curso e suas respectivas disciplinas;
-3 - 2 semestre
+- Poderá ser definido 3 cursos;
+- 10 professores referente ao curso e suas respectivas disciplinas;
+- 2 semestre;
 
 | Reposta do cliente |
 |--------------------|
