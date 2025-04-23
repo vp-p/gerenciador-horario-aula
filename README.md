@@ -73,8 +73,8 @@ A equipe <strong>SINAPSE</strong>, estudantes do 2º Semestre do curso de Banco 
 | Sprints  |   Início   | Entrega    | Status  |
 | -------- | ---------- | ---------- | ------- |
 | Kick-Off | 26/02/2025 | 28/02/2025 |   ✅   |
-| Sprint 1 | 10/03/2025 | 30/03/2025 |   🔁   |
-| Sprint 2 | 07/04/2025 | 27/04/2025 |   ⬜   |
+| Sprint 1 | 10/03/2025 | 30/03/2025 |   ✅   |
+| Sprint 2 | 07/04/2025 | 27/04/2025 |   🔁   |
 | Sprint 3 | 05/05/2025 | 25/05/2025 |   ⬜   |
 | Feira de Soluções| 29/05/2025 | 29/05/2025 | ⬜ |
 
