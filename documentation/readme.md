@@ -10,6 +10,30 @@
 
 # Planejamento de Sprints
 
+<details>
+<summary><strong>Proposta</strong></summary>
+
+## Sprint 2 
+
+***Proposta de funcionalidade:***
+
+- Visualização e configuração da grade horária;
+- Choques de horários serão evitados, apresentando sugestões de professores disponíveis no horário definido;
+- Será possível adicionar aulas com informações do professor, disciplina, curso e semestre.
+
+***Proposta de Dados***
+
+1 - Poderá ser definido 3 cursos;
+2 - 10 professores referente ao curso e suas respectivas disciplinas;
+3 - 2 semestre
+
+| Reposta do cliente |
+|--------------------|
+|Ok, pode ser essa proposta.|
+
+<br>
+
+</details>
 
 <details>
 <summary><strong>Sprint 2</strong></summary>
