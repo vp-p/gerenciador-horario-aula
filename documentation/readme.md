@@ -9,9 +9,10 @@
 <br>
 
 # Planejamento de Sprints
-<details>
 
-<summary><strong>Sprint 1</strong></summary>
+
+<details>
+<summary><strong>Sprint 2</strong></summary>
 
 ## User Stories
 
@@ -41,48 +42,9 @@
 <img src = "wireframe/gradeHoraria.jpeg" width = "60%">
 
 <br>
-</details>
-
-<details>
-<summary><strong>Sprint 2</strong></summary>
-
-## User Stories
-
-| Rank | Prioridade | ID   | User Story    | Story Points | Sprint | Requisitos do Parceiro|
-|------|------------|------|---------------|--------------|--------|-----------------------|
-|2     |![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 7 | Como coordenador, quero cadastrar professores para consultar seus dados rapidamente, facilitando alocação de turmas. | 3 | 2 | 8 |
-
-### Requisitos:
-
-- O coordernador deve ter a funcionalidade de cadastrar o professor com as informações Nome e Email.
-- Para a consulta, deve ser feita em tabelas para melhor visualização.
-- O coordenador deve ter a funcionalidade de excluir informações de professores enviadas indevidamente.
-
-
-### Definition of Done (DoD):
-
- - Código da aplicação devidamente versionado, organizado, funcionando e disponibilizado no Git Hub.
- - Gerenciamento da equipe definido e implementado na criação de telas.
- - Funcionalidade revisada por pelo menos um membro da equipe (Code Rewiew). 
- - Funcionalidade testada e aprovada.
- - Funcionalidade integrada ao Sistema.
-
- ### Definition of Ready (DoR):
-
-- User Story priorizada e apta para ser desenvolvida.
-- User Story atende aos critérios de aceitação.
-- Tarefas definidas, atribuidas e relacionadas com as User Stories.
-- No cadastro do professor, teremos campos para inserção do nome e email de cada professor.
-
-
-### WireFrame:
-<img src = "wireframe/CadastrarProfessor.jpg" width = "60%">
-
-<br>
-
 ---
-
 <br>
+
 
 | Rank | Prioridade | ID  | User Story | Story Points | Sprint | Requisitos do Parceiro|
 |------|------------|-----|------------|--------------|--------|-----------------------|
@@ -123,6 +85,45 @@
 |------------------------------|-------------------------------------|
 | O registro do intervalo entra como uma aula? Que teria o tempo reduzido?| Toda aula precisa ter 50 minutos. |
 | Os horários já definidos, posteriormente tem previsão de troca de horários dos professores ou é fixo? | O horário não troca durante o semestre |
+
+<br>
+
+</details>
+
+<details>
+<summary><strong>Sprint 3</strong></summary>
+
+## User Stories
+
+| Rank | Prioridade | ID   | User Story    | Story Points | Sprint | Requisitos do Parceiro|
+|------|------------|------|---------------|--------------|--------|-----------------------|
+|2     |![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 7 | Como coordenador, quero cadastrar professores para consultar seus dados rapidamente, facilitando alocação de turmas. | 3 | 2 | 8 |
+
+### Requisitos:
+
+- O coordernador deve ter a funcionalidade de cadastrar o professor com as informações Nome e Email.
+- Para a consulta, deve ser feita em tabelas para melhor visualização.
+- O coordenador deve ter a funcionalidade de excluir informações de professores enviadas indevidamente.
+
+
+### Definition of Done (DoD):
+
+ - Código da aplicação devidamente versionado, organizado, funcionando e disponibilizado no Git Hub.
+ - Gerenciamento da equipe definido e implementado na criação de telas.
+ - Funcionalidade revisada por pelo menos um membro da equipe (Code Rewiew). 
+ - Funcionalidade testada e aprovada.
+ - Funcionalidade integrada ao Sistema.
+
+ ### Definition of Ready (DoR):
+
+- User Story priorizada e apta para ser desenvolvida.
+- User Story atende aos critérios de aceitação.
+- Tarefas definidas, atribuidas e relacionadas com as User Stories.
+- No cadastro do professor, teremos campos para inserção do nome e email de cada professor.
+
+
+### WireFrame:
+<img src = "wireframe/CadastrarProfessor.jpg" width = "60%">
 
 <br>
 
@@ -246,12 +247,11 @@
 
 <br>
 
-</details>
+---
 
-<details>
-<summary><strong>Sprint 3</strong></summary>
+<br>
 
-## User Stories
+
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
 |------|------------|----------|------------|--------------|--------|------------------------|
 | 7    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 12 | Como coordenador, quero cadastrar semestres para organizar os cursos em níveis de aprendizado, permitindo uma progressão clara e estruturada no desenvolvimento dos alunos ao longo do curso. | 5            | 3      | 5 |
