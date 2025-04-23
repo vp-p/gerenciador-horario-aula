@@ -27,9 +27,9 @@
 - 10 professores referente ao curso e suas respectivas disciplinas;
 - 2 semestre;
 
-| Reposta do cliente |
-|--------------------|
-|Ok, pode ser essa proposta.|
+***Reposta do cliente***
+
+- Ok, pode ser essa proposta.
 
 <br>
 
