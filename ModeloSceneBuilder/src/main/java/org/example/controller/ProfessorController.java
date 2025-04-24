@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -55,6 +56,11 @@ public class ProfessorController {
 
     @FXML
     private TableView<Professor> tblViewProfessor;
+
+    @FXML
+    void adicionarNovoProfessor(ActionEvent event) {
+
+    }
 
 
     @FXML

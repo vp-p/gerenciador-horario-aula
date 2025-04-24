@@ -204,7 +204,7 @@
                   <Insets left="20.0" top="13.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnAdicionarProfessor" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #0400ff; -fx-border-color: #0400ff; -fx-border-radius: 50; -fx-background-radius: 50;" text="Adicionar Professor" textFill="WHITE">
+            <Button fx:id="btnAdicionarProfessor" alignment="CENTER" mnemonicParsing="false" onAction="#adicionarNovoProfessor" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #0400ff; -fx-border-color: #0400ff; -fx-border-radius: 50; -fx-background-radius: 50;" text="Adicionar Professor" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
