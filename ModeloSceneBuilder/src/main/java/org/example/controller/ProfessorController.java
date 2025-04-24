@@ -59,7 +59,7 @@ public class ProfessorController {
 
     @FXML
     void mouseEntrou(MouseEvent event) {
-        ((Region) event.getSource()).setStyle("-fx-background-color: #d3d3d3;");
+        ((Region) event.getSource()).setStyle("-fx-background-color: #EAF2FFF;");
     }
 
     @FXML
