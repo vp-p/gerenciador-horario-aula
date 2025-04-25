@@ -1,38 +1,33 @@
 package org.example.classes;
 
-import java.util.UUID;
-
 public class Professor {
-    private Long id;
-    private String nome;
-    private String email;
 
-    public Professor(String nome, String email) {
-        this.nome = nome;
-        this.email = email;
-    }
+    private String nomeProfessor;
+    private String emailProfessor;
+    private Integer id;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public String getNomeProfessor() {
+        return nomeProfessor;
+    }
+
+    public String getEmailProfessor() {
+        return emailProfessor;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public void setNomeProfessor(String nomeProfessor) {
+        this.nomeProfessor = nomeProfessor;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailProfessor(String emailProfessor) {
+        this.emailProfessor = emailProfessor;
     }
 }
+

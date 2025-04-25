@@ -1,8 +1,6 @@
 package org.example.controller;
 
-import org.example.classes.Curso;
 import org.example.classes.Disciplina;
-import org.example.classes.Professor;
 import org.example.dao.CursoDAO;
 import org.example.dao.DisciplinaDAO;
 import org.example.dao.ProfessorDAO;

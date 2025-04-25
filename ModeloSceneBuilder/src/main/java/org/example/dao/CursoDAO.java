@@ -1,6 +1,5 @@
 package org.example.dao;
 
-import org.example.classes.Curso;
 import org.example.database.Conexao;
 
 import java.sql.Connection;
