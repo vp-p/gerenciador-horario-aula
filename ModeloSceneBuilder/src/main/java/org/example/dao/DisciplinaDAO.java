@@ -1,52 +1,124 @@
 package org.example.dao;
 
+import org.example.classes.Disciplina;
 import org.example.database.Conexao;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DisciplinaDAO {
 
-    public static void main(String[] args) {
-        Connection con = Conexao.conectar();
+    public void criar(Disciplina disciplina) {
+        String sql = "INSERT INTO disciplina (nome, carga_horaria, id_professor, id_curso) VALUES (?, ?, ?, ?)";
 
-        if (con != null) {
-            try {
-                // Primeiro, executa o INSERT
-                String sqlInsert = "INSERT INTO professor (id_professor, nome, email) VALUES (?, ?, ?)";
-                PreparedStatement pstmt = con.prepareStatement(sqlInsert);
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
-                pstmt.setInt(1, 1);
-                pstmt.setString(2, "João da Silva");
-                pstmt.setString(3, "joao@email.com");
+                stmt.setString(1, disciplina.getNome());
+                stmt.setLong(2, disciplina.getCargaHoraria());
+                stmt.setLong(3, disciplina.getProfessor().getId());
 
-                int linhasAfetadas = pstmt.executeUpdate();
-                System.out.println("Inserção realizada. Linhas afetadas: " + linhasAfetadas);
+                stmt.executeUpdate();
 
-                // Agora executa o SELECT para verificar o que foi inserido
-                Statement stmt = con.createStatement();
-                String sqlSelect = "SELECT * FROM professor";
-                ResultSet rs = stmt.executeQuery(sqlSelect);
-
-                while (rs.next()) {
-                    int id = rs.getInt("id_professor");
-                    String nome = rs.getString("nome");
-                    String email = rs.getString("email");
-
-
-                    System.out.println("ID: " + id + ", Nome: " + nome + ", Email: " + email);
+                ResultSet result = stmt.getGeneratedKeys();
+                if (result.next()) {
+                    disciplina.setId(result.getLong(1));
                 }
-
-                // Fecha os recursos
-                rs.close();
-                stmt.close();
-                pstmt.close();
-                con.close();
-
-            } catch (SQLException e) {
-                System.err.println("Erro ao executar a operação: " + e.getMessage());
             }
-        } else {
-            System.out.println("Falha na conexão.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao gravar disciplina: " + e.getMessage());
         }
+    }
+
+    public void atualizar(Disciplina disciplina) {
+        String sql = "UPDATE disciplina SET nome = ?, carga_horaria = ?, id_professor = ?, id_curso = ? WHERE id = ?";
+
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+
+                stmt.setString(1, disciplina.getNome());
+                stmt.setLong(2, disciplina.getCargaHoraria());
+                stmt.setLong(3, disciplina.getProfessor().getId());
+                stmt.setLong(4, disciplina.getCurso().getId());
+                stmt.setLong(5, disciplina.getId());
+
+                stmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar disciplina: " + e.getMessage());
+        }
+    }
+
+    public Disciplina buscarPorId(long id) {
+        String sql = "SELECT * FROM disciplina WHERE id = ?";
+        Disciplina disciplina = null;
+
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+
+                stmt.setLong(1, id);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    disciplina = new Disciplina(
+                            rs.getString("nome"),
+                            rs.getInt("carga_horaria"),
+                            null,
+                            null
+                    );
+                    disciplina.setId(rs.getLong("id"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar disciplina: " + e.getMessage());
+        }
+        return disciplina;
+    }
+
+    public void delete(Disciplina disciplina) {
+        String sql = "DELETE FROM disciplina WHERE id = ?";
+
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+
+                stmt.setLong(1, disciplina.getId());
+
+                stmt.executeUpdate();
+
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao deletar disciplina: " + e.getMessage());
+        }
+}
+        public List<Disciplina> listarTodos() {
+            List <Disciplina> disciplinas = new ArrayList<>();
+            String sql = "SELECT * FROM disciplina";
+
+            try (Connection con = Conexao.conectar()) {
+                assert con != null;
+                try (PreparedStatement stmt = con.prepareStatement(sql);
+                     ResultSet rs = stmt.executeQuery()) {
+
+                    while (rs.next()) {
+                        Disciplina d = new Disciplina(
+                                rs.getString("nome"),
+                                rs.getInt("carga_horaria"),
+                                null,
+                                null
+                        );
+                        d.setId(rs.getLong("id"));
+                        disciplinas.add(d);
+                    }
+                }
+            } catch (SQLException e) {
+                System.err.println("Erro ao listar disciplinas: " + e.getMessage());
+            }
+
+            return disciplinas;
     }
 }
