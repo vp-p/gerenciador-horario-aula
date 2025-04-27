@@ -4,9 +4,18 @@ public class Professor {
 
     private String nomeProfessor;
     private String emailProfessor;
-    private Integer id;
+    private int id;
 
-    public Integer getId() {
+    public String toString() {
+        return this.nomeProfessor;
+    }
+    public Professor(int id, String nome, String email) {
+        this.id = id;
+        this.nomeProfessor = nome;
+        this.emailProfessor =  email;
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -18,7 +27,7 @@ public class Professor {
         return emailProfessor;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

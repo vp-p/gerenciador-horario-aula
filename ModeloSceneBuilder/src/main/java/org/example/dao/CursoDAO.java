@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.classes.Curso;
 import org.example.database.Conexao;
 
 import java.sql.Connection;
@@ -44,26 +45,26 @@ public class CursoDAO {
         }
     }
 
-    public Curso buscarPorId(long id) {
-        String sql = "SELECT * FROM cursos WHERE id = ?";
-        Curso curso = null;
-
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setLong(1, id);
-
-                ResultSet result = stmt.executeQuery();
-                if (result.next()) {
-                    curso = new Curso(result.getString("nome"), result.getString("coordenador"));
-                    curso.setId(result.getLong("id"));
-                }
-            }
-        } catch (Exception e) {
-            System.err.println("Erro ao buscar curso por ID: " + e.getMessage());
-        }
-        return curso;
-    }
+//    public Curso buscarPorId(long id) {
+//        String sql = "SELECT * FROM cursos WHERE id = ?";
+//        Curso curso = null;
+//
+//        try (Connection con = Conexao.conectar()) {
+//            assert con != null;
+//            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+//                stmt.setLong(1, id);
+//
+//                ResultSet result = stmt.executeQuery();
+//                if (result.next()) {
+//                    curso = new Curso(result.getString("nome"), result.getString("coordenador"));
+//                    curso.setId(result.getLong("id"));
+//                }
+//            }
+//        } catch (Exception e) {
+//            System.err.println("Erro ao buscar curso por ID: " + e.getMessage());
+//        }
+//        return curso;
+//    }
 
     public void delete(long id) {
         String sql = "DELETE FROM cursos WHERE id = ?";
@@ -81,19 +82,21 @@ public class CursoDAO {
     }
 
     public List<Curso> listarTodos() throws SQLException {
-        String sql = "SELECT * FROM cursos";
+        String sql = "SELECT * FROM curso";
         List<Curso> cursos = new ArrayList<>();
-
+        System.out.println("pasou");
         try (Connection con = Conexao.conectar()) {
             assert con != null;
             try (PreparedStatement stmt = con.prepareStatement(sql);
                  ResultSet result = stmt.executeQuery()) {
 
                 while (result.next()) {
-                    Curso curso = new Curso(result.getString("nome"), result.getString("coordenador"));
-                    curso.setId(result.getLong("id"));
+                    Curso curso = new Curso(result.getInt("id_curso"),result.getString("nome"), result.getString("coordenador"));
+
                     cursos.add(curso);
+//                    System.out.println(result.getString("nome"));
                 }
+                System.out.println(cursos);
             }
         } catch (Exception e) {
             System.err.println("Erro ao listar cursos: " + e.getMessage());

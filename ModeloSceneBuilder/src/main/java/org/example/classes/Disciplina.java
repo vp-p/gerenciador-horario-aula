@@ -1,25 +1,26 @@
 package org.example.classes;
 
 public class Disciplina {
-    private Long id;
+    private int id_disciplina;
     private String nome;
-    private int cargaHoraria;
-    private Professor professor;
-    private Curso curso;
+    private int id_professor;
+    private int id_curso;
+    private int semestre;
 
-    public Disciplina(String nome, int cargaHoraria, Professor professor, Curso curso) {
+    public Disciplina(int id_disciplina, String nome, int id_professor, int id_curso, int semestre) {
+        this.id_disciplina = id_disciplina;
         this.nome = nome;
-        this.cargaHoraria = cargaHoraria;
-        this.professor = professor;
-        this.curso = curso;
+        this.id_professor = id_professor;
+        this.id_curso = id_curso;
+        this.semestre = semestre;
     }
 
-    public Long getId() {
-        return id;
+    public int getId() {
+        return id_disciplina;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(int id) {
+        this.id_disciplina = id;
     }
 
     public String getNome() {
@@ -30,27 +31,33 @@ public class Disciplina {
         this.nome = nome;
     }
 
-    public int getCargaHoraria() {
-        return cargaHoraria;
+
+    public int getId_professor() {
+        return id_professor;
     }
 
-    public void setCargaHoraria(int cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
+    public void setId_professor(int id_professor) {
+        this.id_professor = id_professor;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public int getId_curso() {
+        return id_curso;
     }
 
-    public void setProfessor(Professor idProfessor) {
-        this.professor = professor;
+    public void setId_curso(int id_curso) {
+        this.id_curso = id_curso;
     }
 
-    public Curso getCurso() {
-        return curso;
+    @Override
+    public String toString() {
+        return this.nome;
     }
 
-    public void setCurso(Curso idCurso) {
-        this.curso = curso;
+    public int getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(int semestre) {
+        this.semestre = semestre;
     }
 }

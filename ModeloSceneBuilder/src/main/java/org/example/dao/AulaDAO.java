@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import javafx.scene.control.Alert;
 import org.example.classes.Aula;
 import org.example.classes.Disciplina;
 import org.example.database.Conexao;
@@ -13,82 +14,106 @@ import java.util.List;
 
 public class AulaDAO {
 
-    public void criar(Aula aula) {
-        String sql = "INSERT INTO aula (id, id_professor, id_disciplina, id_curso, inicio_aula, fim_aula) VALUES (?, ?, ?, ?, ?, ?)";
+    public void criar(Aula aula, int semestre) throws SQLException {
 
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+        List<Aula> conflito =  BuscarConflito(aula);
+        List<Aula> conflito2 =  BuscarConflito2(aula, semestre);
+        if(conflito.isEmpty() && conflito2.isEmpty()){
+            String sql = "INSERT INTO aula (id_professor, id_disciplina, id_curso, dia_semana, numero_aula, periodo) VALUES (?, ?, ?, ?, ?, ?)";
 
-                stmt.setLong(1, aula.getId());
-                stmt.setLong(2, aula.getIdProfessor().getId());
-                stmt.setLong(3, aula.getIdDisciplina().getId());
-                stmt.setLong(4, aula.getIdCurso().getId());
-                stmt.setTime(5, java.sql.Time.valueOf(aula.getInicioAula()));
-                stmt.setTime(6, java.sql.Time.valueOf(aula.getFimAula()));
+            try (Connection con = Conexao.conectar()) {
+                assert con != null;
+                try (PreparedStatement stmt = con.prepareStatement(sql)) {
 
-                stmt.executeUpdate();
+                    stmt.setLong(1, aula.getIdProfessor());
+                    stmt.setLong(2, aula.getIdDisciplina());
+                    stmt.setLong(3, aula.getIdCurso());
+                    stmt.setString(4, aula.getDiaSemana());
+                    stmt.setInt(5, aula.getNumeroAula());
+                    stmt.setString(6, aula.getPeriodo());
+
+                    stmt.executeUpdate();
+                }
+                // Exibir mensagem de sucesso
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Sucesso");
+                alert.setHeaderText("Aula cadastrada com sucesso!");
+                alert.setContentText("A aula foi adicionada à grade horária.");
+                alert.showAndWait();
+            } catch (SQLException e) {
+                System.err.println("Erro ao gravar aula: " + e.getMessage());
             }
-        } catch (SQLException e) {
-            System.err.println("Erro ao gravar aula: " + e.getMessage());
+        }else{
+            // Exibir mensagem de sucesso
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Aula Não cadastrada!");
+            alert.setContentText("A aula não foi adicionada à grade horária.");
+            alert.showAndWait();
         }
+
     }
 
-    public void atualizar(Aula aula) {
-        String sql = "UPDATE aula SET id_professor = ?, id_disciplina = ?, id_curso = ?, inicio_aula = ?, fim_aula = ? WHERE id = ?";
+//    public void atualizar(Aula aula) {
+//        String sql = "UPDATE aula SET id_professor = ?, id_disciplina = ?, id_curso = ?, inicio_aula = ?, fim_aula = ? WHERE id = ?";
+//
+//        try (Connection con = Conexao.conectar()) {
+//            assert con != null;
+//            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+//                stmt.setString(1, aula.getIdProfessor().getNome());
+//                stmt.setString(2, aula.getIdDisciplina().getNome());
+//                stmt.setString(3, aula.getIdCurso().getNome());
+//                stmt.setTime(4, java.sql.Time.valueOf(aula.getInicioAula()));
+//                stmt.setTime(5, java.sql.Time.valueOf(aula.getFimAula()));
+//                stmt.setLong(6, aula.getId());
+//
+//                stmt.executeUpdate();
+//            }
+//        } catch (SQLException e) {
+//        }
+//    }
 
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setString(1, aula.getIdProfessor().getNome());
-                stmt.setString(2, aula.getIdDisciplina().getNome());
-                stmt.setString(3, aula.getIdCurso().getNome());
-                stmt.setTime(4, java.sql.Time.valueOf(aula.getInicioAula()));
-                stmt.setTime(5, java.sql.Time.valueOf(aula.getFimAula()));
-                stmt.setLong(6, aula.getId());
-
-                stmt.executeUpdate();
-            }
-        } catch (SQLException e) {
-        }
-    }
-
-    public Aula buscarPorId(long id) {
-        String sql = "SELECT * FROM aula WHERE id = ?";
-        Aula aula = null;
-
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setLong(1, id);
-
-                // Execute the query and process the result set
-                // ...
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao buscar aula por ID: " + e.getMessage());
-        }
-        return aula;
-    }
+//    public Aula buscarPorId(long id) {
+//        String sql = "SELECT * FROM aula WHERE id = ?";
+//        Aula aula = null;
+//
+//        try (Connection con = Conexao.conectar()) {
+//            assert con != null;
+//            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+//                stmt.setLong(1, id);
+//
+//                // Execute the query and process the result set
+//                // ...
+//            }
+//        } catch (SQLException e) {
+//            System.err.println("Erro ao buscar aula por ID: " + e.getMessage());
+//        }
+//        return aula;
+//    }
 
 
-    public void delete(long id) {
-        String sql = "DELETE FROM aula WHERE id = ?";
+//    public void delete(long id) {
+//        String sql = "DELETE FROM aula WHERE id = ?";
+//
+//        try (Connection con = Conexao.conectar()) {
+//            assert con != null;
+//            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+//                stmt.setLong(1, id);
+//
+//                stmt.executeUpdate();
+//            }
+//        } catch (SQLException e) {
+//            System.err.println("Erro ao deletar aula: " + e.getMessage());
+//        }
+//    }
 
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setLong(1, id);
+    public List<Aula> BuscarConflito(Aula aula) throws SQLException {
 
-                stmt.executeUpdate();
-            }
-        } catch (SQLException e) {
-            System.err.println("Erro ao deletar aula: " + e.getMessage());
-        }
-    }
+        String sql ="SELECT * FROM aula where "+
+         "id_disciplina ="+ aula.getIdDisciplina() +" and numero_aula = " + aula.getNumeroAula()+
+                " and dia_semana = '"+aula.getDiaSemana()+"'";
 
-    public List<Aula> listarTodos() {
-        String sql = "SELECT * FROM aula";
+        System.out.println(sql);
         List<Aula> aulas = new ArrayList<>();
 
         try (Connection con = Conexao.conectar()) {
@@ -97,21 +122,105 @@ public class AulaDAO {
                  ResultSet result = stmt.executeQuery()) {
 
                 while (result.next()) {
-                    ProfessorDAO professorDAO = new ProfessorDAO();
-                    DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-                    CursoDAO cursoDAO = new CursoDAO();
+                    Aula aulaa = new Aula(
+                            result.getInt("idaula"),
+                            result.getInt("id_professor"),
+                            result.getInt("id_disciplina"),
+                            result.getInt("id_curso"),
+                            result.getString("dia_semana"),
+                            result.getInt("numero_aula"),
+                              "",
+                            result.getString("periodo")
+                    );
 
-                    Professor professor = professorDAO.buscarPorId(result.getLong("id_professor"));
-                    Disciplina disciplina = disciplinaDAO.buscarPorId(result.getLong("id_disciplina"));
-                    Curso curso = cursoDAO.buscarPorId(result.getLong("id_curso"));
+                    aulas.add(aulaa);
                 }
-            } catch (SQLException e) {
-                System.err.println("Erro ao listar aulas: " + e.getMessage());
+                System.out.println("aulas: "+ aulas);
             }
-
-            return aulas;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            System.err.println("Erro ao listar aulas: " + e.getMessage());
         }
+
+        return aulas;
     }
+
+    public List<Aula> BuscarConflito2(Aula aula, int semestre) throws SQLException {
+
+        String sql ="SELECT * FROM aula au "+
+        "inner join disciplina di on au.id_disciplina = di.id_disciplina "+
+        "where au.id_curso = "+aula.getIdCurso()+
+                " and numero_aula = "+aula.getNumeroAula()+
+                " and di.semestre = " + semestre+
+                " and periodo = '"+aula.getPeriodo()+"'"+
+                " and dia_semana = '" + aula.getDiaSemana()+"'";
+        System.out.println(sql);
+        List<Aula> aulas = new ArrayList<>();
+
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql);
+                 ResultSet result = stmt.executeQuery()) {
+
+                while (result.next()) {
+                    Aula aulaa = new Aula(
+                            result.getInt("idaula"),
+                            result.getInt("id_professor"),
+                            result.getInt("id_disciplina"),
+                            result.getInt("id_curso"),
+                            result.getString("dia_semana"),
+                            result.getInt("numero_aula"),
+                            "",
+                            result.getString("periodo")
+                    );
+
+                    aulas.add(aulaa);
+                }
+                System.out.println("aulas: "+ aulas);
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao listar aulas: " + e.getMessage());
+        }
+
+        return aulas;
+    }
+
+
+
+    public List<Aula> listarAulasGrade(int id_curso, int semestre, String periodo) throws SQLException {
+
+        String sql = "SELECT * FROM aula au " +
+                "INNER JOIN disciplina di on di.id_disciplina = au.id_disciplina AND di.semestre = " + semestre +
+                " WHERE " +
+                " au.id_curso = "+id_curso+
+                " AND periodo = '"+periodo+"'" ;
+        System.out.println(sql);
+        List<Aula> aulas = new ArrayList<>();
+
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql);
+                 ResultSet result = stmt.executeQuery()) {
+
+                while (result.next()) {
+                    Aula aula = new Aula(
+                            result.getInt("idaula"),
+                            result.getInt("id_professor"),
+                            result.getInt("id_disciplina"),
+                            result.getInt("id_curso"),
+                            result.getString("dia_semana"),
+                            result.getInt("numero_aula"),
+                            result.getString("nome"),
+                            result.getString("periodo")
+                    );
+
+                    aulas.add(aula);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao listar aulas: " + e.getMessage());
+        }
+
+        return aulas;
+    }
+
 }

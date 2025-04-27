@@ -1,62 +1,103 @@
 package org.example.classes;
 
-
-import java.time.LocalTime;
-import java.util.UUID;
-
 public class Aula {
-    private Long id;
-    private Professor idProfessor;
-    private Disciplina idDisciplina;
-    private Curso idCurso;
-    private LocalTime inicioAula;
-    private LocalTime fimAula;
+    private int idAula;
+    private int idProfessor;
+    private int idDisciplina;
+    private int idCurso;
+    private String diaSemana;
+    private int numeroAula;
+    private String nomeDisciplina;
+    private String Periodo;
 
-    public Aula(Professor idProfessor, Disciplina idDisciplina, Curso idCurso, LocalTime inicioAula, LocalTime fimAula) {
+
+    // Construtor completo
+    public Aula(int idAula, int idProfessor, int idDisciplina, int idCurso, String diaSemana, int numeroAula, String nomeDisciplina, String periodo) {
+        this.idAula = idAula;
         this.idProfessor = idProfessor;
         this.idDisciplina = idDisciplina;
         this.idCurso = idCurso;
-        this.inicioAula = inicioAula;
-        this.fimAula = fimAula;
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.diaSemana = diaSemana;
+        this.numeroAula = numeroAula;
+        this.nomeDisciplina = nomeDisciplina;
+        this.Periodo    =   periodo;
     }
 
-    public Professor getIdProfessor() {
+    // Getters e Setters
+
+    public int getIdAula() {
+        return idAula;
+    }
+
+    public void setIdAula(int idAula) {
+        this.idAula = idAula;
+    }
+
+    public int getIdProfessor() {
         return idProfessor;
     }
 
-    public void setIdProfessor(Professor idProfessor) {
+    public void setIdProfessor(int idProfessor) {
         this.idProfessor = idProfessor;
     }
 
-    public Disciplina getIdDisciplina() {
+    public int getIdDisciplina() {
         return idDisciplina;
     }
 
-    public Curso getIdCurso() {
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
+
+    public int getIdCurso() {
         return idCurso;
     }
 
-    public LocalTime getInicioAula() {
-        return inicioAula;
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
     }
 
-    public void setInicioAula(LocalTime inicioAula) {
-        this.inicioAula = inicioAula;
+    public String getDiaSemana() {
+        return diaSemana;
     }
 
-    public LocalTime getFimAula() {
-        return fimAula;
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
     }
 
-    public void setFimAula(LocalTime fimAula) {
-        this.fimAula = fimAula;
+    public int getNumeroAula() {
+        return numeroAula;
     }
 
+    public void setNumeroAula(int numeroAula) {
+        this.numeroAula = numeroAula;
+    }
+
+    @Override
+    public String toString() {
+        return "Aula{" +
+                "idAula=" + idAula +
+                ", idProfessor=" + idProfessor +
+                ", idDisciplina=" + idDisciplina +
+                ", idCurso=" + idCurso +
+                ", diaSemana=" + diaSemana +
+                ", numeroAula=" + numeroAula +
+                '}';
+    }
+
+    public String getNomeDisciplina() {
+        return nomeDisciplina;
+    }
+
+    public void setNomeDisciplina(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+    }
+
+    public String getPeriodo() {
+        return Periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        Periodo = periodo;
+    }
 }
