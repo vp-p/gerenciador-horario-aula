@@ -73,7 +73,7 @@
 ### 6 - Suporte
 ***Equipe suporte:*** Sinapse
 
-***E-mail:*** 
+***E-mail:*** sinapseTeam@gmail.com
 
 <img src = "images/rodape.png" >
 
