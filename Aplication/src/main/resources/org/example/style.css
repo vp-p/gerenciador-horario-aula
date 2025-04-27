@@ -1,0 +1,8 @@
+.table-view .column-header .label {
+    -fx-alignment: center-left;
+    -fx-padding: 0 0 0 10; /* margem da esquerda */
+}
+
+.table-view .column-header .label {
+    -fx-alignment: CENTER-LEFT;
+}

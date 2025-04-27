@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.GradeHorariaController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="224.0" style="-fx-background-color: white;" stylesheets="@style.css">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/Sinapse.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label text="Home" textFill="#a9a9a9">
+               <font>
+                  <Font name="Candara" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="17.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btnGradeHoraria" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Grade de Aula">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/Calendar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Label text="Funcionários" textFill="#a9a9a9">
+               <font>
+                  <Font name="Candara" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="17.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btnProfessor" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Professores">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/User.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnCoordenador" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Coordenadores">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/FolderUser.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Label text="Geral" textFill="#a9a9a9">
+               <font>
+                  <Font name="Candara" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="17.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btnCursos" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Cursos">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/red.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnSemestres" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Semestres">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/blue.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnDisciplinas" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Disciplinas">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/purple.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <HBox layoutX="238.0" layoutY="88.0" prefHeight="66.0" prefWidth="942.0" style="-fx-background-color: white;">
+         <children>
+            <VBox>
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+               <children>
+                  <Label text="Grade Horária">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="Grade com as aulas de cada dia da semana" textFill="#a4a2a2">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Button fx:id="btnDeletar" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Deletar">
+               <HBox.margin>
+                  <Insets left="50.0" top="13.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/trash.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnFiltro" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Filtros">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/filtros.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="20.0" top="13.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnFiltro" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50; -fx-background-radius: 50;" text="Exportar">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/export.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="20.0" top="13.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btnAdicionarAula" alignment="CENTER" mnemonicParsing="false" onAction="#AbrirPopUp" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #0400ff; -fx-border-color: #0400ff; -fx-border-radius: 50; -fx-background-radius: 50;" text="Adicionar Aula" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="30.0" top="13.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="238.0" layoutY="14.0" prefHeight="66.0" prefWidth="942.0" style="-fx-background-color: white;">
+         <children>
+            <VBox>
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+            <ImageView fitHeight="48.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/perfil.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <TableView fx:id="tblViewGrade" layoutX="238.0" layoutY="250.0" prefHeight="317.0" prefWidth="919.0" style="-fx-background-color: white;">
+        <columns>
+          <TableColumn fx:id="tblColSeg" prefWidth="190.0" text="Segunda" />
+          <TableColumn fx:id="tblColTer" prefWidth="190.0" text="Terça" />
+            <TableColumn fx:id="tblColQuar" prefWidth="190.0" text="Quarta" />
+            <TableColumn fx:id="tblColQui" prefWidth="190.0" text="Quinta" />
+            <TableColumn fx:id="tblColSex" prefWidth="190.0" text="Sexta" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="combocurso" layoutX="265.0" layoutY="191.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboperiodo" layoutX="449.0" layoutY="191.0" prefWidth="150.0" />
+      <ComboBox fx:id="combosemestre" layoutX="634.0" layoutY="191.0" prefWidth="150.0" />
+      <Button fx:id="btnatualizar" layoutX="938.0" layoutY="191.0" mnemonicParsing="false" onAction="#AtualizaGrade" text="Atualizar Grade" />
+   </children>
+</AnchorPane>
