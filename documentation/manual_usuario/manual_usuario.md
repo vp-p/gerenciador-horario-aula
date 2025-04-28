@@ -6,6 +6,13 @@
 <div align = "center">
 <img src = "images/banner_manual.png" height=50% width = 100%></div>
 
+## índice
+
+‣ [Tela Principal](#tela-principal)<br>
+‣ [Funcionalidades](#funcionalidades-da-tela)<br>
+‣ [Cadastro de Aulas](#cadastrar-nova-aula)<br>
+‣ [Filtros](#filtros)
+
 ### Tela Principal
 
 Ao abrir a aplicação, vai ser apresentada tela "Grade Horária", sendo possível definir os horários para as disciplinas de determinados cursos.
