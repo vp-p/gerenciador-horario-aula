@@ -424,7 +424,8 @@
 <BR>
 
 # Diagrama de Entidade e Relacionamento
-<img src = "BD_DER.png">
+
+![Captura de tela 2025-04-27 215112](https://github.com/user-attachments/assets/9d02497b-e22d-41bf-bba9-090a626bf98e)
 
 <br>
 <img src = "images/rodape.png" width = "100%">
