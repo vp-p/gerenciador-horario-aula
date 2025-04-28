@@ -30,10 +30,8 @@
 ### 3 - Preparação e Download
 
 ####  Download
- - Acesse o link para o download do aplicativo: < link >
+ - Acesse a pasta Aplication para o download do aplicativo: [Sistema de Gerenciamento de Horário](https://github.com/vp-p/gerenciador-horario-aula/tree/main/Aplication)
  
- <br>
----Colocar foto aqui----
 
 #### Preparação do sistema
 
@@ -43,7 +41,7 @@
 
     - **MySQL:** [MySQL Workbench 8.0.42](https://dev.mysql.com/downloads/workbench/)
 
-    - **Banco de Dados:** [BD_Gerenciador_Horario]()
+    - **Banco de Dados:** [BD_Gerenciador_Horario](https://github.com/vp-p/gerenciador-horario-aula/blob/main/modelo_api.mwb)
 
 ### 4 - Configuração inicial
 
