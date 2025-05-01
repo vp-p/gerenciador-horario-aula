@@ -1,3 +1,4 @@
+
 package org.example.classes;
 
 public class Disciplina {
@@ -13,6 +14,7 @@ public class Disciplina {
         this.id_professor = id_professor;
         this.id_curso = id_curso;
         this.semestre = semestre;
+        System.out.println("id: "+ this.id_disciplina);
     }
 
     public int getId() {

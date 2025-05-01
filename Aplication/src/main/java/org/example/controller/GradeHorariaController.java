@@ -1,3 +1,4 @@
+
 package org.example.controller;
 
 import javafx.fxml.FXML;
@@ -112,7 +113,7 @@ public class GradeHorariaController implements Initializable {
         comboBoxCurso.getItems().addAll(cursos);
         comboBoxDiaSemana.getItems().addAll("segunda", "terça", "quarta", "quinta", "sexta");
         comboBoxHorario.getItems().addAll("07:10", "08:00", "09:15", "10:05", "10:55", "11:45",
-        "18:45", "19:35", "20:25","21:25","22:15");
+                "18:45", "19:35", "20:25","21:25","22:15");
 
         // Quando selecionar um curso
         comboBoxCurso.setOnAction(e -> {
@@ -122,7 +123,7 @@ public class GradeHorariaController implements Initializable {
 
                 DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
                 List<Disciplina> disciplinas = disciplinaDAO.listarPorCurso(cursoSelecionado.getId());
-
+                System.out.println(disciplinas);
                 comboBoxDisciplina.getItems().clear();
                 comboBoxDisciplina.getItems().addAll(disciplinas);
             }
@@ -244,10 +245,9 @@ public class GradeHorariaController implements Initializable {
             default:
                 throw new IllegalArgumentException("Horário inválido: " + horario);
         }
-
-        Aula aula = new Aula(0, disciplina.getId_professor(), disciplina.getId_curso(), curso.getId(),diaSemana ,numeroAula, null, periodo);
-        System.out.println(aula);
-
+        System.out.println(disciplina);
+        Aula aula = new Aula(0, disciplina.getId_professor(),disciplina.getId(), curso.getId(),diaSemana ,numeroAula, null, periodo);
+//                                int idAula, int idProfessor, int idDisciplina, int idCurso, String diaSemana, int numeroAula, String nomeDisciplina, String periodo
         AulaDAO auladao = new AulaDAO();
         auladao.criar(aula, disciplina.getSemestre());
         // Aqui você pode implementar a lógica para salvar no banco de dados
