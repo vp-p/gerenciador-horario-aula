@@ -1,21 +1,23 @@
 package org.example.classes;
 
+
 public class Professor {
 
     private String nomeProfessor;
     private String emailProfessor;
-    private int id;
+    private Integer id;
 
     public String toString() {
         return this.nomeProfessor;
     }
-    public Professor(int id, String nome, String email) {
+    public Professor(Integer id,String nomeProfessor, String emailProfessor){
         this.id = id;
-        this.nomeProfessor = nome;
-        this.emailProfessor =  email;
+        this.nomeProfessor = nomeProfessor;
+        this.emailProfessor = emailProfessor;
     }
 
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
@@ -27,7 +29,7 @@ public class Professor {
         return emailProfessor;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

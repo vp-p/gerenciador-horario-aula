@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ProfessorController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="224.0" style="-fx-background-color: white;" stylesheets="@style.css">
+      <VBox prefHeight="600.0" prefWidth="224.0" style="-fx-background-color: white;" stylesheets="@../../style.css">
          <children>
             <ImageView fitHeight="32.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -70,21 +70,6 @@
                   <Insets left="15.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnCoordenador" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseDragEntered="#mouseEntrou" onMouseDragExited="#mouseSaiu" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Coordenadores">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/FolderUser.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="15.0" top="10.0" />
-               </VBox.margin>
-            </Button>
             <Label text="Geral" textFill="#a9a9a9">
                <font>
                   <Font name="Candara" size="14.0" />
@@ -101,21 +86,6 @@
                   <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/red.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="15.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnSemestres" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Semestres">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/blue.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -159,7 +129,7 @@
                   </Label>
                </children>
             </VBox>
-            <Button fx:id="btnDeletar" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Deletar">
+            <Button fx:id="btnDeletar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#deletarProfessor" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Deletar">
                <HBox.margin>
                   <Insets left="50.0" top="13.0" />
                </HBox.margin>
@@ -189,14 +159,14 @@
                   <Insets left="20.0" top="13.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnExportar" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50; -fx-background-radius: 50;" text="Exportar">
+            <Button fx:id="btnAtualizar" alignment="CENTER" mnemonicParsing="false" onAction="#atualizaDados" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50; -fx-background-radius: 50;" text="Atualizar">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/export.png" />
+                        <Image url="@img/atualizar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -238,7 +208,7 @@
             </ImageView>
          </children>
       </HBox>
-      <TableView fx:id="tblViewProfessor" layoutX="238.0" layoutY="186.0" prefHeight="298.0" prefWidth="942.0" style="-fx-background-color: white;">
+      <TableView fx:id="tblViewProfessor" layoutX="238.0" layoutY="189.0" prefHeight="298.0" prefWidth="942.0" style="-fx-background-color: white;">
          <columns>
             <TableColumn fx:id="idProfessor" prefWidth="315.0" text="ID" />
             <TableColumn fx:id="nomeProfessor" prefWidth="315.0" text="Nome" />
