@@ -34,6 +34,9 @@ public class ProfessorController {
     private Button btnDeletar;
 
     @FXML
+    private ComboBox<Professor> cmbFiltro;
+
+    @FXML
     private Button btnDisciplinas;
 
     @FXML
@@ -67,9 +70,11 @@ public class ProfessorController {
     @FXML
     private TextField txtNomeProfessor;
 
-    Professor novoProfessor;
+    ObservableList<Professor> professorList = FXCollections.observableArrayList();
 
     ProfessorDAO daoProfessor = new ProfessorDAO();
+
+    List<Professor> professorcmb;
 
     @FXML
     void adicionarNovoProfessor  (ActionEvent event) {
@@ -152,6 +157,7 @@ public class ProfessorController {
         telaAdicionarProfessor.show();
     }
 
+
     @FXML
     void deletarProfessor(ActionEvent event) {
 
@@ -218,20 +224,43 @@ public class ProfessorController {
     }
 
     public void atualizar(){
-        // Buscando a lista feita
-        ObservableList<Professor> professorList = FXCollections.observableArrayList();
-
-           List<Professor> PrfList = daoProfessor.buscarProfessores();
-
+    // buscando professores para colocar na lista observável
+        List<Professor> PrfList = daoProfessor.buscarProfessores();
+        professorList.clear(); //Limpando a lista
+        //Adicionando novos dados a lista observável
         for(Professor professor: PrfList){
          professorList.add(professor);
         }
+        // Altera os itens da combobox
+        cmbFiltro.getItems().clear();
+        cmbFiltro.setPromptText("Filtrar");
+        professorcmb = daoProfessor.buscarProfessores();
+        cmbFiltro.getItems().addAll(professorcmb);
 
+        // Altera a tabela View
         tblViewProfessor.setItems(professorList);
     }
 
     @FXML
-    void atualizaDados(ActionEvent event) {
+    void Filtrar(ActionEvent event) {
+        // Busca o valor selecionado
+        Professor professor = cmbFiltro.getValue();
+        List<Professor> listaNome = daoProfessor.buscarPorNome(professor.getNomeProfessor());
+        professorList.clear();
+        for(Professor professorNome: listaNome){
+            professorList.add(professorNome);
+        }
+        tblViewProfessor.setItems(professorList);
+
+    }
+
+    @FXML
+    void removerFiltro(ActionEvent event) {
+        atualizar();
+    }
+
+    @FXML
+    void UpdateDados(ActionEvent event) {
         Stage telaAtualizarProfessor = new Stage();
 
         VBox popupLayout = new VBox(10);
@@ -240,7 +269,7 @@ public class ProfessorController {
                 "-fx-pref-width: 400px;" +
                 "-fx-pref-height: 300px;");
 
-        telaAtualizarProfessor.setTitle("Adicionar Professor");
+        telaAtualizarProfessor.setTitle("Atualizar Professor");
 
         Label labelId = new Label("Id Professor");
         labelId.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
@@ -256,7 +285,7 @@ public class ProfessorController {
                 "    -fx-text-fill: #000000;" +
                 "    -fx-pref-width: 240px;");
 
-        Label labelNome = new Label("Nome do Professor");
+        Label labelNome = new Label("Novo nome do Professor");
         labelNome.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
         TextField textFieldNome = new TextField();
         textFieldNome.setPromptText("Nome do Professor");
@@ -270,7 +299,7 @@ public class ProfessorController {
                 "    -fx-text-fill: #000000;" +
                 "    -fx-pref-width: 240px;");
 
-        Label labelEmail = new Label("Email do Professor");
+        Label labelEmail = new Label("Novo email do Professor");
         labelEmail.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
         TextField textFieldEmail = new TextField();
         textFieldEmail.setPromptText("Email do Professor");

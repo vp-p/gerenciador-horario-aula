@@ -118,4 +118,28 @@ public class ProfessorDAO {
         }
 
     }
+
+    public List<Professor> buscarPorNome(String nome){
+       List<Professor> nomeProfessor = new ArrayList<>();
+       String sql = "Select * From Professor where nome = ?";
+
+       Connection conn = Conexao.conectar();
+       PreparedStatement pst = null ;
+
+       try{
+           pst = conn.prepareStatement(sql);
+
+           pst.setString(1, nome);
+
+           ResultSet rs = pst.executeQuery();
+
+           while(rs.next()){
+               Professor professorlist = new Professor(rs.getInt("id_professor"),rs.getString("nome"), rs.getString("email"));
+               nomeProfessor.add(professorlist);
+           }
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+       return nomeProfessor;
+    }
 }
