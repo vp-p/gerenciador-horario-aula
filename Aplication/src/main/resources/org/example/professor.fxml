@@ -194,19 +194,19 @@
             </ImageView>
          </children>
       </HBox>
-      <TableView fx:id="tblViewProfessor" layoutX="238.0" layoutY="204.0" prefHeight="298.0" prefWidth="942.0" style="-fx-background-color: white;">
+      <TableView fx:id="tblViewProfessor" layoutX="238.0" layoutY="229.0" prefHeight="298.0" prefWidth="942.0" style="-fx-background-color: white;">
          <columns>
             <TableColumn fx:id="idProfessor" prefWidth="315.0" text="ID" />
             <TableColumn fx:id="nomeProfessor" prefWidth="315.0" text="Nome" />
             <TableColumn fx:id="emailProfessor" prefWidth="315.0" text="Email" />
          </columns>
       </TableView>
-      <ComboBox fx:id="cmbFiltro" layoutX="238.0" layoutY="163.0" prefHeight="32.0" prefWidth="150.0" promptText="Filtrar" style="-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20;">
+      <ComboBox fx:id="cmbFiltro" layoutX="244.0" layoutY="179.0" prefHeight="32.0" prefWidth="150.0" promptText="Filtrar" style="-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20;">
          <padding>
             <Insets left="5.0" />
          </padding>
       </ComboBox>
-      <Button fx:id="btnFiltrar" layoutX="403.0" layoutY="163.0" mnemonicParsing="false" onAction="#Filtrar" prefHeight="32.0" prefWidth="113.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Filtrar">
+      <Button fx:id="btnFiltrar" layoutX="411.0" layoutY="179.0" mnemonicParsing="false" onAction="#Filtrar" prefHeight="32.0" prefWidth="113.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Filtrar">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
@@ -218,7 +218,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnRemoveFiltro" layoutX="525.0" layoutY="163.0" mnemonicParsing="false" onAction="#removerFiltro" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #0400ff; -fx-background-radius: 20; -fx-border-radius: 20;" text="Remover Filtro" textFill="WHITE">
+      <Button fx:id="btnRemoveFiltro" layoutX="532.0" layoutY="179.0" mnemonicParsing="false" onAction="#removerFiltro" prefHeight="32.0" prefWidth="114.0" style="-fx-background-color: #0400ff; -fx-background-radius: 20; -fx-border-radius: 20;" text="Remover Filtro" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
