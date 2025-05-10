@@ -33,7 +33,7 @@ public class ProfessorDAO {
     // Utilizado para atualizar a grade principal
     public List<Professor> buscarProfessores()  {
         List<Professor> professores = new ArrayList<>();
-        String sql = "SELECT * from professor";
+        String sql = "SELECT * from professor where deletado = FALSE";
         Connection conn = Conexao.conectar();
         PreparedStatement pst = null;
 
@@ -82,7 +82,8 @@ public class ProfessorDAO {
     }
 //
     public void deletar(Integer id) {
-        String sql = "DELETE FROM professor WHERE id_professor = ?";
+//        String sql = "DELETE FROM professor WHERE id_professor = ?";
+        String sql = "UPDATE professor SET deletado = TRUE WHERE id_professor = ?";
 
         try (Connection con = Conexao.conectar()) {
             assert con != null;
