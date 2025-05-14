@@ -70,21 +70,6 @@
                         <Insets left="15.0" top="10.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="btnCoordenador" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Coordenadores">
-                    <font>
-                        <Font name="Arial Bold" size="12.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/FolderUser.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets left="15.0" top="10.0" />
-                    </VBox.margin>
-                </Button>
                 <Label text="Geral" textFill="#a9a9a9">
                     <font>
                         <Font name="Candara" size="14.0" />
@@ -101,21 +86,6 @@
                         <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@img/red.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets left="15.0" top="10.0" />
-                    </VBox.margin>
-                </Button>
-                <Button fx:id="btnSemestres" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Semestres">
-                    <font>
-                        <Font name="Arial Bold" size="12.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/blue.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -159,7 +129,7 @@
                         </Label>
                     </children>
                 </VBox>
-                <Button fx:id="btnDeletar" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Deletar">
+                <Button fx:id="btnDeletar" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#deletarCursosSelecionados" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Deletar">
                     <HBox.margin>
                         <Insets left="50.0" top="13.0" />
                     </HBox.margin>
@@ -174,7 +144,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btnFiltro" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Filtros">
+                <Button fx:id="btnFiltro" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#abrirPopupFiltro" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Filtros">
                     <font>
                         <Font name="Arial Bold" size="14.0" />
                     </font>
@@ -189,22 +159,7 @@
                         <Insets left="20.0" top="13.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="btnExportar" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="149.0" style="-fx-background-color: white; -fx-border-color: gray; -fx-border-radius: 50; -fx-background-radius: 50;" text="Exportar">
-                    <font>
-                        <Font name="Arial Bold" size="14.0" />
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@img/export.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="20.0" top="13.0" />
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="btnAdicionarAula" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #0400ff; -fx-border-color: #0400ff; -fx-border-radius: 50; -fx-background-radius: 50;" text="Adicionar Curso" textFill="WHITE">
+                <Button fx:id="btnAdicionarAula" alignment="CENTER" mnemonicParsing="false" onAction="#abrirPopupCurso" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #0400ff; -fx-border-color: #0400ff; -fx-border-radius: 50; -fx-background-radius: 50;" text="Adicionar Curso" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="14.0" />
                     </font>
@@ -238,13 +193,13 @@
                 </ImageView>
             </children>
         </HBox>
-        <TableView fx:id="tblViewGrade" layoutX="238.0" layoutY="186.0" prefHeight="298.0" prefWidth="1178.0" style="-fx-background-color: white;">
+        <TableView fx:id="tblViewCurso" layoutX="238.0" layoutY="186.0" prefHeight="298.0" prefWidth="1178.0" style="-fx-background-color: white;">
             <columns>
                 <TableColumn fx:id="tblSelecionarCurso" prefWidth="43.99998474121094" text="-" />
                 <TableColumn fx:id="tblIdCurso" prefWidth="143.0" style="-fx-alignment: CENTER-LEFT; -fx-padding: 0 0 0 10;" text="ID Curso" />
                 <TableColumn fx:id="tblNomeCurso" minWidth="0.0" prefWidth="419.1999206542969" text="Nome do Curso" />
-                <TableColumn fx:id="tblPeriodo" prefWidth="467.20001220703125" text="Período" />
-                <TableColumn minWidth="0.0" prefWidth="103.20004882812509" />
+                <TableColumn fx:id="tblCoordenador" prefWidth="312.0" text="Coordenador" />
+                <TableColumn fx:id="tblPeriodo" minWidth="0.0" prefWidth="260.0" text="Periodo" />
             </columns>
         </TableView>
     </children>

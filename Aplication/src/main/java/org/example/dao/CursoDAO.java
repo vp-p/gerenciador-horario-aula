@@ -3,106 +3,63 @@ package org.example.dao;
 import org.example.classes.Curso;
 import org.example.database.Conexao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CursoDAO {
 
     public void criar(Curso curso) {
-        String sql = "INSERT INTO cursos (nome, coordenador) VALUES (?, ?)";
+        String sql = "INSERT INTO curso (nome, coordenador, periodo) VALUES (?, ?, ?)";
 
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setString(1, curso.getNome());
-                stmt.setString(2, curso.getCoordenador());
+        try (Connection con = Conexao.conectar();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
 
-                stmt.executeUpdate();
-            }
-        } catch (Exception e) {
+            stmt.setString(1, curso.getNome());
+            stmt.setString(2, curso.getCoordenador());
+            stmt.setString(3, curso.getPeriodo());
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
             System.err.println("Erro ao gravar curso: " + e.getMessage());
         }
     }
 
-    public void atualizar(Curso curso) {
-        String sql = "UPDATE cursos SET nome = ?, coordenador = ? WHERE id = ?";
+    public List<Curso> listarTodos() throws SQLException {
+        String sql = "SELECT id_curso, nome, coordenador, periodo, deletado FROM curso WHERE deletado = 0";
+        List<Curso> lista = new ArrayList<>();
 
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setString(1, curso.getNome());
-                stmt.setString(2, curso.getCoordenador());
-                stmt.setLong(3, curso.getId());
+        try (Connection con = Conexao.conectar();
+             PreparedStatement stmt = con.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
 
-                stmt.executeUpdate();
+            while (rs.next()) {
+                Curso c = new Curso(
+                        false,
+                        rs.getLong("id_curso"),
+                        rs.getString("nome"),
+                        rs.getString("coordenador"),
+                        rs.getString("periodo"),
+                        rs.getBoolean("deletado")
+                );
+                lista.add(c);
             }
-        } catch (Exception e) {
-            System.err.println("Erro ao atualizar curso: " + e.getMessage());
         }
+
+        return lista;
     }
 
-//    public Curso buscarPorId(long id) {
-//        String sql = "SELECT * FROM cursos WHERE id = ?";
-//        Curso curso = null;
-//
-//        try (Connection con = Conexao.conectar()) {
-//            assert con != null;
-//            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-//                stmt.setLong(1, id);
-//
-//                ResultSet result = stmt.executeQuery();
-//                if (result.next()) {
-//                    curso = new Curso(result.getString("nome"), result.getString("coordenador"));
-//                    curso.setId(result.getLong("id"));
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.err.println("Erro ao buscar curso por ID: " + e.getMessage());
-//        }
-//        return curso;
-//    }
-
     public void delete(long id) {
-        String sql = "DELETE FROM cursos WHERE id = ?";
+        String sql = "UPDATE curso SET deletado = 1 WHERE id_curso = ?";
 
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql)) {
-                stmt.setLong(1, id);
+        try (Connection con = Conexao.conectar();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
 
-                stmt.executeUpdate();
-            }
-        } catch (Exception e) {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+            System.out.println("Curso marcado como deletado com sucesso.");
+        } catch (SQLException e) {
             System.err.println("Erro ao deletar curso: " + e.getMessage());
         }
     }
-
-    public List<Curso> listarTodos() throws SQLException {
-        String sql = "SELECT * FROM curso";
-        List<Curso> cursos = new ArrayList<>();
-        System.out.println("pasou");
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql);
-                 ResultSet result = stmt.executeQuery()) {
-
-                while (result.next()) {
-                    Curso curso = new Curso(result.getInt("id_curso"),result.getString("nome"), result.getString("coordenador"));
-
-                    cursos.add(curso);
-//                    System.out.println(result.getString("nome"));
-                }
-                System.out.println(cursos);
-            }
-        } catch (Exception e) {
-            System.err.println("Erro ao listar cursos: " + e.getMessage());
-        }
-
-        return cursos;
-    }
-
 }
