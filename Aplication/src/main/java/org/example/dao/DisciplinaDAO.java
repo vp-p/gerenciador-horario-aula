@@ -17,14 +17,14 @@ public class DisciplinaDAO {
             try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 stmt.setString(1, disciplina.getNome());
-                stmt.setLong(2, disciplina.getCargaHoraria());
-                stmt.setLong(3, disciplina.getProfessor().getId());
+                stmt.setInt(2, disciplina.getCargaHoraria());
+                stmt.setInt(3, disciplina.getIdProfessor());
 
                 stmt.executeUpdate();
 
                 ResultSet result = stmt.getGeneratedKeys();
                 if (result.next()) {
-                    disciplina.setId(result.getLong(1));
+                    disciplina.setId(result.getInt(1));
                 }
             }
         } catch (SQLException e) {
@@ -41,8 +41,8 @@ public class DisciplinaDAO {
 
                 stmt.setString(1, disciplina.getNome());
                 stmt.setLong(2, disciplina.getCargaHoraria());
-                stmt.setLong(3, disciplina.getProfessor().getId());
-                stmt.setLong(4, disciplina.getCurso().getId());
+                stmt.setLong(3, disciplina.getIdProfessor());
+                stmt.setLong(4, disciplina.getIdCurso());
                 stmt.setLong(5, disciplina.getId());
 
                 stmt.executeUpdate();
@@ -66,10 +66,11 @@ public class DisciplinaDAO {
                 if (rs.next()) {
                     disciplina = new Disciplina(
                             rs.getString("nome"),
-                            rs.getInt("carga_horaria"),
-                            null,
+                            rs.getString("professor"),
+                            rs.getString("curso"),
+                            rs.getInt("semestre"),
                             null
-                    );
+);
                     disciplina.setId(rs.getLong("id"));
                 }
             }
@@ -94,6 +95,9 @@ public class DisciplinaDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao deletar disciplina: " + e.getMessage());
         }
+
+//        Disciplina disciplina = new Disciplina(nome, professor, curso, semestre, cargaHoraria);
+//        disciplina.setId(rs.getInt("id"));
 }
         public static List<Disciplina> listarPorCurso(int id_curso) {
             List <Disciplina> disciplinas = new ArrayList<>();
@@ -106,7 +110,7 @@ public class DisciplinaDAO {
 
                     while (rs.next()) {
 
-                        Disciplina d = new Disciplina(
+                        disciplina = new Disciplina(
                                 rs.getInt("id_disciplina"),
                                 rs.getString("nome"),
                                 rs.getInt("id_professor"),

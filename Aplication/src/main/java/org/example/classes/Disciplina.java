@@ -1,28 +1,41 @@
 
 package org.example.classes;
 
-public class Disciplina {
-    private int id_disciplina;
+import com.mysql.cj.conf.IntegerProperty;
+
+import java.util.UUID;
+
+public class Disciplina {;
+    private Integer id;
     private String nome;
-    private int id_professor;
-    private int id_curso;
+    private String professor;
+    private String curso;
     private int semestre;
+    private int cargaHoraria;
 
-    public Disciplina(int id_disciplina, String nome, int id_professor, int id_curso, int semestre) {
-        this.id_disciplina = id_disciplina;
+    public Disciplina(String nome, Professor professor, Curso curso, int semestre, int cargaHoraria) {
         this.nome = nome;
-        this.id_professor = id_professor;
-        this.id_curso = id_curso;
+        this.professor = professor.getEmailProfessor();
+        this.curso = curso.getNome();
         this.semestre = semestre;
-        System.out.println("id: "+ this.id_disciplina);
+        this.cargaHoraria = cargaHoraria;
     }
 
-    public int getId() {
-        return id_disciplina;
+    public Disciplina(Integer id, String nome, Professor professor, Curso curso, int semestre, int cargaHoraria) {
+        this.id = id;
+        this.nome = nome;
+        this.professor = professor.getEmailProfessor();
+        this.curso = curso.getNome();
+        this.semestre = semestre;
+        this.cargaHoraria = cargaHoraria;
     }
 
-    public void setId(int id) {
-        this.id_disciplina = id;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -34,20 +47,20 @@ public class Disciplina {
     }
 
 
-    public int getId_professor() {
-        return id_professor;
+    public String getProfessor() {
+        return professor;
     }
 
-    public void setId_professor(int id_professor) {
-        this.id_professor = id_professor;
+    public void setProfessor(String professor) {
+        this.professor = professor;
     }
 
-    public int getId_curso() {
-        return id_curso;
+    public String getCurso() {
+        return curso;
     }
 
-    public void setId_curso(int id_curso) {
-        this.id_curso = id_curso;
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
     @Override
@@ -61,5 +74,13 @@ public class Disciplina {
 
     public void setSemestre(int semestre) {
         this.semestre = semestre;
+    }
+
+    public void getCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
     }
 }
