@@ -8,15 +8,15 @@ import java.util.UUID;
 public class Disciplina {;
     private Integer id;
     private String nome;
-    private String professor;
-    private String curso;
+    private Integer professor;
+    private Integer curso;
     private int semestre;
     private int cargaHoraria;
 
     public Disciplina(String nome, Professor professor, Curso curso, int semestre, int cargaHoraria) {
         this.nome = nome;
-        this.professor = professor.getEmailProfessor();
-        this.curso = curso.getNome();
+        this.professor = professor.getId();
+        this.curso = curso.getId();
         this.semestre = semestre;
         this.cargaHoraria = cargaHoraria;
     }
@@ -24,8 +24,8 @@ public class Disciplina {;
     public Disciplina(Integer id, String nome, Professor professor, Curso curso, int semestre, int cargaHoraria) {
         this.id = id;
         this.nome = nome;
-        this.professor = professor.getEmailProfessor();
-        this.curso = curso.getNome();
+        this.professor = professor.getId();
+        this.curso = curso.getId();
         this.semestre = semestre;
         this.cargaHoraria = cargaHoraria;
     }
@@ -47,19 +47,19 @@ public class Disciplina {;
     }
 
 
-    public String getProfessor() {
+    public Integer getProfessor() {
         return professor;
     }
 
-    public void setProfessor(String professor) {
+    public void setProfessor(Integer professor) {
         this.professor = professor;
     }
 
-    public String getCurso() {
+    public Integer getCurso() {
         return curso;
     }
 
-    public void setCurso(String curso) {
+    public void setCurso(Integer curso) {
         this.curso = curso;
     }
 
