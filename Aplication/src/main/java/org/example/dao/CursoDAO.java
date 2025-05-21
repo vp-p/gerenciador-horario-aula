@@ -26,7 +26,7 @@ public class CursoDAO {
     }
 
     public List<Curso> listarTodos() throws SQLException {
-        String sql = "SELECT id_curso, nome, coordenador, periodo, deletado FROM curso WHERE deletado = 0";
+        String sql = "SELECT * FROM curso WHERE deletado = 0";
         List<Curso> lista = new ArrayList<>();
 
         try (Connection con = Conexao.conectar();

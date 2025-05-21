@@ -5,7 +5,7 @@ import javafx.beans.property.*;
 public class Curso {
     private final BooleanProperty selecionado;
     private final IntegerProperty id;
-    private final StringProperty nome;
+    private String  nome;
     private final StringProperty coordenador;
     private final StringProperty periodo;
     private boolean deletado;
@@ -14,10 +14,15 @@ public class Curso {
     public Curso(boolean selecionado, long id, String nome, String coordenador, String periodo, boolean deletado) {
         this.selecionado = new SimpleBooleanProperty(selecionado);
         this.id = new SimpleIntegerProperty((int) id);
-        this.nome = new SimpleStringProperty(nome);
+        this.nome = new String(nome);
         this.coordenador = new SimpleStringProperty(coordenador);
         this.periodo = new SimpleStringProperty(periodo);
         this.deletado = deletado;
+    }
+
+    @Override
+    public String toString() {
+        return nome; // é isso que será exibido no ComboBox
     }
 
     // Construtor para novo curso
@@ -52,15 +57,15 @@ public class Curso {
     }
 
     public String getNome() {
-        return nome.get();
+        return this.nome;
     }
 
     public void setNome(String nome) {
-        this.nome.set(nome);
+        this.nome = nome;
     }
 
-    public StringProperty nomeProperty() {
-        return nome;
+    public String nome() {
+        return this.nome;
     }
 
     public String getCoordenador() {

@@ -110,7 +110,8 @@ public class AulaDAO {
     public List<Aula> BuscarConflito(Aula aula) throws SQLException {
 
         String sql ="SELECT * FROM aula where "+
-         "id_disciplina ="+ aula.getIdDisciplina() +" and numero_aula = " + aula.getNumeroAula()+
+         "id_professor ="+ aula.getIdProfessor() +
+                " and numero_aula = " + aula.getNumeroAula()+
                 " and dia_semana = '"+aula.getDiaSemana()+"'";
 
         System.out.println(sql);
