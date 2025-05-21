@@ -136,7 +136,7 @@ public class DisciplinaDAO {
                         rs.getInt("carga_horaria")
                 );
 
-                disciplina.setId(rs.getInt("id")); // se tiver um ID
+                disciplina.setId(rs.getInt("id_disciplina")); // se tiver um ID
                 disciplinas.add(disciplina);
             }
 
