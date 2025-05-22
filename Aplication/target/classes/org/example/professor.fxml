@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ProfessorController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="224.0" style="-fx-background-color: white;" stylesheets="@../../style.css">
+      <VBox prefHeight="600.0" prefWidth="224.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="32.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,7 +33,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnGradeHoraria" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Grade de Aula">
+            <Button fx:id="btnGradeHoraria" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaGrade" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Grade de Aula">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnProfessor" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Professores">
+            <Button fx:id="btnProfessor" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaProfessor" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Professores">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnCursos" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Cursos">
+            <Button fx:id="btnCursos" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaCurso" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Cursos">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -94,7 +94,7 @@
                   <Insets left="15.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="btnDisciplinas" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Disciplinas">
+            <Button fx:id="btnDisciplinas" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaDisciplina" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Disciplinas">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>

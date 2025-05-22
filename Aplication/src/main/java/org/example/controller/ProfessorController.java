@@ -13,6 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.App;
 import org.example.classes.Professor;
 import org.example.dao.ProfessorDAO;
 
@@ -321,9 +322,30 @@ public class ProfessorController {
         }
     }
 
+    // Alterar todos: Botões Laterais do Menu Mudança de tela
+    @FXML
+    void AlterarTelaCurso(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroCurso");
+    }
+
+    @FXML
+    void AlterarTelaDisciplina(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroDisciplina");
+    }
+
+    @FXML
+    void AlterarTelaGrade(ActionEvent event) throws Exception {
+        org.example.App.setRoot("gradeHoraria");
+    }
+
+    @FXML
+    void AlterarTelaProfessor(ActionEvent event) throws Exception {
+        org.example.App.setRoot("professor");
+    }
+
     @FXML
     void mouseEntrou(MouseEvent event) {
-        ((Region) event.getSource()).setStyle("-fx-background-color: #EAF2FFF;");
+        ((Region) event.getSource()).setStyle("-fx-background-color: #eaf2ff;");
     }
 
     @FXML
