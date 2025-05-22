@@ -198,6 +198,7 @@ public class ProfessorController {
         atualizar();
     }
 
+    // ALTERAR TODOS: Código de alterar o professor
     @FXML
     void UpdateDados(ActionEvent event) {
         if (prf != null) {
