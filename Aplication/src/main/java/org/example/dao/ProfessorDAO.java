@@ -82,7 +82,7 @@ public class ProfessorDAO {
     }
 //
     public void deletar(Integer id) {
-//        String sql = "DELETE FROM professor WHERE id_professor = ?";
+//
         String sql = "UPDATE professor SET deletado = TRUE WHERE id_professor = ?";
 
         try (Connection con = Conexao.conectar()) {
@@ -95,6 +95,25 @@ public class ProfessorDAO {
         } catch (Exception e) {
             System.err.println("Erro ao deletar professor: " + e.getMessage());
         }
+    }
+
+    public void deletarProfessor(Professor professor){
+       String sql = "UPDATE professor SET deletado = TRUE WHERE id_professor = ? AND nome = ? AND email = ?;";
+
+       try{
+           Connection conn = Conexao.conectar();
+           PreparedStatement pst = conn.prepareStatement(sql);
+
+           pst.setInt(1, professor.getId());
+           pst.setString(2, professor.getNomeProfessor());
+           pst.setString(3, professor.getEmailProfessor());
+
+           pst.executeUpdate();
+
+       } catch (SQLException e) {
+           System.out.println("Erro: " + e.getMessage());
+           e.printStackTrace();
+       }
     }
 
     public void alterarDados(Integer id,String nome, String email){
