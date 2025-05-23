@@ -317,8 +317,13 @@
 
 <br>
 
----
-<br>
+
+</details>
+
+<details>
+<summary><strong>Sprint 4</strong></summary>
+
+## User Stories
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
 |------|-----------|------|------------|--------------|--------|-----------------------------|
@@ -432,6 +437,7 @@
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
 |  Sobre o login, gostaria que fosse feita uma solução ou função de alteração de senha ou não possui prioridade? | Não tem prioridade |"
+
 
 </details>
 <BR>
