@@ -42,7 +42,7 @@
 
 ***Resposta do cliente***
 
-- Tudo bem
+- Tudo bem.
 
 </details>
 
