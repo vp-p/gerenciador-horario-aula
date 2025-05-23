@@ -488,7 +488,41 @@
 
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
-|  Sobre o login, gostaria que fosse feita uma solução ou função de alteração de senha ou não possui prioridade? | Não tem prioridade |"
+|  Sobre o login, gostaria que fosse feita uma solução ou função de alteração de senha ou não possui prioridade? | Não tem prioridade |
+
+<br>
+
+---
+
+<br>
+
+| 11   | ![#0000ff](https://via.placeholder.com/15/0000ff) BAIXA | SIN - 16 | Como coordenador, quero definir a disponibilidade de cada professor, para que possa ser feita a filtragem de dias e horários que os professores podem dar aulas. | 5 | 4 | 3 |
+
+### Requisitos: 
+
+- Os professores devem poder adicionar suas disponibilidades de horários,indicando seu nome, email, dia(s) e horário(s).
+- Os professores devem poder alterar suas disponibilidades de horários, 
+indicando seu nome e email, dias(s) e horário(s) novos.
+
+### Definition of Done (DoD):
+
+- Código da aplicação devidamente versionado, organizado, funcionando e disponibilizado no Git Hub.
+- Gerenciamento da equipe definido e implementado na criação de telas.
+- Funcionalidade revisada por pelo menos um membro da equipe (Code Rewiew).
+- Funcionalidade testada e aprovada.
+- Funcionalidade integrada ao Sistema.
+
+### Definition of Ready (DoR): 
+
+- User Story prioriozada e apta para ser desenvolvida.
+- User Stroy atende os critérios de aceitação.
+- Tarefas definidas, atribuidas e relacionadas com as User Stories.
+- No cadastro de disponibilidade de professor, teremos campos para os professores informarem seu nome, email e sugestões de dias e horarios que estarão disponíveis.
+- Também os professores podem editar seus dias e horários, caso errem ou mudem sua rotina diária de trabalho.
+
+| <center> Melhorias </center>| |
+|------------------------------|
+| Seria legal se fosse possível definir a disponibilidade de cada professor. Alguns professores dão aulas em outras instituições e avisam os slots que não podem | 
 
 
 </details>
