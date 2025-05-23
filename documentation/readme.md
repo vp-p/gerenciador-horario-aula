@@ -496,6 +496,8 @@
 
 <br>
 
+| Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
+|------|-----------|-----------|------------|--------------|--------|------------------------|
 | 11   | ![#0000ff](https://via.placeholder.com/15/0000ff) BAIXA | SIN - 16 | Como coordenador, quero definir a disponibilidade de cada professor, para que possa ser feita a filtragem de dias e horários que os professores podem dar aulas. | 5 | 4 | 3 |
 
 ### Requisitos: 
