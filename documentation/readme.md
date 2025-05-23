@@ -168,6 +168,52 @@
 
 <br>
 
+| Rank | Prioridade | ID  | User Story | Story Points | Sprint | Requisitos do Parceiro|
+|------|------------|-----|------------|--------------|--------|-----------------------|
+| 3    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 8  | Como coordenador, quero cadastrar aulas no sistema para evitar choques de horários.                   | 5           | 2      | 8 | 
+
+### Requisitos:
+
+- Ao cadastrar novas aulas, o mesmo professor não pode estar em várias aulas ao mesmo tempo.
+- O mesmo professor leciona no máximo 10 aulas em um dia, portanto deve ter 11 horas de descanso apartir da última aula lecionada.
+- Deve haver uma sugestão de alocação de horário, caso haja duplicidade do mesmo professor em um mesmo horário em várias aulas.
+- Todas as aulas precisam ter 50 minutos.
+
+### Definition of Done (DoD):
+
+ - Código da aplicação devidamente versionado, organizado, funcionando e disponibilizado no Git Hub.
+ - Gerenciamento da equipe definido e implementado na criação de telas.
+ - Funcionalidade revisada por pelo menos um membro da equipe (Code Rewiew). 
+ - Funcionalidade testada e aprovada.
+ - Funcionalidade integrada ao Sistema.
+
+ ### Definition of Ready (DoR):
+
+- User Story priorizada e apta para ser desenvolvida.
+- User Story atende aos critérios de aceitação.
+- Tarefas definidas, atribuidas e relacionadas com as User Stories.
+- Será possível adicionar uma nova aula com informações de inicio do horário, fim do horário e dia da semana.
+- Em uma aula, o coordenador irá inserir dados relacionados sobre o professor, disciplina, curso e horário. 
+
+### Wireframe:
+
+<img src = "wireframe/cadastroAula.png" width = "60%">
+
+<br>
+
+### Validações: 
+
+| <center >Validações </center>| <center>Retorno do Cliente</center> |
+|------------------------------|-------------------------------------|
+| O registro do intervalo entra como uma aula? Que teria o tempo reduzido?| Toda aula precisa ter 50 minutos. |
+| Os horários já definidos, posteriormente tem previsão de troca de horários dos professores ou é fixo? | O horário não troca durante o semestre |
+
+<br>
+
+---
+
+<br>
+
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
 |------|----------------------------------------------------------------------|----------|------------------|--------------|--------|--------|
 | 4    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 9  | Como coordenador, quero cadastrar cursos para garantir que todas as disciplinas estejam vinculadas a uma estrutura curricular específica. | 3            | 2      | 4 |
@@ -239,11 +285,16 @@
 |------------------------------|-------------------------------------|
 | Gerenciamento de semestre letivo,  permitindo definir quais disciplinas fazem parte do semestre de um determinado curso tem limite de materiais no semestre? Qual seria o limite? | Não tem limite de disciplinas, mas tem o limite de 24 horas por semana. |
 
-<br>
-
----
 
 <br>
+
+
+</details>
+
+<details>
+<summary><strong>Sprint 4</strong></summary>
+
+## User Stories
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
 |------|----------------------------------------------------------------------|----------|------------------|--------------|--------|--------|
@@ -319,13 +370,9 @@
 
 <br>
 
+---
 
-</details>
-
-<details>
-<summary><strong>Sprint 4</strong></summary>
-
-## User Stories
+<br>
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
 |------|-----------|------|------------|--------------|--------|-----------------------------|
