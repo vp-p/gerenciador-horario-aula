@@ -31,6 +31,19 @@
 
 - Ok, pode ser essa proposta.
 
+## Sprint 3 
+
+***Proposta de funcionalidade***
+
+- Evitar choques de horário
+- Sugestão de alocação de professores.
+-O coordenador pode cadastrar professor, curso, disciplina e a aula.
+- Restrição de 11 horas, o professor não pode dar aula antes de 11 horas.
+
+***Resposta do cliente***
+
+- Tudo bem
+
 </details>
 
 <details>
