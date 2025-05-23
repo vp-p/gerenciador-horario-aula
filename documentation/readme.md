@@ -208,8 +208,7 @@
 |------------------------------|-------------------------------------|
 | O registro do intervalo entra como uma aula? Que teria o tempo reduzido?| Toda aula precisa ter 50 minutos. |
 | Os horários já definidos, posteriormente tem previsão de troca de horários dos professores ou é fixo? | O horário não troca durante o semestre |
-| Quais restrições existem ao colocar um professor na planilha? | O professor não pode já estar alocado no slot em outra turma ou curso.|
-| Quais restrições existem ao colocar um professor na planilha? | Tem que ter 11 horas entre o término da última aula do dia anterior e a primeira aula do dia.|
+| Quais restrições existem ao colocar um professor na planilha? | O professor não pode já estar alocado no slot em outra turma ou curso. <br> Tem que ter 11 horas entre o término da última aula do dia anterior e a primeira aula do dia.|
 
 <br>
 
@@ -526,7 +525,7 @@ indicando seu nome e email, dias(s) e horário(s) novos.
 
 | <center> Melhorias </center>| 
 |------------------------------|
-| Seria legal se fosse possível definir a disponibilidade de cada professor. Alguns professores dão aulas em outras instituições e avisam os slots que não podem | 
+| Seria legal se fosse possível definir a disponibilidade de cada professor. <br> Alguns professores dão aulas em outras instituições e avisam os slots que não podem | 
 
 
 </details>
