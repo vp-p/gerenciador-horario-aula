@@ -194,6 +194,7 @@
 - Tarefas definidas, atribuidas e relacionadas com as User Stories.
 - Será possível adicionar uma nova aula com informações de inicio do horário, fim do horário e dia da semana.
 - Em uma aula, o coordenador irá inserir dados relacionados sobre o professor, disciplina, curso e horário. 
+- Sugestão de alocação de professor, quando o professor estiver alocado no slot em outra turma ou curso.
 
 ### Wireframe:
 
@@ -207,6 +208,8 @@
 |------------------------------|-------------------------------------|
 | O registro do intervalo entra como uma aula? Que teria o tempo reduzido?| Toda aula precisa ter 50 minutos. |
 | Os horários já definidos, posteriormente tem previsão de troca de horários dos professores ou é fixo? | O horário não troca durante o semestre |
+| Quais restrições existem ao colocar um professor na planilha? | O professor não pode já estar alocado no slot em outra turma ou curso.|
+| Quais restrições existem ao colocar um professor na planilha? | Tem que ter 11 horas entre o término da última aula do dia anterior e a primeira aula do dia.|
 
 <br>
 
