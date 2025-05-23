@@ -522,7 +522,7 @@ indicando seu nome e email, dias(s) e horário(s) novos.
 - No cadastro de disponibilidade de professor, teremos campos para os professores informarem seu nome, email e sugestões de dias e horarios que estarão disponíveis.
 - Também os professores podem editar seus dias e horários, caso errem ou mudem sua rotina diária de trabalho.
 
-| <center> Melhorias </center>| |
+| <center> Melhorias </center>| 
 |------------------------------|
 | Seria legal se fosse possível definir a disponibilidade de cada professor. Alguns professores dão aulas em outras instituições e avisam os slots que não podem | 
 
