@@ -111,8 +111,8 @@ public class DisciplinaController {
 
         Label labelProfessor = new Label("Nome do Professor");
         labelProfessor.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-       CheckBox checkprofessor = new CheckBox();
-        checkprofessor.setStyle("-fx-font-size: 16px;" +
+       TextField textFiedlProfessor = new TextField();
+        textFiedlProfessor.setStyle("-fx-font-size: 16px;" +
                 "    -fx-border-color: #1D4ED8;" +
                 "    -fx-border-width: 2px;" +
                 "    -fx-border-radius: 8px;" +
@@ -124,8 +124,8 @@ public class DisciplinaController {
 
         Label labelCurso = new Label("Curso");
         labelCurso.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        CheckBox checkCurso = new CheckBox();
-        checkCurso.setStyle("-fx-font-size: 16px;" +
+        TextField textFieldCurso = new TextField();
+        textFieldCurso.setStyle("-fx-font-size: 16px;" +
                 "    -fx-border-color: #1D4ED8;" +
                 "    -fx-border-width: 2px;" +
                 "    -fx-border-radius: 8px;" +
@@ -169,8 +169,8 @@ public class DisciplinaController {
         cadastroButton.setOnAction(e -> {
 
             String nome = textFieldNome.getText();
-            Integer professor = Integer.parseInt(checkprofessor.getText());
-            Integer curso  = Integer.parseInt(checkCurso.getText());
+            Integer professor = Integer.parseInt(textFiedlProfessor.getText());
+            Integer curso  = Integer.parseInt(textFieldCurso.getText());
             Integer semestre  = Integer.parseInt(textFieldSemestre.getText());
 
             Disciplina disciplina = new Disciplina(nome, professor, curso, semestre);
@@ -190,7 +190,7 @@ public class DisciplinaController {
         HBox buttons = new HBox(10, cadastroButton);
         buttons.setAlignment(Pos.CENTER);
 
-        popupLayout.getChildren().addAll(labelNome, textFieldNome, labelProfessor, checkprofessor, labelCurso, checkCurso,
+        popupLayout.getChildren().addAll(labelNome, textFieldNome, labelProfessor, textFiedlProfessor, labelCurso, textFieldCurso,
                 labelSemestre, textFieldSemestre, buttons);
 
         Scene popupScene = new Scene(popupLayout, 510, 510);
