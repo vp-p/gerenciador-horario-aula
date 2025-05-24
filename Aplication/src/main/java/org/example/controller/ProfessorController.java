@@ -13,10 +13,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.App;
 import org.example.classes.Professor;
 import org.example.dao.ProfessorDAO;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class ProfessorController {
@@ -75,6 +77,9 @@ public class ProfessorController {
     ProfessorDAO daoProfessor = new ProfessorDAO();
 
     List<Professor> professorcmb;
+
+    Professor prf;
+
 
     @FXML
     void adicionarNovoProfessor  (ActionEvent event) {
@@ -157,72 +162,7 @@ public class ProfessorController {
         telaAdicionarProfessor.show();
     }
 
-
-    @FXML
-    void deletarProfessor(ActionEvent event) {
-
-        Stage telaDeletarProfessor = new Stage();
-
-        VBox popupLayout = new VBox(10);
-        popupLayout.setStyle("-fx-padding: 30px;" +
-                "-fx-spacing: 10px;" +
-                "-fx-pref-width: 400px;" +
-                "-fx-pref-height: 300px;");
-
-        telaDeletarProfessor.setTitle("Deletar Professor");
-
-        Label labelId = new Label("Id do Professor");
-        labelId.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        TextField textFieldId = new TextField();
-        textFieldId.setPromptText("Id do professor");
-        textFieldId.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
-
-
-        Button deletarButton = new Button("Deletar");
-        deletarButton.setStyle("-fx-background-color: #1D4ED8;" +
-                "    -fx-font-weight: bold;" +
-                "    -fx-text-fill: white;" +
-                "    -fx-padding: 10px 20px;" +
-                "    -fx-font-size: 18px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-cursor: hand;" +
-                "    -fx-pref-width: 340px;" +
-                "    -fx-pref-height: 50px;" +
-                "    -fx-alignment: CENTER;");
-
-        deletarButton.setOnAction(e -> {
-
-            Integer id_professor = Integer.parseInt(textFieldId.getText());
-
-            daoProfessor.deletar(id_professor);
-
-            atualizar();
-
-            telaDeletarProfessor.close();
-        });
-
-        HBox buttons = new HBox(10, deletarButton);
-        buttons.setAlignment(Pos.CENTER);
-
-        popupLayout.getChildren().addAll(labelId, textFieldId, buttons);
-
-        Scene popupScene = new Scene(popupLayout, 510, 510);
-        telaDeletarProfessor.setScene(popupScene);
-        telaDeletarProfessor.show();
-
-
-    }
-
+        //  Método que atualiza a tabela
     public void atualizar(){
     // buscando professores para colocar na lista observável
         List<Professor> PrfList = daoProfessor.buscarProfessores();
@@ -259,103 +199,153 @@ public class ProfessorController {
         atualizar();
     }
 
+    // ALTERAR TODOS: Código de alterar o professor
     @FXML
     void UpdateDados(ActionEvent event) {
-        Stage telaAtualizarProfessor = new Stage();
+        if (prf != null) {
+            Stage telaAtualizarProfessor = new Stage();
 
-        VBox popupLayout = new VBox(10);
-        popupLayout.setStyle("-fx-padding: 30px;" +
-                "-fx-spacing: 10px;" +
-                "-fx-pref-width: 400px;" +
-                "-fx-pref-height: 300px;");
+            VBox popupLayout = new VBox(10);
+            popupLayout.setStyle("-fx-padding: 30px;" +
+                    "-fx-spacing: 10px;" +
+                    "-fx-pref-width: 400px;" +
+                    "-fx-pref-height: 300px;");
 
-        telaAtualizarProfessor.setTitle("Atualizar Professor");
+            telaAtualizarProfessor.setTitle("Atualizar Professor");
 
-        Label labelId = new Label("Id Professor");
-        labelId.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        TextField textFieldId = new TextField();
-        textFieldId.setPromptText("Informe o id que deseja alterar");
-        textFieldId.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
+            Label labelNome = new Label("Novo nome do Professor");
+            labelNome.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+            TextField textFieldNome = new TextField();
+            textFieldNome.setPromptText("Nome do Professor");
+            textFieldNome.setStyle("-fx-font-size: 16px;" +
+                    "    -fx-border-color: #1D4ED8;" +
+                    "    -fx-border-width: 2px;" +
+                    "    -fx-border-radius: 8px;" +
+                    "    -fx-background-radius: 8px;" +
+                    "    -fx-padding: 14px;" +
+                    "    -fx-focus-color: #1D4ED8;" +
+                    "    -fx-text-fill: #000000;" +
+                    "    -fx-pref-width: 240px;");
 
-        Label labelNome = new Label("Novo nome do Professor");
-        labelNome.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        TextField textFieldNome = new TextField();
-        textFieldNome.setPromptText("Nome do Professor");
-        textFieldNome.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
+            Label labelEmail = new Label("Novo email do Professor");
+            labelEmail.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+            TextField textFieldEmail = new TextField();
+            textFieldEmail.setPromptText("Email do Professor");
+            textFieldEmail.setStyle("-fx-font-size: 16px;" +
+                    "    -fx-border-color: #1D4ED8;" +
+                    "    -fx-border-width: 2px;" +
+                    "    -fx-border-radius: 8px;" +
+                    "    -fx-background-radius: 8px;" +
+                    "    -fx-padding: 14px;" +
+                    "    -fx-focus-color: #1D4ED8;" +
+                    "    -fx-text-fill: #000000;" +
+                    "    -fx-pref-width: 240px;");
 
-        Label labelEmail = new Label("Novo email do Professor");
-        labelEmail.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        TextField textFieldEmail = new TextField();
-        textFieldEmail.setPromptText("Email do Professor");
-        textFieldEmail.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
+            Button updateButton = new Button("Atualizar");
+            updateButton.setStyle("-fx-background-color: #1D4ED8;" +
+                    "    -fx-font-weight: bold;" +
+                    "    -fx-text-fill: white;" +
+                    "    -fx-padding: 10px 20px;" +
+                    "    -fx-font-size: 18px;" +
+                    "    -fx-border-radius: 8px;" +
+                    "    -fx-background-radius: 8px;" +
+                    "    -fx-focus-color: #1D4ED8;" +
+                    "    -fx-cursor: hand;" +
+                    "    -fx-pref-width: 340px;" +
+                    "    -fx-pref-height: 50px;" +
+                    "    -fx-alignment: CENTER;");
 
-        Button updateButton = new Button("Atualizar");
-        updateButton.setStyle("-fx-background-color: #1D4ED8;" +
-                "    -fx-font-weight: bold;" +
-                "    -fx-text-fill: white;" +
-                "    -fx-padding: 10px 20px;" +
-                "    -fx-font-size: 18px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-cursor: hand;" +
-                "    -fx-pref-width: 340px;" +
-                "    -fx-pref-height: 50px;" +
-                "    -fx-alignment: CENTER;");
+            // Pegando dados da linha e colocando para serem alterados
+            textFieldNome.setText(prf.getNomeProfessor());
+            textFieldEmail.setText(prf.getEmailProfessor());
 
-        // Aqui você pode adicionar a lógica do botão "Cadastrar"
-        updateButton.setOnAction(e -> {
-            Integer id = Integer.parseInt(textFieldId.getText());
-            String nome = textFieldNome.getText();
-            String email = textFieldEmail.getText();
-            if (!nome.isEmpty() && !email.isEmpty()) {
-                daoProfessor.alterarDados(id,nome, email);
+            updateButton.setOnAction(e -> {
+
+                // Coletando a alteração
+                String nome = textFieldNome.getText();
+                String email = textFieldEmail.getText();
+
+                if (!nome.isEmpty() && !email.isEmpty()) {
+                    daoProfessor.alterarDados(prf.getId(), nome, email);
+                    atualizar();
+
+                    telaAtualizarProfessor.close();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Preencha todos os campos!");
+                    alert.showAndWait();
+                }
+            });
+
+            HBox buttons = new HBox(10, updateButton);
+            buttons.setAlignment(Pos.CENTER);
+
+            popupLayout.getChildren().addAll(labelNome, textFieldNome, labelEmail, textFieldEmail, buttons);
+
+            Scene popupScene = new Scene(popupLayout, 510, 510);
+            telaAtualizarProfessor.setScene(popupScene);
+            telaAtualizarProfessor.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Escolha uma linha para alterar!");
+            alert.setHeaderText("Erro ao alterar o Professor");
+            alert.showAndWait();
+        }
+    }
+
+    // ALTERAR TODOS: Método de coletar o dado da linha
+    @FXML
+    void coletarDadosLinha(MouseEvent event) {
+        int i = tblViewProfessor.getSelectionModel().getSelectedIndex();
+
+        prf = (Professor) tblViewProfessor.getItems().get(i);
+        System.out.println(prf);
+
+    }
+    // ALTERAR TODOS: Método de deletar e ter a confirmação
+    @FXML
+    void deletarProfessor(ActionEvent event) {
+        if(prf != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Você quer mesmo excluir?", ButtonType.YES, ButtonType.NO);
+            alert.setHeaderText("Confirmação");
+            alert.setTitle("Excluir Professor");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if(result.isPresent() && result.get() == ButtonType.YES){
+                daoProfessor.deletarProfessor(prf);
+                prf = null;
                 atualizar();
-
-                telaAtualizarProfessor.close();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Preencha todos os campos!");
-                alert.showAndWait();
             }
-        });
+        } else{
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Escolha uma linha para deletar!");
+            alert.setHeaderText("Erro ao deletar Professor");
+            alert.showAndWait();
+        }
+    }
 
-        HBox buttons = new HBox(10, updateButton);
-        buttons.setAlignment(Pos.CENTER);
+    // Alterar todos: Botões Laterais do Menu Mudança de tela
+    @FXML
+    void AlterarTelaCurso(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroCurso");
+    }
 
-        popupLayout.getChildren().addAll(labelId,textFieldId,labelNome, textFieldNome, labelEmail, textFieldEmail, buttons);
+    @FXML
+    void AlterarTelaDisciplina(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroDisciplina");
+    }
 
-        Scene popupScene = new Scene(popupLayout, 510, 510);
-        telaAtualizarProfessor.setScene(popupScene);
-        telaAtualizarProfessor.show();
+    @FXML
+    void AlterarTelaGrade(ActionEvent event) throws Exception {
+        org.example.App.setRoot("gradeHoraria");
+    }
+
+    @FXML
+    void AlterarTelaProfessor(ActionEvent event) throws Exception {
+        org.example.App.setRoot("professor");
     }
 
     @FXML
     void mouseEntrou(MouseEvent event) {
-        ((Region) event.getSource()).setStyle("-fx-background-color: #EAF2FFF;");
+        ((Region) event.getSource()).setStyle("-fx-background-color: #eaf2ff;");
     }
 
     @FXML

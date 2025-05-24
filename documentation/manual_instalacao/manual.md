@@ -41,7 +41,9 @@
 
     - **MySQL:** [MySQL Workbench 8.0.42](https://dev.mysql.com/downloads/workbench/)
 
-    - **Banco de Dados:** [BD_Gerenciador_Horario](https://github.com/vp-p/gerenciador-horario-aula/blob/main/modelo_api.mwb)
+    - **Banco de Dados:** [BD_Gerenciador_Horario](https://github.com/vp-p/gerenciador-horario-aula/blob/main/database/bancoapi2.sql)
+
+    <img src ="images/dowloadBanco.png">
 
 ### 4 - Configuração inicial
 
@@ -49,6 +51,10 @@
 
 - Abra o arquivo **BD_Gerenciador_Horario** que você instalou, insira a senha snp-007 para extrair o arquivo.
 - Abra o arquivo no MySQL Workbench.
+- Execute em sua máquina para obter toda estrutura do banco, como mostrado a seguir: 
+
+<img src ="images/executarBanco.png">
+
 
 #### 2 - Arquivo Executável
 

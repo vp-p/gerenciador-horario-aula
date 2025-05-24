@@ -31,6 +31,19 @@
 
 - Ok, pode ser essa proposta.
 
+## Sprint 3 
+
+***Proposta de funcionalidade***
+
+- Evitar choques de horário
+- Sugestão de alocação de professores.
+-O coordenador pode cadastrar professor, curso, disciplina e a aula.
+- Restrição de 11 horas, o professor não pode dar aula antes de 11 horas.
+
+***Resposta do cliente***
+
+- Tudo bem.
+
 </details>
 
 <details>
@@ -64,7 +77,9 @@
 <img src = "wireframe/gradeHoraria.jpeg" width = "60%">
 
 <br>
+
 ---
+
 <br>
 
 
@@ -145,7 +160,55 @@
 
 
 ### WireFrame:
-<img src = "wireframe/CadastrarProfessor.jpg" width = "60%">
+<img src = "wireframe/cadastroProfessores.png" width = "60%">
+
+<br>
+
+---
+
+<br>
+
+| Rank | Prioridade | ID  | User Story | Story Points | Sprint | Requisitos do Parceiro|
+|------|------------|-----|------------|--------------|--------|-----------------------|
+| 3    | ![#ff0000](https://via.placeholder.com/15/ff0000/000000?text=+) ALTA | SIN - 8  | Como coordenador, quero cadastrar aulas no sistema para evitar choques de horários.                   | 5           | 2      | 8 | 
+
+### Requisitos:
+
+- Ao cadastrar novas aulas, o mesmo professor não pode estar em várias aulas ao mesmo tempo.
+- O mesmo professor leciona no máximo 10 aulas em um dia, portanto deve ter 11 horas de descanso apartir da última aula lecionada.
+- Deve haver uma sugestão de alocação de horário, caso haja duplicidade do mesmo professor em um mesmo horário em várias aulas.
+- Todas as aulas precisam ter 50 minutos.
+
+### Definition of Done (DoD):
+
+ - Código da aplicação devidamente versionado, organizado, funcionando e disponibilizado no Git Hub.
+ - Gerenciamento da equipe definido e implementado na criação de telas.
+ - Funcionalidade revisada por pelo menos um membro da equipe (Code Rewiew). 
+ - Funcionalidade testada e aprovada.
+ - Funcionalidade integrada ao Sistema.
+
+ ### Definition of Ready (DoR):
+
+- User Story priorizada e apta para ser desenvolvida.
+- User Story atende aos critérios de aceitação.
+- Tarefas definidas, atribuidas e relacionadas com as User Stories.
+- Será possível adicionar uma nova aula com informações de inicio do horário, fim do horário e dia da semana.
+- Em uma aula, o coordenador irá inserir dados relacionados sobre o professor, disciplina, curso e horário. 
+- Sugestão de alocação de professor, quando o professor estiver alocado no slot em outra turma ou curso.
+
+### Wireframe:
+
+<img src = "wireframe/cadastroAula.png" width = "60%">
+
+<br>
+
+### Validações: 
+
+| <center >Validações </center>| <center>Retorno do Cliente</center> |
+|------------------------------|-------------------------------------|
+| O registro do intervalo entra como uma aula? Que teria o tempo reduzido?| Toda aula precisa ter 50 minutos. |
+| Os horários já definidos, posteriormente tem previsão de troca de horários dos professores ou é fixo? | O horário não troca durante o semestre |
+| Quais restrições existem ao colocar um professor na planilha? | O professor não pode já estar alocado no slot em outra turma ou curso. <br> Tem que ter 11 horas entre o término da última aula do dia anterior e a primeira aula do dia.|
 
 <br>
 
@@ -214,7 +277,7 @@
 
 ### WireFrame:
 
-<img src = "wireframe/cadastroDisciplina.png" width = "60%">
+<img src = "wireframe/cadastroDisciplina.jpeg" width = "60%">
 
 <br>
 
@@ -224,11 +287,16 @@
 |------------------------------|-------------------------------------|
 | Gerenciamento de semestre letivo,  permitindo definir quais disciplinas fazem parte do semestre de um determinado curso tem limite de materiais no semestre? Qual seria o limite? | Não tem limite de disciplinas, mas tem o limite de 24 horas por semana. |
 
-<br>
-
----
 
 <br>
+
+
+</details>
+
+<details>
+<summary><strong>Sprint 4</strong></summary>
+
+## User Stories
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
 |------|----------------------------------------------------------------------|----------|------------------|--------------|--------|--------|
@@ -305,6 +373,7 @@
 <br>
 
 ---
+
 <br>
 
 | Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
@@ -418,14 +487,53 @@
 
 | <center>Validações </center>| <center>Retorno do Cliente</center> |
 |------------------------------|-------------------------------------|
-|  Sobre o login, gostaria que fosse feita uma solução ou função de alteração de senha ou não possui prioridade? | Não tem prioridade |"
+|  Sobre o login, gostaria que fosse feita uma solução ou função de alteração de senha ou não possui prioridade? | Não tem prioridade |
+
+<br>
+
+---
+
+<br>
+
+| Rank | Prioridade | ID       | User Story | Story Points | Sprint | Requisitos do Parceiro |
+|------|-----------|-----------|------------|--------------|--------|------------------------|
+| 11   | ![#0000ff](https://via.placeholder.com/15/0000ff) BAIXA | SIN - 16 | Como coordenador, quero definir a disponibilidade de cada professor, para que possa ser feita a filtragem de dias e horários que os professores podem dar aulas. | 5 | 4 | 3 |
+
+### Requisitos: 
+
+- Os professores devem poder adicionar suas disponibilidades de horários,indicando seu nome, email, dia(s) e horário(s).
+- Os professores devem poder alterar suas disponibilidades de horários, 
+indicando seu nome e email, dias(s) e horário(s) novos.
+
+### Definition of Done (DoD):
+
+- Código da aplicação devidamente versionado, organizado, funcionando e disponibilizado no Git Hub.
+- Gerenciamento da equipe definido e implementado na criação de telas.
+- Funcionalidade revisada por pelo menos um membro da equipe (Code Rewiew).
+- Funcionalidade testada e aprovada.
+- Funcionalidade integrada ao Sistema.
+
+### Definition of Ready (DoR): 
+
+- User Story prioriozada e apta para ser desenvolvida.
+- User Stroy atende os critérios de aceitação.
+- Tarefas definidas, atribuidas e relacionadas com as User Stories.
+- No cadastro de disponibilidade de professor, teremos campos para os professores informarem seu nome, email e sugestões de dias e horarios que estarão disponíveis.
+- Também os professores podem editar seus dias e horários, caso errem ou mudem sua rotina diária de trabalho.
+
+### Melhorias: 
+
+| <center> Melhorias </center>| 
+|------------------------------|
+| Seria legal se fosse possível definir a disponibilidade de cada professor. <br> Alguns professores dão aulas em outras instituições e avisam os slots que não podem | 
+
 
 </details>
 <BR>
 
 # Diagrama de Entidade e Relacionamento
 
-![Captura de tela 2025-04-27 215112](https://github.com/user-attachments/assets/9d02497b-e22d-41bf-bba9-090a626bf98e)
+<img src = "BD_DER.jpeg" width = "100%">
 
 <br>
 <img src = "images/rodape.png" width = "100%">

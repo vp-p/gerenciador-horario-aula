@@ -23,7 +23,7 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
