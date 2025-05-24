@@ -533,7 +533,7 @@ indicando seu nome e email, dias(s) e horário(s) novos.
 
 # Diagrama de Entidade e Relacionamento
 
-![Captura de tela 2025-04-27 215112](https://github.com/user-attachments/assets/9d02497b-e22d-41bf-bba9-090a626bf98e)
+<img src = "BD_DER.jpeg" width = "100%">
 
 <br>
 <img src = "images/rodape.png" width = "100%">
