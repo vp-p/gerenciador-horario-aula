@@ -160,7 +160,7 @@
 
 
 ### WireFrame:
-<img src = "wireframe/CadastrarProfessor.jpg" width = "60%">
+<img src = "wireframe/cadastroProfessores.png" width = "60%">
 
 <br>
 
@@ -277,7 +277,7 @@
 
 ### WireFrame:
 
-<img src = "wireframe/cadastroDisciplina.png" width = "60%">
+<img src = "wireframe/cadastroDisciplina.jpeg" width = "60%">
 
 <br>
 
