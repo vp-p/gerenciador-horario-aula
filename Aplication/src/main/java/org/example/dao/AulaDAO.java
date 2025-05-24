@@ -2,6 +2,7 @@ package org.example.dao;
 
 import javafx.scene.control.Alert;
 import org.example.classes.Aula;
+import org.example.classes.Curso;
 import org.example.classes.Disciplina;
 import org.example.database.Conexao;
 
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AulaDAO {
 
@@ -45,10 +47,16 @@ public class AulaDAO {
             }
         }else{
             // Exibir mensagem de sucesso
+            List<Integer> professores = buscarProfessoresPorCursoESemestre(aula, semestre);
+            List<Integer> Ocupados = buscarProfessoresOcupados( aula, professores);
+
+            professores.removeAll(Ocupados);
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erro");
             alert.setHeaderText("Aula Não cadastrada!");
-            alert.setContentText("A aula não foi adicionada à grade horária.");
+            alert.setContentText("A aula pode estar conflitando com outros horarios \n. " +
+                    "Segue os professores disponiveis para esse horario:");
             alert.showAndWait();
         }
 
@@ -222,6 +230,74 @@ public class AulaDAO {
         }
 
         return aulas;
+    }
+
+    public List<Integer> buscarProfessoresPorCursoESemestre(Aula aula, int semestre) throws SQLException {
+
+        CursoDAO cursodao = new CursoDAO();
+        Curso curso =  cursodao.buscarPorId(aula.getIdCurso());
+
+        String sql = "SELECT DISTINCT prof.id_professor, prof.nome " +
+                "FROM professor prof " +
+                "LEFT JOIN disciplina disc ON disc.id_professor = prof.id_professor " +
+                "WHERE disc.id_curso = " + aula.getIdCurso() + " " +
+                "AND disc.semestre = " + semestre;
+
+        System.out.println("SQL: " + sql);
+        List<Integer> professores = new ArrayList<>();
+
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql);
+                 ResultSet result = stmt.executeQuery()) {
+
+                while (result.next()) {
+                    int idProfessor = result.getInt("id_professor");
+                    professores.add(idProfessor);
+                }
+
+                System.out.println("Professores encontrados: " + professores);
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao buscar professores: " + e.getMessage());
+        }
+
+        return professores;
+    }
+
+
+    public List<Integer> buscarProfessoresOcupados(Aula aula, List<Integer> professores) throws SQLException {
+
+        String ids = professores.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+
+        String sql = "SELECT * FROM aula " +
+                "inner join professor prof on aula.id_professor = prof.id_professor " +
+                "WHERE aula.id_professor  in( " + ids + ") " +
+                "and dia_semana ='" + aula.getDiaSemana()+
+                "' and numero_aula = "+aula.getNumeroAula();
+
+        System.out.println("SQL: " + sql);
+        List<Integer> Ocupados = new ArrayList<>();
+
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql);
+                 ResultSet result = stmt.executeQuery()) {
+
+                while (result.next()) {
+                    int idProfessor = result.getInt("id_professor");
+                    Ocupados.add(idProfessor);
+                }
+
+                System.out.println("Professores encontrados: " + Ocupados);
+            }
+        } catch (Exception e) {
+            System.err.println("Erro ao buscar professores: " + e.getMessage());
+        }
+
+        return Ocupados;
     }
 
 }

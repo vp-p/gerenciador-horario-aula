@@ -7,7 +7,7 @@ public class Curso {
     private final IntegerProperty id;
     private String  nome;
     private final StringProperty coordenador;
-    private final StringProperty periodo;
+    private String periodo;
     private boolean deletado;
 
     // Construtor completo
@@ -16,13 +16,13 @@ public class Curso {
         this.id = new SimpleIntegerProperty((int) id);
         this.nome = new String(nome);
         this.coordenador = new SimpleStringProperty(coordenador);
-        this.periodo = new SimpleStringProperty(periodo);
+        this.periodo = new String(periodo);
         this.deletado = deletado;
     }
 
     @Override
     public String toString() {
-        return nome; // é isso que será exibido no ComboBox
+        return nome +" -"+periodo; // é isso que será exibido no ComboBox
     }
 
     // Construtor para novo curso
@@ -81,14 +81,14 @@ public class Curso {
     }
 
     public String getPeriodo() {
-        return periodo.get();
+        return this.periodo;
     }
 
     public void setPeriodo(String periodo) {
-        this.periodo.set(periodo);
+        this.periodo=periodo;
     }
 
-    public StringProperty periodoProperty() {
+    public String periodoProperty() {
         return periodo;
     }
 
