@@ -1,3 +1,4 @@
+
 package org.example.dao;
 
 import org.example.classes.Professor;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class ProfessorDAO {
 
-   public void criarProfessor(String nome, String email)  {
+    public void criarProfessor(String nome, String email)  {
 
         try (Connection con = Conexao.conectar()) {
             assert con != null;
@@ -80,9 +81,9 @@ public class ProfessorDAO {
         System.out.println(professor);
         return professor;
     }
-//
+    //
     public void deletar(Integer id) {
-//        String sql = "DELETE FROM professor WHERE id_professor = ?";
+//
         String sql = "UPDATE professor SET deletado = TRUE WHERE id_professor = ?";
 
         try (Connection con = Conexao.conectar()) {
@@ -94,6 +95,25 @@ public class ProfessorDAO {
             }
         } catch (Exception e) {
             System.err.println("Erro ao deletar professor: " + e.getMessage());
+        }
+    }
+
+    public void deletarProfessor(Professor professor){
+        String sql = "UPDATE professor SET deletado = TRUE WHERE id_professor = ? AND nome = ? AND email = ?;";
+
+        try{
+            Connection conn = Conexao.conectar();
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            pst.setInt(1, professor.getId());
+            pst.setString(2, professor.getNomeProfessor());
+            pst.setString(3, professor.getEmailProfessor());
+
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -121,26 +141,26 @@ public class ProfessorDAO {
     }
 
     public List<Professor> buscarPorNome(String nome){
-       List<Professor> nomeProfessor = new ArrayList<>();
-       String sql = "Select * From Professor where nome = ?";
+        List<Professor> nomeProfessor = new ArrayList<>();
+        String sql = "Select * From Professor where nome = ?";
 
-       Connection conn = Conexao.conectar();
-       PreparedStatement pst = null ;
+        Connection conn = Conexao.conectar();
+        PreparedStatement pst = null ;
 
-       try{
-           pst = conn.prepareStatement(sql);
+        try{
+            pst = conn.prepareStatement(sql);
 
-           pst.setString(1, nome);
+            pst.setString(1, nome);
 
-           ResultSet rs = pst.executeQuery();
+            ResultSet rs = pst.executeQuery();
 
-           while(rs.next()){
-               Professor professorlist = new Professor(rs.getInt("id_professor"),rs.getString("nome"), rs.getString("email"));
-               nomeProfessor.add(professorlist);
-           }
-       } catch (SQLException e) {
-           throw new RuntimeException(e);
-       }
-       return nomeProfessor;
+            while(rs.next()){
+                Professor professorlist = new Professor(rs.getInt("id_professor"),rs.getString("nome"), rs.getString("email"));
+                nomeProfessor.add(professorlist);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nomeProfessor;
     }
 }

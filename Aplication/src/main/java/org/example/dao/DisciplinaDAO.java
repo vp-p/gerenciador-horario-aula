@@ -11,7 +11,34 @@ import java.util.List;
 
 public class DisciplinaDAO {
 
-    public void deleteDisciplina(long id) {
+    public List<Disciplina> listarTodos() {
+        List<Disciplina> disciplinas = new ArrayList<>();
+        String sql = "SELECT * FROM disciplina WHERE deletado = FALSE";
+
+        try (Connection con = Conexao.conectar();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Disciplina disciplina = new Disciplina(
+                        rs.getString("nome"),
+                        rs.getInt("id_professor"),
+                        rs.getInt("id_curso"),
+                        rs.getInt("semestre")
+                );
+                disciplina.setId(rs.getInt("id"));
+                disciplinas.add(disciplina);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar disciplinas: " + e.getMessage());
+        }
+
+        return disciplinas;
+    }
+
+    public void deleteDisciplina(Integer id) {
         String sql = "UPDATE disciplilna SET deletado = 1 WHERE id_disciplina = ?";
 
         try (Connection con = Conexao.conectar();
@@ -26,15 +53,16 @@ public class DisciplinaDAO {
     }
 
     public void criarDisciplina(Disciplina disciplina) {
-        String sql = "INSERT INTO disciplina (nome, carga_horaria, id_professor, id_curso) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO disciplina (nome, id_professor, id_curso, semestre) VALUES (?, ?, ?, ?)";
 
         try (Connection con = Conexao.conectar()) {
             assert con != null;
             try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 stmt.setString(1, disciplina.getNome());
-                stmt.setInt(2, disciplina.getCargaHoraria());
-                stmt.setInt(3, disciplina.getProfessor());
+                stmt.setInt(3, disciplina.getIdProfessor());
+                stmt.setInt(3, disciplina.getIdCurso());
+                stmt.setInt(3, disciplina.getSemestre());
 
                 stmt.executeUpdate();
 
@@ -49,16 +77,15 @@ public class DisciplinaDAO {
     }
 
     public void atualizarDisciplina(Disciplina disciplina) {
-        String sql = "UPDATE disciplina SET nome = ?, carga_horaria = ?, id_professor = ?, id_curso = ? WHERE id = ?";
+        String sql = "UPDATE disciplina SET nome = ?, id_professor = ?, id_curso = ? WHERE id = ?";
 
         try (Connection con = Conexao.conectar()) {
             assert con != null;
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
 
                 stmt.setString(1, disciplina.getNome());
-                stmt.setLong(2, disciplina.getCargaHoraria());
-                stmt.setLong(3, disciplina.getProfessor());
-                stmt.setLong(4, disciplina.getCurso());
+                stmt.setLong(3, disciplina.getIdProfessor());
+                stmt.setLong(4, disciplina.getIdCurso());
                 stmt.setLong(5, disciplina.getId());
 
                 stmt.executeUpdate();
@@ -68,7 +95,7 @@ public class DisciplinaDAO {
         }
     }
 
-    public Disciplina buscarPorId(long id) {
+    public Disciplina buscarDisciplina(long id) {
         String sql = "SELECT * FROM disciplina WHERE id = ?";
 
         try (Connection con = Conexao.conectar()) {
@@ -79,18 +106,20 @@ public class DisciplinaDAO {
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {
                         String nome = rs.getString("nome");
-                        int semestre = rs.getInt("semestre");
                         int idProfessor = rs.getInt("id_professor");
                         int idCurso = rs.getInt("id_curso");
-                        int cargaHoraria = rs.getInt("carga_horaria");
+                        int semestre = rs.getInt("semestre");
 
+
+/*
                         CursoDAO cursoDAO = new CursoDAO();
                         ProfessorDAO professorDAO = new ProfessorDAO();
+*/
 
-                        Curso curso = cursoDAO.buscarPorId(idCurso);
-                        Professor professor = professorDAO.buscarPorId(idProfessor);
+/*                        Curso curso = cursoDAO.buscarPorId(idCurso);
+                        Professor professor = professorDAO.buscarPorId(idProfessor);*/
 
-                        Disciplina disciplina = new Disciplina(nome, professor, curso, semestre, cargaHoraria);
+                        Disciplina disciplina = new Disciplina(nome, idProfessor, idCurso, semestre);
                         disciplina.setId(rs.getInt("id"));
                         return disciplina;
                     }
@@ -108,6 +137,30 @@ public class DisciplinaDAO {
         }
     }
 
+    public List<Disciplina> buscarPorNome(String nome){
+        List<Disciplina> nomeDisciplina = new ArrayList<>();
+        String sql = "Select * From Disciplina where nome = ?";
+
+        Connection conn = Conexao.conectar();
+        PreparedStatement pst = null ;
+
+        try{
+            pst = conn.prepareStatement(sql);
+
+            pst.setString(1, nome);
+
+            ResultSet rs = pst.executeQuery();
+
+            while(rs.next()){
+                Disciplina disciList = new Disciplina(rs.getString("nome"), rs.getInt("id_professor"), rs.getInt("id_curso"), rs.getInt("semestre"));
+                nomeDisciplina.add(disciList);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nomeDisciplina;
+    }
+
     public static List<Disciplina> listarPorCurso(int idCurso) {
         List<Disciplina> disciplinas = new ArrayList<>();
         String sql = "SELECT * FROM disciplina WHERE id_curso = ?";
@@ -122,21 +175,13 @@ public class DisciplinaDAO {
             ProfessorDAO professorDAO = new ProfessorDAO();
 
             while (rs.next()) {
-                int idProfessor = rs.getInt("id_professor");
-                int idCursoBanco = rs.getInt("id_curso");
-
-                Professor professor = professorDAO.buscarPorId(idProfessor);
-                Curso curso = cursoDAO.buscarPorId(idCursoBanco);
-
                 Disciplina disciplina = new Disciplina(
                         rs.getString("nome"),
-                        professor,
-                        curso,
-                        rs.getInt("semestre"),
-                        rs.getInt("carga_horaria")
+                        rs.getInt("id_professor"),
+                        rs.getInt("id_curso"),
+                        rs.getInt("semestre")
                 );
-
-                disciplina.setId(rs.getInt("id")); // se tiver um ID
+                disciplina.setId(rs.getInt("id"));
                 disciplinas.add(disciplina);
             }
 
@@ -146,5 +191,37 @@ public class DisciplinaDAO {
 
         return disciplinas;
     }
+
+    public static List<Disciplina> listarPorProfessor(int idProfessor) {
+        List<Disciplina> disciplinas = new ArrayList<>();
+        String sql = "SELECT * FROM disciplina WHERE id_professor = ?";
+
+        try (Connection con = Conexao.conectar();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setInt(1, idProfessor);
+            ResultSet rs = stmt.executeQuery();
+
+            CursoDAO cursoDAO = new CursoDAO();
+            ProfessorDAO professorDAO = new ProfessorDAO();
+
+            while (rs.next()) {
+                Disciplina disciplina = new Disciplina(
+                        rs.getString("nome"),
+                        rs.getInt("id_professor"),
+                        rs.getInt("id_curso"),
+                        rs.getInt("semestre")
+                );
+                disciplina.setId(rs.getInt("id"));
+                disciplinas.add(disciplina);
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar disciplinas: " + e.getMessage());
+        }
+
+        return disciplinas;
+    }
+
 }
 

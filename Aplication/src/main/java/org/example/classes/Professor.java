@@ -41,4 +41,3 @@ public class Professor {
         this.emailProfessor = emailProfessor;
     }
 }
-
