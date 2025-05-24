@@ -30,6 +30,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class GradeHorariaController implements Initializable {
@@ -63,6 +64,9 @@ public class GradeHorariaController implements Initializable {
 
     @FXML
     private TableView<LinhaGrade> tblViewGrade;
+
+    Aula aula;
+    AulaDAO aulaDAO = new AulaDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -315,4 +319,30 @@ public class GradeHorariaController implements Initializable {
             System.out.println("Selecione todos os filtros primeiro!");
         }
     }
+
+    public void atualizar() {
+
+    }
+
+    @FXML
+    void deletarAula (ActionEvent event) {
+        if (aula != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja excluir a aula?", ButtonType.YES, ButtonType.NO);
+            alert.setHeaderText("Confirmação");
+            alert.setTitle("Excluir aula");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.YES) {
+                aulaDAO.deletarAula(aula);
+                aula = null;
+                atualizar();
+            }
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Escolha uma linha para deletar!");
+            alert.setHeaderText("Erro ao deletar aula");
+            alert.showAndWait();
+        }
+    }
+
 }

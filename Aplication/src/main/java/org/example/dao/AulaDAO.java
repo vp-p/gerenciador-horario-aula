@@ -314,4 +314,63 @@ public class AulaDAO {
         return Ocupados;
     }
 
+    public void delete(long id) {
+        String sql = "UPDATE aula SET deletado = 1 WHERE id_aula = ?";
+
+        try (Connection con = Conexao.conectar();
+            PreparedStatement stmt = con.prepareStatement(sql)){
+
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+            System.out.println("Aula marcada como deletada com sucesso.");
+        } catch (SQLException e) {
+            System.err.println("Erro ao deletar aula: "+ e.getMessage());
+        }
+    }
+
+    public Aula buscarPorId(int id) {
+        String sql = "SELECT * FROM aula WHERE idaula = ? AND deletado = 0";
+        Aula aula = null;
+
+        try (Connection con = Conexao.conectar();
+            PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setLong(1,id);
+            try(ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    aula = new Aula (
+                            rs.getInt("idaula"),
+                            rs.getInt("id_professor"),
+                            rs.getInt("id_disciplina"),
+                            rs.getInt("id_curso"),
+                            rs.getString("dia_semana"),
+                            rs.getInt("numero_aula"),
+                            "",
+                            rs.getString("periodo")
+                    );
+                }
+            }
+            return aula;
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar aula por ID: " + e.getMessage());
+        }
+        return aula;
+    }
+
+    public void deletarAula(Aula aula) {
+      String sql = "UPDATE aula set deletado = TRUE WHERE idaula = ?";
+
+      try {
+          Connection conn = Conexao.conectar();
+          PreparedStatement pst = conn.prepareStatement(sql);
+
+          pst.setInt(1, aula.getIdAula());
+
+          pst.executeUpdate();
+      }catch (SQLException e) {
+          System.out.println("Erro: " + e.getMessage());
+          e.printStackTrace();
+      }
+    }
+
 }
