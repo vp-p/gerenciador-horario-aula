@@ -61,7 +61,7 @@ public class ProfessorDAO {
     }
 
     public Professor buscarPorId(int id) {
-        String sql = "SELECT * FROM professor WHERE id_professor = ?";
+        String sql = "SELECT * FROM professor WHERE id_professor in (?)";
         Professor professor = null;
 
         try (Connection con = Conexao.conectar()) {
