@@ -4,6 +4,7 @@ import javafx.scene.control.Alert;
 import org.example.classes.Aula;
 import org.example.classes.Curso;
 import org.example.classes.Disciplina;
+import org.example.classes.Professor;
 import org.example.database.Conexao;
 
 import java.sql.Connection;
@@ -52,11 +53,24 @@ public class AulaDAO {
 
             professores.removeAll(Ocupados);
 
+            String ids = Ocupados.stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(", "));
+
+            ProfessorDAO professorDAO = new ProfessorDAO();
+            List<Professor> disponiveis = professorDAO.buscarVarios(ids);
+
+            String texto = "A aula pode estar conflitando com outros horarios. \n " +
+                    "Segue os professores disponiveis para esse horario: ";
+
+            for(Professor professor : disponiveis){
+                texto+= '\n' + professor.getNomeProfessor();
+            }
+
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erro");
             alert.setHeaderText("Aula Não cadastrada!");
-            alert.setContentText("A aula pode estar conflitando com outros horarios \n. " +
-                    "Segue os professores disponiveis para esse horario:");
+            alert.setContentText(texto);
             alert.showAndWait();
         }
 

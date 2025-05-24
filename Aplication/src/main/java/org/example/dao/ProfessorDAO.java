@@ -61,7 +61,7 @@ public class ProfessorDAO {
     }
 
     public Professor buscarPorId(int id) {
-        String sql = "SELECT * FROM professor WHERE id_professor in (?)";
+        String sql = "SELECT * FROM professor WHERE id_professor = ?";
         Professor professor = null;
 
         try (Connection con = Conexao.conectar()) {
@@ -81,6 +81,36 @@ public class ProfessorDAO {
         return professor;
     }
 //
+public List<Professor> buscarVarios(String ids)  {
+    List<Professor> professores = new ArrayList<>();
+    String sql = "SELECT * FROM professor WHERE id_professor in ("+ids+")";
+    Connection conn = Conexao.conectar();
+    PreparedStatement pst = null;
+
+    try{
+        pst = conn.prepareStatement(sql);
+
+        ResultSet result = pst.executeQuery();
+
+        while(result.next()){
+            Professor professor = new Professor(result.getInt("id_professor"),result.getString("nome"), result.getString("email"));
+            professores.add(professor);
+        }
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    } finally {
+        try{
+            if (conn != null){
+                conn.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    return professores;
+}
+
+
     public void deletar(Integer id) {
 //        String sql = "DELETE FROM professor WHERE id_professor = ?";
         String sql = "UPDATE professor SET deletado = TRUE WHERE id_professor = ?";
