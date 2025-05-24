@@ -84,6 +84,7 @@ public class DisciplinaController {
 
     @FXML
     void adicionarDisciplina  (ActionEvent event) {
+
         Stage adicionarDisciplina = new Stage();
 
         VBox popupLayout = new VBox(10);
@@ -110,9 +111,8 @@ public class DisciplinaController {
 
         Label labelProfessor = new Label("Nome do Professor");
         labelProfessor.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        TextField textFieldProfessor = new TextField();
-        textFieldProfessor.setPromptText("Nome do Professor");
-        textFieldProfessor.setStyle("-fx-font-size: 16px;" +
+       CheckBox checkprofessor = new CheckBox();
+        checkprofessor.setStyle("-fx-font-size: 16px;" +
                 "    -fx-border-color: #1D4ED8;" +
                 "    -fx-border-width: 2px;" +
                 "    -fx-border-radius: 8px;" +
@@ -124,9 +124,8 @@ public class DisciplinaController {
 
         Label labelCurso = new Label("Curso");
         labelCurso.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        TextField textFieldCurso = new TextField();
-        textFieldCurso.setPromptText("Curso");
-        textFieldCurso.setStyle("-fx-font-size: 16px;" +
+        CheckBox checkCurso = new CheckBox();
+        checkCurso.setStyle("-fx-font-size: 16px;" +
                 "    -fx-border-color: #1D4ED8;" +
                 "    -fx-border-width: 2px;" +
                 "    -fx-border-radius: 8px;" +
@@ -170,8 +169,8 @@ public class DisciplinaController {
         cadastroButton.setOnAction(e -> {
 
             String nome = textFieldNome.getText();
-            Integer professor = Integer.parseInt(textFieldProfessor.getText());
-            Integer curso  = Integer.parseInt(textFieldCurso.getText());
+            Integer professor = Integer.parseInt(checkprofessor.getText());
+            Integer curso  = Integer.parseInt(checkCurso.getText());
             Integer semestre  = Integer.parseInt(textFieldSemestre.getText());
 
             Disciplina disciplina = new Disciplina(nome, professor, curso, semestre);
@@ -191,7 +190,7 @@ public class DisciplinaController {
         HBox buttons = new HBox(10, cadastroButton);
         buttons.setAlignment(Pos.CENTER);
 
-        popupLayout.getChildren().addAll(labelNome, textFieldNome, labelProfessor, textFieldProfessor, labelCurso,textFieldCurso,
+        popupLayout.getChildren().addAll(labelNome, textFieldNome, labelProfessor, checkprofessor, labelCurso, checkCurso,
                 labelSemestre, textFieldSemestre, buttons);
 
         Scene popupScene = new Scene(popupLayout, 510, 510);
