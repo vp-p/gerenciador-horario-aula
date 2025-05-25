@@ -25,6 +25,13 @@ public class Curso {
         this(false, 0L, nome, coordenador, periodo, false);
     }
 
+
+
+//Construtor para listar cursos no disciplina controller (teste)************************************************
+    public Curso( int idCurso, String nome, String coordenador, String periodo) {
+        this(false, idCurso, nome, coordenador, periodo, false);
+    }
+
     // Getters e setters
 
     public boolean isSelecionado() {
@@ -93,5 +100,11 @@ public class Curso {
 
     public void setDeletado(boolean deletado) {
         this.deletado = deletado;
+    }
+
+
+    //adicionado toString para exibir o nome do curso na combobox
+    public String toString() {
+        return this.nome.get();
     }
 }

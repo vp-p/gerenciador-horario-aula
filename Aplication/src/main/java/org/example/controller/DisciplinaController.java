@@ -13,9 +13,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.classes.Curso;
 import org.example.classes.Disciplina;
 import org.example.classes.Professor;
 import org.example.dao.DisciplinaDAO;
+import org.example.dao.ProfessorDAO;
 
 import java.util.List;
 import java.util.Optional;
@@ -82,9 +84,10 @@ public class DisciplinaController {
     private java.awt.Label textFieldCurso;
     private java.awt.Label textFieldSemestre;
 
-    @FXML
-    void adicionarDisciplina  (ActionEvent event) {
+    // *********************************** teste para dropdown (combobox) de disciplinas **********************************
 
+    @FXML
+    void adicionarDisciplina(ActionEvent event) {
         Stage adicionarDisciplina = new Stage();
 
         VBox popupLayout = new VBox(10);
@@ -92,99 +95,93 @@ public class DisciplinaController {
                 "-fx-spacing: 10px;" +
                 "-fx-pref-width: 400px;" +
                 "-fx-pref-height: 300px;");
-
         adicionarDisciplina.setTitle("Adicionar Disciplina");
 
         Label labelNome = new Label("Nome da Disciplina");
         labelNome.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
         TextField textFieldNome = new TextField();
         textFieldNome.setPromptText("Nome da Disciplina");
-        textFieldNome.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
+        textFieldNome.setStyle(
+                "-fx-font-size: 16px;" +
+                        "    -fx-border-color: #1D4ED8;" +
+                        "    -fx-border-width: 2px;" +
+                        "    -fx-border-radius: 8px;" +
+                        "    -fx-background-radius: 8px;" +
+                        "    -fx-padding: 14px;" +
+                        "    -fx-focus-color: #1D4ED8;" +
+                        "    -fx-text-fill: #000000;" +
+                        "    -fx-pref-width: 240px;"
+        );
 
+
+        // ComboBox de Professores
         Label labelProfessor = new Label("Nome do Professor");
         labelProfessor.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-       TextField textFiedlProfessor = new TextField();
-        textFiedlProfessor.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
+        ComboBox<Professor> comboBoxProfessor = new ComboBox<>();
+        comboBoxProfessor.setPromptText("Selecione o Professor");
+        comboBoxProfessor.setStyle(textFieldNome.getStyle());
 
+        // ComboBox de Cursos
         Label labelCurso = new Label("Curso");
         labelCurso.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
-        TextField textFieldCurso = new TextField();
-        textFieldCurso.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
+        ComboBox<Curso> comboBoxCurso = new ComboBox<>();
+        comboBoxCurso.setPromptText("Selecione o Curso");
+        comboBoxCurso.setStyle(textFieldNome.getStyle());
+
+        // Buscar dados do banco
+        List<Professor> professores = DisciplinaDAO.listarProfessores();
+        List<Curso> cursos = DisciplinaDAO.listarCursos();
+
+        comboBoxProfessor.getItems().addAll(professores);
+        comboBoxCurso.getItems().addAll(cursos);
 
         Label labelSemestre = new Label("Semestre");
         labelSemestre.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
         TextField textFieldSemestre = new TextField();
         textFieldSemestre.setPromptText("Semestre");
-        textFieldSemestre.setStyle("-fx-font-size: 16px;" +
-                "    -fx-border-color: #1D4ED8;" +
-                "    -fx-border-width: 2px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-padding: 14px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-text-fill: #000000;" +
-                "    -fx-pref-width: 240px;");
-
-
+        textFieldSemestre.setStyle(textFieldNome.getStyle());
 
         Button cadastroButton = new Button("Cadastrar");
-        cadastroButton.setStyle("-fx-background-color: #1D4ED8;" +
-                "    -fx-font-weight: bold;" +
-                "    -fx-text-fill: white;" +
-                "    -fx-padding: 10px 20px;" +
-                "    -fx-font-size: 18px;" +
-                "    -fx-border-radius: 8px;" +
-                "    -fx-background-radius: 8px;" +
-                "    -fx-focus-color: #1D4ED8;" +
-                "    -fx-cursor: hand;" +
-                "    -fx-pref-width: 340px;" +
-                "    -fx-pref-height: 50px;" +
-                "    -fx-alignment: CENTER;");
+        cadastroButton.setStyle(
+                "-fx-background-color: #1D4ED8;" +
+                        "    -fx-font-weight: bold;" +
+                        "    -fx-text-fill: white;" +
+                        "    -fx-padding: 10px 20px;" +
+                        "    -fx-font-size: 18px;" +
+                        "    -fx-border-radius: 8px;" +
+                        "    -fx-background-radius: 8px;" +
+                        "    -fx-focus-color: #1D4ED8;" +
+                        "    -fx-cursor: hand;" +
+                        "    -fx-pref-width: 340px;" +
+                        "    -fx-pref-height: 50px;" +
+                        "    -fx-alignment: CENTER;"
+        );
 
-        // Aqui você pode adicionar a lógica do botão "Cadastrar"
         cadastroButton.setOnAction(e -> {
-
             String nome = textFieldNome.getText();
+            Professor professor = comboBoxProfessor.getValue();
+            Curso curso = comboBoxCurso.getValue();
+            String semestreTexto = textFieldSemestre.getText();
 
+            if (nome.isEmpty() || professor == null || curso == null || semestreTexto.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Preencha todos os campos!");
+                alert.showAndWait();
+                return;
+            }
 
-            Integer professor = Integer.parseInt(textFiedlProfessor.getText());
-            Integer curso  = Integer.parseInt(textFieldCurso.getText());
-            Integer semestre  = Integer.parseInt(textFieldSemestre.getText());
+            try {
+                int semestre = Integer.parseInt(semestreTexto);
+                int idProfessor = professor.getId();
+                int idCurso = curso.getId();
 
-            Disciplina disciplina = new Disciplina(nome, professor, curso, semestre);
-
-            if (disciplina != null) {
+                Disciplina disciplina = new Disciplina(nome, idProfessor, idCurso, semestre);
                 daoDisciplina.criarDisciplina(disciplina);
                 atualizar();
 
-                System.out.println("Disciplina cadastrada " + nome + " - " + professor + " - " + curso + " - " + semestre );
+                System.out.println("Disciplina cadastrada: " + nome + " - " + professor.getNomeProfessor() + " - " + curso.getNome() + " - " + semestre);
                 adicionarDisciplina.close();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Preencha todos os campos!");
+            } catch (NumberFormatException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Semestre deve ser um número.");
                 alert.showAndWait();
             }
         });
@@ -192,13 +189,139 @@ public class DisciplinaController {
         HBox buttons = new HBox(10, cadastroButton);
         buttons.setAlignment(Pos.CENTER);
 
-        popupLayout.getChildren().addAll(labelNome, textFieldNome, labelProfessor, textFiedlProfessor, labelCurso, textFieldCurso,
-                labelSemestre, textFieldSemestre, buttons);
+        popupLayout.getChildren().addAll(
+                labelNome, textFieldNome,
+                labelProfessor, comboBoxProfessor,
+                labelCurso, comboBoxCurso,
+                labelSemestre, textFieldSemestre,
+                buttons
+        );
 
         Scene popupScene = new Scene(popupLayout, 510, 510);
         adicionarDisciplina.setScene(popupScene);
         adicionarDisciplina.show();
     }
+
+    // fim do teste combobox *****************************************************************************************
+
+
+//    @FXML
+//    void adicionarDisciplina  (ActionEvent event) {
+//
+//        Stage adicionarDisciplina = new Stage();
+//
+//        VBox popupLayout = new VBox(10);
+//        popupLayout.setStyle("-fx-padding: 30px;" +
+//                "-fx-spacing: 10px;" +
+//                "-fx-pref-width: 400px;" +
+//                "-fx-pref-height: 300px;");
+//
+//        adicionarDisciplina.setTitle("Adicionar Disciplina");
+//
+//        Label labelNome = new Label("Nome da Disciplina");
+//        labelNome.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+//        TextField textFieldNome = new TextField();
+//        textFieldNome.setPromptText("Nome da Disciplina");
+//        textFieldNome.setStyle("-fx-font-size: 16px;" +
+//                "    -fx-border-color: #1D4ED8;" +
+//                "    -fx-border-width: 2px;" +
+//                "    -fx-border-radius: 8px;" +
+//                "    -fx-background-radius: 8px;" +
+//                "    -fx-padding: 14px;" +
+//                "    -fx-focus-color: #1D4ED8;" +
+//                "    -fx-text-fill: #000000;" +
+//                "    -fx-pref-width: 240px;");
+//
+//        Label labelProfessor = new Label("Nome do Professor");
+//        labelProfessor.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+//       TextField textFiedlProfessor = new TextField();
+//        textFiedlProfessor.setStyle("-fx-font-size: 16px;" +
+//                "    -fx-border-color: #1D4ED8;" +
+//                "    -fx-border-width: 2px;" +
+//                "    -fx-border-radius: 8px;" +
+//                "    -fx-background-radius: 8px;" +
+//                "    -fx-padding: 14px;" +
+//                "    -fx-focus-color: #1D4ED8;" +
+//                "    -fx-text-fill: #000000;" +
+//                "    -fx-pref-width: 240px;");
+//
+//        Label labelCurso = new Label("Curso");
+//        labelCurso.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+//        TextField textFieldCurso = new TextField();
+//        textFieldCurso.setStyle("-fx-font-size: 16px;" +
+//                "    -fx-border-color: #1D4ED8;" +
+//                "    -fx-border-width: 2px;" +
+//                "    -fx-border-radius: 8px;" +
+//                "    -fx-background-radius: 8px;" +
+//                "    -fx-padding: 14px;" +
+//                "    -fx-focus-color: #1D4ED8;" +
+//                "    -fx-text-fill: #000000;" +
+//                "    -fx-pref-width: 240px;");
+//
+//        Label labelSemestre = new Label("Semestre");
+//        labelSemestre.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+//        TextField textFieldSemestre = new TextField();
+//        textFieldSemestre.setPromptText("Semestre");
+//        textFieldSemestre.setStyle("-fx-font-size: 16px;" +
+//                "    -fx-border-color: #1D4ED8;" +
+//                "    -fx-border-width: 2px;" +
+//                "    -fx-border-radius: 8px;" +
+//                "    -fx-background-radius: 8px;" +
+//                "    -fx-padding: 14px;" +
+//                "    -fx-focus-color: #1D4ED8;" +
+//                "    -fx-text-fill: #000000;" +
+//                "    -fx-pref-width: 240px;");
+//
+//
+//
+//        Button cadastroButton = new Button("Cadastrar");
+//        cadastroButton.setStyle("-fx-background-color: #1D4ED8;" +
+//                "    -fx-font-weight: bold;" +
+//                "    -fx-text-fill: white;" +
+//                "    -fx-padding: 10px 20px;" +
+//                "    -fx-font-size: 18px;" +
+//                "    -fx-border-radius: 8px;" +
+//                "    -fx-background-radius: 8px;" +
+//                "    -fx-focus-color: #1D4ED8;" +
+//                "    -fx-cursor: hand;" +
+//                "    -fx-pref-width: 340px;" +
+//                "    -fx-pref-height: 50px;" +
+//                "    -fx-alignment: CENTER;");
+//
+//        // Aqui você pode adicionar a lógica do botão "Cadastrar"
+//        cadastroButton.setOnAction(e -> {
+//
+//            String nome = textFieldNome.getText();
+//
+//
+//            Integer professor = Integer.parseInt(textFiedlProfessor.getText());
+//            Integer curso  = Integer.parseInt(textFieldCurso.getText());
+//            Integer semestre  = Integer.parseInt(textFieldSemestre.getText());
+//
+//            Disciplina disciplina = new Disciplina(nome, professor, curso, semestre);
+//
+//            if (disciplina != null) {
+//                daoDisciplina.criarDisciplina(disciplina);
+//                atualizar();
+//
+//                System.out.println("Disciplina cadastrada " + nome + " - " + professor + " - " + curso + " - " + semestre );
+//                adicionarDisciplina.close();
+//            } else {
+//                Alert alert = new Alert(Alert.AlertType.WARNING, "Preencha todos os campos!");
+//                alert.showAndWait();
+//            }
+//        });
+//
+//        HBox buttons = new HBox(10, cadastroButton);
+//        buttons.setAlignment(Pos.CENTER);
+//
+//        popupLayout.getChildren().addAll(labelNome, textFieldNome, labelProfessor, textFiedlProfessor, labelCurso, textFieldCurso,
+//                labelSemestre, textFieldSemestre, buttons);
+//
+//        Scene popupScene = new Scene(popupLayout, 510, 510);
+//        adicionarDisciplina.setScene(popupScene);
+//        adicionarDisciplina.show();
+//    }
 
     //  Método que atualiza a tabela
     public void atualizar(){

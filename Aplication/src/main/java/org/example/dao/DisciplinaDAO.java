@@ -138,7 +138,36 @@ public class DisciplinaDAO {
             throw new RuntimeException(ex);
         }
     }
-    public List<Professor> listarProfessores() {
+    public static List<Curso> listarCursos() {
+        List<Curso> nomeCurso = new ArrayList<>();
+        String sql = "SELECT * FROM curso";
+
+        Connection conn = Conexao.conectar();
+        PreparedStatement pst = null;
+
+        try {
+            pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Curso cursoList = new Curso(
+                        rs.getInt("id_curso"),
+                        rs.getString("nome"),
+                        rs.getString("coordenador"),
+                        rs.getString("periodo")
+                );
+
+                nomeCurso.add(cursoList);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nomeCurso;
+    }
+
+
+
+    public static List<Professor> listarProfessores() {
         List<Professor> nomeProfessor = new ArrayList<>();
         String sql = "SELECT * FROM professor";
 
