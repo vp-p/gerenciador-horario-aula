@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -27,5 +28,25 @@ public class CursoController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void AlterarTelaCurso(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroCurso");
+    }
+
+    @FXML
+    void AlterarTelaDisciplina(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroDisciplina");
+    }
+
+    @FXML
+    void AlterarTelaGrade(ActionEvent event) throws Exception {
+        org.example.App.setRoot("gradeHoraria");
+    }
+
+    @FXML
+    void AlterarTelaProfessor(ActionEvent event) throws Exception {
+        org.example.App.setRoot("professor");
     }
 }
