@@ -12,19 +12,6 @@
 
  > Nessa tela será mostrada todas as funcionalidades da grade horária.
 
-‣ [Tela Principal](#tela-principal)<br>
-‣ [Funcionalidades](#funcionalidades-da-tela)<br>
-‣ [Cadastro de Aulas](#cadastrar-nova-aula)<br>
-‣ [Filtros](#filtros)
-
-#### Tela Professor
-
-> A partir deste momento é crucial, seguir o passo a passo, para que haja eficiência na inserção de disciplinas dentro da Grade Horária.
-
-‣ [Tela Professor](#tela-professor)<br>
-‣ [Tela Curso](#tela-curso)<br>
-‣ [Tela Disciplina](#tela-disciplina)
-
 <details>
 
 <summary><strong>Tela Principal</strong></summary>
@@ -88,6 +75,10 @@ Ao abrir a aplicação, vai ser apresentada tela "Grade Horária", sendo possív
   ***OBSERVAÇÃO:*** **Necessário que todos os filtros estejam preenchidos para que aplicação funcione.**
 
 </details>
+
+#### Telas 
+
+> A partir deste momento é crucial, seguir o passo a passo, para que haja eficiência na inserção de disciplinas dentro da Grade Horária.
 
 <details>
 
