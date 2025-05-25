@@ -10,6 +10,8 @@
 
 #### Tela Principal
 
+ > Nessa tela será mostrada todas as funcionalidades da grade horária.
+
 ‣ [Tela Principal](#tela-principal)<br>
 ‣ [Funcionalidades](#funcionalidades-da-tela)<br>
 ‣ [Cadastro de Aulas](#cadastrar-nova-aula)<br>
@@ -17,7 +19,9 @@
 
 #### Tela Professor
 
-‣ [Tela Professor]()
+> A partir deste momento é crucial, seguir o passo a passo, para que haja eficiência na inserção de disciplinas dentro da Grade Horária.
+
+‣ [Tela Professor](#tela-professor)
 
 <details>
 
@@ -89,6 +93,42 @@ Ao abrir a aplicação, vai ser apresentada tela "Grade Horária", sendo possív
 
 ## Tela Professor
 
+- Para se direcionar a tela do professor, selecione no menu a opção "professores".
+
+Veja a imagem a seguir:
+
+<img src = "images/IrParaProfessor.png" width = 60%>
+
+- ***Abrirá em seu computador a seguinte tela:***
+
+<img src = "images/TelaProfessor.png" width = 60%>
+
+### Funcionalidades da tela:
+
+### Cadastrar Professor
+
+***1 - Clique em "Adicionar professor"***
+
+<img src = "images/adicionarDadosProfessor.png" width = 60%><br>
+
+***2 - Preencha os campos "Nome" e "Email". Após Clique em "Cadastrar"***
+
+<img src = "images/adicionandoProfessor.png" width = 60%><br>
+
+### Deletar Professor
+
+***1 - Selecione a linha que está o professor que desejas deletar***
+***2 - Clique em "Deletar"***
+
+<img src = "images/DeletarProfessor.png" width = 60%><br>
+
+***OBSERVAÇÃO:*** Sempre selecione a linha, caso contrário mostrará um erro. Veja a imagem a seguir:
+
+<img src = "images/selecionarLinhaDeletar.png" width = 40%><br>
+
+***3 - Confirme sobre sua decisão***
+
+<img src = "images/confirmacaoDeletar.png" width = 40%><br>
 
 
 </details>
