@@ -118,6 +118,7 @@ Veja a imagem a seguir:
 ### Deletar Professor
 
 ***1 - Selecione a linha que está o professor que desejas deletar***
+
 ***2 - Clique em "Deletar"***
 
 <img src = "images/DeletarProfessor.png" width = 60%><br>
@@ -130,6 +131,31 @@ Veja a imagem a seguir:
 
 <img src = "images/confirmacaoDeletar.png" width = 40%><br>
 
+### Atualiizar Professor
+
+***1 - Selecione a linha que está o professor que desejas atualiizar***
+
+***2 - Clique em "Atualizar"***
+
+<img src = "images/atualizar.png" width = 60%><br>
+
+***OBSERVAÇÃO:*** Sempre selecione a linha, caso contrário mostrará um erro. Veja a imagem a seguir:
+
+<img src = "images/erroAtualizar.png" width = 40%><br>
+
+***3 - Logo após abrirá uma nova janela, preencha os campos e clique em "Atualizar"***
+
+<img src = "images/AtualizaProfessor.png" width = 40%><br>
+
+### Filtrar Tabela
+
+***1 - Clique em Filtro***
+
+***2 - Selecione o nome que desejas filtrar***
+
+***3 - Clique em "Filtrar"***
+
+<img src = "images/filtrar.png" width = 60%><br>
 
 </details>
 
