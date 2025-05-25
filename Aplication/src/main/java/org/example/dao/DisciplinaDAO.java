@@ -280,7 +280,7 @@ public class DisciplinaDAO {
         return disciplinas;
     }
 
-    public void deletarDisciplina(Disciplina disciplina) throws SQLException {
+    public void deletarDisciplina(Disciplina disciplina) {
         String sql = "UPDATE disciplina SET deletado = TRUE WHERE id_disciplina = ? AND nome = ? AND id_professor = ? AND id_curso = ? AND semestre = ?;";
         try (Connection con = Conexao.conectar()) {
             assert con != null;
@@ -301,6 +301,8 @@ public class DisciplinaDAO {
                 System.out.println("Erro: " + e.getMessage());
                 e.printStackTrace();
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
     }

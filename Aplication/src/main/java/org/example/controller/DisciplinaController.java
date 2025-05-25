@@ -584,7 +584,7 @@ public class DisciplinaController {
     }
 
     @FXML
-    void deletarProfessor(ActionEvent event) throws SQLException {
+    void deletarDisciplina(){
         if (disciplina != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Você quer mesmo excluir?", ButtonType.YES, ButtonType.NO);
             alert.setHeaderText("Confirmação");
