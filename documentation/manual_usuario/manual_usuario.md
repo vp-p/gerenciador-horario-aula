@@ -22,6 +22,8 @@
 > A partir deste momento é crucial, seguir o passo a passo, para que haja eficiência na inserção de disciplinas dentro da Grade Horária.
 
 ‣ [Tela Professor](#tela-professor)
+‣ [Tela Curso](#tela-curso)
+
 
 <details>
 
@@ -158,6 +160,65 @@ Veja a imagem a seguir:
 ***4 - Quer finalizar a filtragem, clique em "Remover Filtro"***
 
 <img src = "images/filtrar.png" width = 60%><br>
+
+</details>
+
+<details>
+
+<summary><strong>Tela Curso</strong></summary>
+
+
+## Tela Curso
+
+- Para se direcionar a tela de curso, selecione no menu a opção "cursos".
+
+Veja a imagem a seguir:
+
+<img src = "images/mudarTelaCurso.png" width = 60%>
+
+- ***Abrirá em seu computador a seguinte tela:***
+
+<img src = "images/TelaCurso.png" width = 60%>
+
+### Funcionalidades da tela:
+
+### Cadastrar Curso
+
+***1 - Clique em "Adicionar Cursos"***
+
+<img src = "images/adicionarCurso.png" width = 60%><br>
+
+***2 - Preencha os campos e logo após Clique em "Confirmar"***
+
+<img src = "images/camposCurso.png" width = 40%><br>
+
+### Deletar Curso
+
+***1 - Selecione a linha que está o curso que desejas deletar***
+
+***2 - Clique em "Deletar"***
+
+<img src = "images/deletarCurso.png" width = 60%><br>
+
+***OBSERVAÇÃO:*** Sempre selecione a linha, caso contrário mostrará um erro. Veja a imagem a seguir:
+
+<img src = "images/erroCursoLinha.png" width = 40%><br>
+
+***3 - Confirme sobre sua decisão***
+
+<img src = "images/confirmaCurso.png" width = 40%><br>
+
+### Filtrar Tabela
+
+***1 - Clique em Filtro***
+
+***2 - Clique em "Escolha o coordenador"***
+
+***3 - Selecione o coordenador que desejas filtrar***
+
+***4 - Quer finalizar a filtragem, clique em "Limpar"***
+
+<img src = "images/filtrarCurso.png" width = 60%><br>
 
 </details>
 
