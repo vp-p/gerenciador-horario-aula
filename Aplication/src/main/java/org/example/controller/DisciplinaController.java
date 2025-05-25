@@ -19,6 +19,7 @@ import org.example.classes.Professor;
 import org.example.dao.DisciplinaDAO;
 import org.example.dao.ProfessorDAO;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -324,12 +325,12 @@ public class DisciplinaController {
 //    }
 
     //  Método que atualiza a tabela
-    public void atualizar(){
+    public void atualizar() {
         // buscando disciplinas para colocar na lista observável
         List<Disciplina> disciList = daoDisciplina.listarTodos();
         disciplinaList.clear(); //Limpando a lista
         //Adicionando novos dados a lista observável
-        for(Disciplina disciplina: disciList){
+        for (Disciplina disciplina : disciList) {
             disciplinaList.add(disciplina);
         }
         // Altera os itens da combobox
@@ -453,13 +454,12 @@ public class DisciplinaController {
                 // Coletando a alteração
                 String nome = textFieldNome.getText();
                 Integer idProfessor = Integer.parseInt(textFieldProfessor.getText());
-                Integer idCurso  = Integer.parseInt(textFieldCurso.getText());
-                Integer semestre  = Integer.parseInt(textFieldSemestre.getText());
+                Integer idCurso = Integer.parseInt(textFieldCurso.getText());
+                Integer semestre = Integer.parseInt(textFieldSemestre.getText());
                 Disciplina disciplina = new Disciplina(nome, idProfessor, idCurso, semestre);
 
 
-
-                if (nome != null && idProfessor!= null  && idCurso!=null && semestre!=null){
+                if (nome != null && idProfessor != null && idCurso != null && semestre != null) {
                     daoDisciplina.atualizarDisciplina(disciplina);
                     atualizar();
 
@@ -495,22 +495,23 @@ public class DisciplinaController {
         System.out.println(disciplina);
 
     }
+
     // ALTERAR TODOS: Método de deletar e ter a confirmação
     @FXML
     void deletarDisciplina(ActionEvent event) {
-        if(disciplina != null){
+        if (disciplina != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Você quer mesmo excluir?", ButtonType.YES, ButtonType.NO);
             alert.setHeaderText("Confirmação");
             alert.setTitle("Excluir Disciplina");
 
             Optional<ButtonType> result = alert.showAndWait();
 
-            if(result.isPresent() && result.get() == ButtonType.YES){
+            if (result.isPresent() && result.get() == ButtonType.YES) {
                 daoDisciplina.deleteDisciplina(disciplina.getId());
                 disciplina = null;
                 atualizar();
             }
-        } else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Escolha uma linha para deletar!");
             alert.setHeaderText("Erro ao deletar Disciplina");
             alert.showAndWait();
@@ -528,7 +529,7 @@ public class DisciplinaController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         idDisciplina.setCellValueFactory(new PropertyValueFactory<Disciplina, Integer>("id"));
         nomeDisciplina.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("nome"));
         idProfessor.setCellValueFactory(new PropertyValueFactory<Disciplina, Integer>("id_professor"));
@@ -580,5 +581,26 @@ public class DisciplinaController {
     @FXML
     void AlterarTelaProfessor(ActionEvent event) throws Exception {
         org.example.App.setRoot("professor");
+    }
+
+    @FXML
+    void deletarProfessor(ActionEvent event) throws SQLException {
+        if (disciplina != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Você quer mesmo excluir?", ButtonType.YES, ButtonType.NO);
+            alert.setHeaderText("Confirmação");
+            alert.setTitle("Excluir Disciplina");
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.YES) {
+                daoDisciplina.deletarDisciplina(disciplina);
+                disciplina = null;
+                atualizar();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Escolha uma linha para deletar!");
+            alert.setHeaderText("Erro ao deletar Disciplina");
+            alert.showAndWait();
+        }
     }
 }

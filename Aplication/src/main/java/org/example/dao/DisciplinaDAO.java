@@ -98,7 +98,7 @@ public class DisciplinaDAO {
     }
 
     public Disciplina buscarDisciplina(long id) {
-        String sql = "SELECT * FROM disciplina WHERE id = ?";
+        String sql = "SELECT * FROM disciplina WHERE id = ? AND deletado = 0";
 
         try (Connection con = Conexao.conectar()) {
             assert con != null;
@@ -138,9 +138,10 @@ public class DisciplinaDAO {
             throw new RuntimeException(ex);
         }
     }
+
     public static List<Curso> listarCursos() {
         List<Curso> nomeCurso = new ArrayList<>();
-        String sql = "SELECT * FROM curso";
+        String sql = "SELECT * FROM curso WHERE deletado = 0";
 
         Connection conn = Conexao.conectar();
         PreparedStatement pst = null;
@@ -166,10 +167,9 @@ public class DisciplinaDAO {
     }
 
 
-
     public static List<Professor> listarProfessores() {
         List<Professor> nomeProfessor = new ArrayList<>();
-        String sql = "SELECT * FROM professor";
+        String sql = "SELECT * FROM professor WHERE deletado = 0";
 
         Connection conn = Conexao.conectar();
         PreparedStatement pst = null;
@@ -194,21 +194,21 @@ public class DisciplinaDAO {
     }
 
 
-    public List<Disciplina> buscarPorNome(String nome){
+    public List<Disciplina> buscarPorNome(String nome) {
         List<Disciplina> nomeDisciplina = new ArrayList<>();
-        String sql = "Select * From Disciplina where nome = ?";
+        String sql = "SELECT * FROM Disciplina WHERE nome AND deletado = 0 = ?";
 
         Connection conn = Conexao.conectar();
-        PreparedStatement pst = null ;
+        PreparedStatement pst = null;
 
-        try{
+        try {
             pst = conn.prepareStatement(sql);
 
             pst.setString(1, nome);
 
             ResultSet rs = pst.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
                 Disciplina disciList = new Disciplina(rs.getString("nome"), rs.getInt("id_professor"), rs.getInt("id_curso"), rs.getInt("semestre"));
                 nomeDisciplina.add(disciList);
             }
@@ -220,7 +220,7 @@ public class DisciplinaDAO {
 
     public static List<Disciplina> listarPorCurso(int idCurso) {
         List<Disciplina> disciplinas = new ArrayList<>();
-        String sql = "SELECT * FROM disciplina WHERE id_curso = ?";
+        String sql = "SELECT * FROM disciplina WHERE id_curso = ? AND deletado = 0";
 
         try (Connection con = Conexao.conectar();
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -251,7 +251,7 @@ public class DisciplinaDAO {
 
     public static List<Disciplina> listarPorProfessor(int idProfessor) {
         List<Disciplina> disciplinas = new ArrayList<>();
-        String sql = "SELECT * FROM disciplina WHERE id_professor = ?";
+        String sql = "SELECT * FROM disciplina WHERE id_professor = ? AND deletado = false";
 
         try (Connection con = Conexao.conectar();
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -280,4 +280,28 @@ public class DisciplinaDAO {
         return disciplinas;
     }
 
+    public void deletarDisciplina(Disciplina disciplina) throws SQLException {
+        String sql = "UPDATE disciplina SET deletado = TRUE WHERE id_disciplina = ? AND nome = ? AND id_professor = ? AND id_curso = ? AND semestre = ?;";
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+                stmt.setString(1, disciplina.getNome());
+                stmt.setInt(2, disciplina.getId_professor());
+                stmt.setInt(3, disciplina.getIdCurso());
+                stmt.setInt(4, disciplina.getSemestre());
+
+                stmt.executeUpdate();
+
+                ResultSet result = stmt.getGeneratedKeys();
+                if (result.next()) {
+                    disciplina.setId(result.getInt(1));
+                }
+            } catch (SQLException e) {
+                System.out.println("Erro: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+    }
 }
