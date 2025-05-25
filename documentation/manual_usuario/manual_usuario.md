@@ -12,7 +12,7 @@
 
 <details>
 
-<summary><strong>Tela Principal</strong></summary>
+<summary><strong>Tela Grade Horária</strong></summary>
 
 ## Tela Principal
 
