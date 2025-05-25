@@ -13,7 +13,7 @@ public class DisciplinaDAO {
 
     public List<Disciplina> listarTodos() {
         List<Disciplina> disciplinas = new ArrayList<>();
-        String sql = "SELECT * FROM disciplina WHERE deletado = FALSE";
+        String sql = "SELECT * FROM disciplina WHERE deletado = 0";
 
         try (Connection con = Conexao.conectar();
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -28,7 +28,7 @@ public class DisciplinaDAO {
                         rs.getInt("id_curso"),
                         rs.getInt("semestre")
                 );
-                disciplina.setId(rs.getInt("id"));
+//                disciplina.setId(rs.getInt("id_disciplina"));
                 disciplinas.add(disciplina);
             }
 
@@ -53,6 +53,7 @@ public class DisciplinaDAO {
         }
     }
 
+
     public void criarDisciplina(Disciplina disciplina) {
         String sql = "INSERT INTO disciplina (nome, id_professor, id_curso, semestre) VALUES (?, ?, ?, ?)";
 
@@ -61,9 +62,9 @@ public class DisciplinaDAO {
             try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 stmt.setString(1, disciplina.getNome());
-                stmt.setInt(3, disciplina.getId_professor());
+                stmt.setInt(2, disciplina.getId_professor());
                 stmt.setInt(3, disciplina.getIdCurso());
-                stmt.setInt(3, disciplina.getSemestre());
+                stmt.setInt(4, disciplina.getSemestre());
 
                 stmt.executeUpdate();
 
@@ -137,6 +138,32 @@ public class DisciplinaDAO {
             throw new RuntimeException(ex);
         }
     }
+    public List<Professor> listarProfessores() {
+        List<Professor> nomeProfessor = new ArrayList<>();
+        String sql = "SELECT * FROM professor";
+
+        Connection conn = Conexao.conectar();
+        PreparedStatement pst = null;
+
+        try {
+            pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Professor profList = new Professor(
+                        rs.getInt("id_professor"),
+                        rs.getString("nome"),
+                        rs.getString("email")
+                );
+
+                nomeProfessor.add(profList);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return nomeProfessor;
+    }
+
 
     public List<Disciplina> buscarPorNome(String nome){
         List<Disciplina> nomeDisciplina = new ArrayList<>();

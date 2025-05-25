@@ -169,6 +169,8 @@ public class DisciplinaController {
         cadastroButton.setOnAction(e -> {
 
             String nome = textFieldNome.getText();
+
+
             Integer professor = Integer.parseInt(textFiedlProfessor.getText());
             Integer curso  = Integer.parseInt(textFieldCurso.getText());
             Integer semestre  = Integer.parseInt(textFieldSemestre.getText());
@@ -202,7 +204,7 @@ public class DisciplinaController {
     public void atualizar(){
         // buscando disciplinas para colocar na lista observável
         List<Disciplina> disciList = daoDisciplina.listarTodos();
-        disciList.clear(); //Limpando a lista
+        disciplinaList.clear(); //Limpando a lista
         //Adicionando novos dados a lista observável
         for(Disciplina disciplina: disciList){
             disciplinaList.add(disciplina);
@@ -413,18 +415,18 @@ public class DisciplinaController {
         atualizar();
     }
 
-    public void atualizarDisciplinaList() {
-        List<Disciplina> disciplinas = daoDisciplina.listarTodos();
-
-        atualizarObservableList(disciplinas);
-        updateFilterComboBox();
-        updateTableView(disciplinas);
-    }
-
-    private void atualizarObservableList(List<Disciplina> disciplinas) {
-        disciplinas.clear();
-        disciplinas.addAll(disciplinas);
-    }
+//    public void atualizarDisciplinaList() {
+//        List<Disciplina> disciplinas = daoDisciplina.listarTodos();
+//
+//        atualizarObservableList(disciplinas);
+//        updateFilterComboBox();
+//        updateTableView(disciplinas);
+//    }
+//
+//    private void atualizarObservableList(List<Disciplina> disciplinas) {
+//       disciplinas.clear();
+//       disciplinas.addAll(disciplinas);
+//   }
 
     private void updateFilterComboBox() {
         cmbFiltro.getItems().clear();
@@ -435,5 +437,25 @@ public class DisciplinaController {
 
     private void updateTableView(List<Disciplina> disciplinesList) {
         tblViewDisciplina.setItems(FXCollections.observableArrayList(disciplinesList));
+    }
+
+    @FXML
+    void AlterarTelaCurso(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroCurso");
+    }
+
+    @FXML
+    void AlterarTelaDisciplina(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroDisciplina");
+    }
+
+    @FXML
+    void AlterarTelaGrade(ActionEvent event) throws Exception {
+        org.example.App.setRoot("gradeHoraria");
+    }
+
+    @FXML
+    void AlterarTelaProfessor(ActionEvent event) throws Exception {
+        org.example.App.setRoot("professor");
     }
 }
