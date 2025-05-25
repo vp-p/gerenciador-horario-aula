@@ -21,9 +21,9 @@
 
 > A partir deste momento é crucial, seguir o passo a passo, para que haja eficiência na inserção de disciplinas dentro da Grade Horária.
 
-‣ [Tela Professor](#tela-professor)
-‣ [Tela Curso](#tela-curso)
-
+‣ [Tela Professor](#tela-professor)<br>
+‣ [Tela Curso](#tela-curso)<br>
+‣ [Tela Disciplina](#tela-disciplina)
 
 <details>
 
@@ -256,12 +256,41 @@ Veja a imagem a seguir:
 
 ***2 - Clique em "Deletar"***
 
-<img src = "images/deletarCurso.png" width = 60%><br>
+<img src = "images/deletarDisciplina.png" width = 60%><br>
 
 ***OBSERVAÇÃO:*** Sempre selecione a linha, caso contrário mostrará um erro. Veja a imagem a seguir:
 
-<img src = "images/erroCursoLinha.png" width = 40%><br>
+<img src = "images/erroDisciplinaLinha.png" width = 40%><br>
 
+***3 - Confirme sobre sua decisão***
+
+<img src = "images/confirmaDisciplina.png" width = 40%><br>
+
+### Atualizar Disciplina
+
+***1 - Selecione a linha que está a disciplina que desejas atualiizar***
+
+***2 - Clique em "Atualizar"***
+
+<img src = "images/atualizarDisciplina.png" width = 60%><br>
+
+***OBSERVAÇÃO:*** Sempre selecione a linha, caso contrário mostrará um erro. Veja a imagem a seguir:
+
+<img src = "images/erroDisciplinaAlterar.png" width = 40%><br>
+
+***3 - Logo após abrirá uma nova janela, preencha os campos e clique em "Atualizar"***
+
+### Filtrar Tabela
+
+***1 - Clique em Filtro***
+
+***2 - Selecione o nome que desejas filtrar***
+
+***3 - Clique em "Filtrar"***
+
+***4 - Quer finalizar a filtragem, clique em "Remover Filtro"***
+
+<img src = "images/filtrarDisciplina.png" width = 60%><br>
 
 </details>
 
