@@ -155,6 +155,8 @@ Veja a imagem a seguir:
 
 ***3 - Clique em "Filtrar"***
 
+***4 - Quer finalizar a filtragem, clique em "Remover Filtro"***
+
 <img src = "images/filtrar.png" width = 60%><br>
 
 </details>
