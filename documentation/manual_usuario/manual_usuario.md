@@ -113,7 +113,7 @@ Veja a imagem a seguir:
 
 ***2 - Preencha os campos "Nome" e "Email". Após Clique em "Cadastrar"***
 
-<img src = "images/adicionandoProfessor.png" width = 60%><br>
+<img src = "images/AdicionandoProfessor.png" width = 60%><br>
 
 ### Deletar Professor
 
@@ -121,7 +121,7 @@ Veja a imagem a seguir:
 
 ***2 - Clique em "Deletar"***
 
-<img src = "images/DeletarProfessor.png" width = 60%><br>
+<img src = "images/deletarProfessor.png" width = 60%><br>
 
 ***OBSERVAÇÃO:*** Sempre selecione a linha, caso contrário mostrará um erro. Veja a imagem a seguir:
 
