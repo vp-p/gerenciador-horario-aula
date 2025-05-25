@@ -95,7 +95,7 @@ Ao abrir a aplicação, vai ser apresentada tela "Grade Horária", sendo possív
 
 ## Tela Professor
 
-- Para se direcionar a tela do professor, selecione no menu a opção "professores".
+- Para se direcionar a tela do professor, selecione no menu a opção "Professores".
 
 Veja a imagem a seguir:
 
@@ -170,7 +170,7 @@ Veja a imagem a seguir:
 
 ## Tela Curso
 
-- Para se direcionar a tela de curso, selecione no menu a opção "cursos".
+- Para se direcionar a tela de curso, selecione no menu a opção "Cursos".
 
 Veja a imagem a seguir:
 
@@ -219,6 +219,49 @@ Veja a imagem a seguir:
 ***4 - Quer finalizar a filtragem, clique em "Limpar"***
 
 <img src = "images/filtrarCurso.png" width = 60%><br>
+
+</details>
+
+<details>
+
+<summary><strong>Tela Disciplina</strong></summary>
+
+## Tela Disciplina
+
+- Para se direcionar a tela de disciplina, selecione no menu a opção "Disciplinas".
+
+Veja a imagem a seguir:
+
+<img src = "images/mudarTelaDisciplina.png" width = 60%>
+
+- ***Abrirá em seu computador a seguinte tela:***
+
+<img src = "images/TelaDisciplina.png" width = 60%>
+
+### Funcionalidades da tela:
+
+### Cadastrar Disciplina
+
+***1 - Clique em "Adicionar Disciplinas"***
+
+<img src = "images/adicionarDisciplina.png" width = 60%><br>
+
+***2 - Preencha os campos e logo após Clique em "Cadastrar"***
+
+<img src = "images/camposDisciplina.png" width = 60%><br>
+
+### Deletar Curso
+
+***1 - Selecione a linha que está a diciplina que desejas deletar***
+
+***2 - Clique em "Deletar"***
+
+<img src = "images/deletarCurso.png" width = 60%><br>
+
+***OBSERVAÇÃO:*** Sempre selecione a linha, caso contrário mostrará um erro. Veja a imagem a seguir:
+
+<img src = "images/erroCursoLinha.png" width = 40%><br>
+
 
 </details>
 
