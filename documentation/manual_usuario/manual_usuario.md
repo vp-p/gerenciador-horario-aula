@@ -6,9 +6,7 @@
 <div align = "center">
 <img src = "images/banner_manual.png" height=50% width = 100%></div>
 
-## índice
-
-#### Tela Principal
+## Tela Principal
 
  > Nessa tela será mostrada todas as funcionalidades da grade horária.
 
@@ -76,7 +74,7 @@ Ao abrir a aplicação, vai ser apresentada tela "Grade Horária", sendo possív
 
 </details>
 
-#### Telas 
+## Telas 
 
 > A partir deste momento é crucial, seguir o passo a passo, para que haja eficiência na inserção de disciplinas dentro da Grade Horária.
 
