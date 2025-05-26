@@ -6,8 +6,17 @@ public class LinhaGrade {
     private String quarta;
     private String quinta;
     private String sexta;
+    private int idAula;
 
     public LinhaGrade() {}
+
+    public int getIdAula() {
+        return idAula;
+    }
+
+    public void setIdAula(int idAula) {
+        this.idAula = idAula;
+    }
 
     public String getSegunda() {
         return segunda;

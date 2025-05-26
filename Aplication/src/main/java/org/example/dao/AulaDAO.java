@@ -2,9 +2,7 @@ package org.example.dao;
 
 import javafx.scene.control.Alert;
 import org.example.classes.Aula;
-import org.example.classes.Curso;
 import org.example.classes.Disciplina;
-import org.example.classes.Professor;
 import org.example.database.Conexao;
 
 import java.sql.Connection;
@@ -13,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AulaDAO {
 
@@ -48,29 +45,10 @@ public class AulaDAO {
             }
         }else{
             // Exibir mensagem de sucesso
-            List<Integer> professores = buscarProfessoresPorCursoESemestre(aula, semestre);
-            List<Integer> Ocupados = buscarProfessoresOcupados( aula, professores);
-
-            professores.removeAll(Ocupados);
-
-            String ids = Ocupados.stream()
-                    .map(String::valueOf)
-                    .collect(Collectors.joining(", "));
-
-            ProfessorDAO professorDAO = new ProfessorDAO();
-            List<Professor> disponiveis = professorDAO.buscarVarios(ids);
-
-            String texto = "A aula pode estar conflitando com outros horarios. \n " +
-                    "Segue os professores disponiveis para esse horario: ";
-
-            for(Professor professor : disponiveis){
-                texto+= '\n' + professor.getNomeProfessor();
-            }
-
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Erro");
             alert.setHeaderText("Aula Não cadastrada!");
-            alert.setContentText(texto);
+            alert.setContentText("A aula não foi adicionada à grade horária.");
             alert.showAndWait();
         }
 
@@ -132,8 +110,7 @@ public class AulaDAO {
     public List<Aula> BuscarConflito(Aula aula) throws SQLException {
 
         String sql ="SELECT * FROM aula where "+
-         "id_professor ="+ aula.getIdProfessor() +
-                " and numero_aula = " + aula.getNumeroAula()+
+                "id_disciplina ="+ aula.getIdDisciplina() +" and numero_aula = " + aula.getNumeroAula()+
                 " and dia_semana = '"+aula.getDiaSemana()+"'";
 
         System.out.println(sql);
@@ -152,7 +129,7 @@ public class AulaDAO {
                             result.getInt("id_curso"),
                             result.getString("dia_semana"),
                             result.getInt("numero_aula"),
-                              "",
+                            "",
                             result.getString("periodo")
                     );
 
@@ -170,8 +147,8 @@ public class AulaDAO {
     public List<Aula> BuscarConflito2(Aula aula, int semestre) throws SQLException {
 
         String sql ="SELECT * FROM aula au "+
-        "inner join disciplina di on au.id_disciplina = di.id_disciplina "+
-        "where au.id_curso = "+aula.getIdCurso()+
+                "inner join disciplina di on au.id_disciplina = di.id_disciplina "+
+                "where au.id_curso = "+aula.getIdCurso()+
                 " and numero_aula = "+aula.getNumeroAula()+
                 " and di.semestre = " + semestre+
                 " and periodo = '"+aula.getPeriodo()+"'"+
@@ -246,131 +223,72 @@ public class AulaDAO {
         return aulas;
     }
 
-    public List<Integer> buscarProfessoresPorCursoESemestre(Aula aula, int semestre) throws SQLException {
+    public void marcarComoDeletada(int idAula) {
+        String sql = "UPDATE aula SET deletado = 1 WHERE idaula = ?";
 
-        CursoDAO cursodao = new CursoDAO();
-        Curso curso =  cursodao.buscarPorId(aula.getIdCurso());
-
-        String sql = "SELECT DISTINCT prof.id_professor, prof.nome " +
-                "FROM professor prof " +
-                "LEFT JOIN disciplina disc ON disc.id_professor = prof.id_professor " +
-                "WHERE disc.id_curso = " + aula.getIdCurso() + " " +
-                "AND disc.semestre = " + semestre;
-
-        System.out.println("SQL: " + sql);
-        List<Integer> professores = new ArrayList<>();
-
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql);
-                 ResultSet result = stmt.executeQuery()) {
-
-                while (result.next()) {
-                    int idProfessor = result.getInt("id_professor");
-                    professores.add(idProfessor);
-                }
-
-                System.out.println("Professores encontrados: " + professores);
-            }
-        } catch (Exception e) {
-            System.err.println("Erro ao buscar professores: " + e.getMessage());
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, idAula);
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Erro ao marcar aula como deletada: " + e.getMessage());
         }
-
-        return professores;
     }
 
 
-    public List<Integer> buscarProfessoresOcupados(Aula aula, List<Integer> professores) throws SQLException {
-
-        String ids = professores.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(", "));
-
-        String sql = "SELECT * FROM aula " +
-                "inner join professor prof on aula.id_professor = prof.id_professor " +
-                "WHERE aula.id_professor  in( " + ids + ") " +
-                "and dia_semana ='" + aula.getDiaSemana()+
-                "' and numero_aula = "+aula.getNumeroAula();
-
-        System.out.println("SQL: " + sql);
-        List<Integer> Ocupados = new ArrayList<>();
-
-        try (Connection con = Conexao.conectar()) {
-            assert con != null;
-            try (PreparedStatement stmt = con.prepareStatement(sql);
-                 ResultSet result = stmt.executeQuery()) {
-
-                while (result.next()) {
-                    int idProfessor = result.getInt("id_professor");
-                    Ocupados.add(idProfessor);
-                }
-
-                System.out.println("Professores encontrados: " + Ocupados);
-            }
-        } catch (Exception e) {
-            System.err.println("Erro ao buscar professores: " + e.getMessage());
-        }
-
-        return Ocupados;
-    }
-
-    public void delete(long id) {
-        String sql = "UPDATE aula SET deletado = 1 WHERE id_aula = ?";
+    public void atualizar(Aula aula) throws SQLException {
+        String sql = "UPDATE aula SET id_professor = ?, id_disciplina = ?, id_curso = ?, dia_semana = ?, numero_aula = ?, periodo = ? WHERE idaula = ?";
 
         try (Connection con = Conexao.conectar();
-            PreparedStatement stmt = con.prepareStatement(sql)){
+             PreparedStatement stmt = con.prepareStatement(sql)) {
 
-            stmt.setLong(1, id);
-            stmt.executeUpdate();
-            System.out.println("Aula marcada como deletada com sucesso.");
-        } catch (SQLException e) {
-            System.err.println("Erro ao deletar aula: "+ e.getMessage());
+            stmt.setInt(1, aula.getIdProfessor());
+            stmt.setInt(2, aula.getIdDisciplina());
+            stmt.setInt(3, aula.getIdCurso());
+            stmt.setString(4, aula.getDiaSemana());
+            stmt.setInt(5, aula.getNumeroAula());
+            stmt.setString(6, aula.getPeriodo());
+            stmt.setInt(7, aula.getIdAula());
+
+            int linhasAfetadas = stmt.executeUpdate();
+
+            if (linhasAfetadas == 0) {
+                System.out.println("Nenhuma aula atualizada - verifique o ID.");
+            }
         }
     }
 
-    public Aula buscarPorId(int id) {
-        String sql = "SELECT * FROM aula WHERE idaula = ? AND deletado = 0";
+    public Aula buscarPorId(long id) {
+        String sql = "SELECT * FROM aula WHERE idaula = ?";
         Aula aula = null;
 
-        try (Connection con = Conexao.conectar();
-            PreparedStatement stmt = con.prepareStatement(sql)) {
+        try (Connection con = Conexao.conectar()) {
+            assert con != null;
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setLong(1, id);
 
-            stmt.setLong(1,id);
-            try(ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    aula = new Aula (
-                            rs.getInt("idaula"),
-                            rs.getInt("id_professor"),
-                            rs.getInt("id_disciplina"),
-                            rs.getInt("id_curso"),
-                            rs.getString("dia_semana"),
-                            rs.getInt("numero_aula"),
-                            "",
-                            rs.getString("periodo")
-                    );
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        aula = new Aula(
+                                rs.getInt("idaula"),
+                                rs.getInt("id_professor"),
+                                rs.getInt("id_disciplina"),
+                                rs.getInt("id_curso"),
+                                rs.getString("dia_semana"),
+                                rs.getInt("numero_aula"),
+                                "", // Ou preencha conforme seu construtor
+                                rs.getString("periodo")
+                        );
+                    }
                 }
             }
-            return aula;
         } catch (SQLException e) {
             System.err.println("Erro ao buscar aula por ID: " + e.getMessage());
         }
+
         return aula;
     }
 
-    public void deletarAula(Aula aula) {
-      String sql = "UPDATE aula set deletado = TRUE WHERE idaula = ?";
 
-      try {
-          Connection conn = Conexao.conectar();
-          PreparedStatement pst = conn.prepareStatement(sql);
-
-          pst.setInt(1, aula.getIdAula());
-
-          pst.executeUpdate();
-      }catch (SQLException e) {
-          System.out.println("Erro: " + e.getMessage());
-          e.printStackTrace();
-      }
-    }
 
 }
