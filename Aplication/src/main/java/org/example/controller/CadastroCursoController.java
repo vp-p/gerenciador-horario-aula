@@ -3,6 +3,7 @@ package org.example.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -167,6 +168,26 @@ public class CadastroCursoController {
                 carregarCursosDoBanco();
             }
         });
+    }
+
+    @FXML
+    void AlterarTelaCurso(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroCurso");
+    }
+
+    @FXML
+    void AlterarTelaDisciplina(ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroDisciplina");
+    }
+
+    @FXML
+    void AlterarTelaGrade(ActionEvent event) throws Exception {
+        org.example.App.setRoot("gradeHoraria");
+    }
+
+    @FXML
+    void AlterarTelaProfessor(ActionEvent event) throws Exception {
+        org.example.App.setRoot("professor");
     }
 
     @FXML

@@ -136,7 +136,7 @@ public class GradeHorariaController implements Initializable {
                 System.out.println("Disciplina selecionada: " + disciplinaSelecionada);
 
                 ProfessorDAO professorDAO = new ProfessorDAO();
-                Professor professor = professorDAO.buscarPorId(disciplinaSelecionada.getId_professor());
+                Professor professor = professorDAO.buscarPorId(disciplinaSelecionada.getProfessor());
                 if (professor != null) {
                     labelProfessorESemestre.setText("Professor e Semestre: "
                             + professor.getNomeProfessor() + ", "
@@ -246,7 +246,7 @@ public class GradeHorariaController implements Initializable {
                 throw new IllegalArgumentException("Horário inválido: " + horario);
         }
         System.out.println(disciplina);
-        Aula aula = new Aula(0, disciplina.getId_professor(),disciplina.getId(), curso.getId(),diaSemana ,numeroAula, null, periodo);
+        Aula aula = new Aula(0, disciplina.getProfessor(),disciplina.getId(), curso.getId(),diaSemana ,numeroAula, null, periodo);
 //                                int idAula, int idProfessor, int idDisciplina, int idCurso, String diaSemana, int numeroAula, String nomeDisciplina, String periodo
         AulaDAO auladao = new AulaDAO();
         auladao.criar(aula, disciplina.getSemestre());
