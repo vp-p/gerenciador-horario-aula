@@ -25,6 +25,11 @@ public class Curso {
         this(false, 0L, nome, coordenador, periodo, false);
     }
 
+    // outro construtor para curso existente
+    public Curso(int id, String nome, String coordenador, String periodo) {
+        this(false, id, nome, coordenador, periodo, false);
+    }
+
     // Getters e setters
 
     public boolean isSelecionado() {
@@ -93,5 +98,9 @@ public class Curso {
 
     public void setDeletado(boolean deletado) {
         this.deletado = deletado;
+    }
+
+    public String toString(){
+        return this.nome.get();
     }
 }

@@ -1,6 +1,7 @@
 
 package org.example.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -8,24 +9,19 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.classes.*;
 import org.example.dao.AulaDAO;
 import org.example.dao.CursoDAO;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import org.example.dao.DisciplinaDAO;
 import org.example.dao.ProfessorDAO;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -111,7 +107,7 @@ public class GradeHorariaController implements Initializable {
         CursoDAO cursoDAO = new CursoDAO();
         List<Curso> cursos = cursoDAO.listarTodos();
         comboBoxCurso.getItems().addAll(cursos);
-        comboBoxDiaSemana.getItems().addAll("segunda", "terça", "quarta", "quinta", "sexta");
+        comboBoxDiaSemana.getItems().addAll("segunda", "terca", "quarta", "quinta", "sexta");
         comboBoxHorario.getItems().addAll("07:10", "08:00", "09:15", "10:05", "10:55", "11:45",
                 "18:45", "19:35", "20:25","21:25","22:15");
 
@@ -136,7 +132,7 @@ public class GradeHorariaController implements Initializable {
                 System.out.println("Disciplina selecionada: " + disciplinaSelecionada);
 
                 ProfessorDAO professorDAO = new ProfessorDAO();
-                Professor professor = professorDAO.buscarPorId(disciplinaSelecionada.getProfessor());
+                Professor professor = professorDAO.buscarPorId(disciplinaSelecionada.getIdProfessor());
                 if (professor != null) {
                     labelProfessorESemestre.setText("Professor e Semestre: "
                             + professor.getNomeProfessor() + ", "
@@ -246,7 +242,7 @@ public class GradeHorariaController implements Initializable {
                 throw new IllegalArgumentException("Horário inválido: " + horario);
         }
         System.out.println(disciplina);
-        Aula aula = new Aula(0, disciplina.getProfessor(),disciplina.getId(), curso.getId(),diaSemana ,numeroAula, null, periodo);
+        Aula aula = new Aula(0, disciplina.getIdProfessor(),disciplina.getId(), curso.getId(),diaSemana ,numeroAula, null, periodo);
 //                                int idAula, int idProfessor, int idDisciplina, int idCurso, String diaSemana, int numeroAula, String nomeDisciplina, String periodo
         AulaDAO auladao = new AulaDAO();
         auladao.criar(aula, disciplina.getSemestre());
@@ -291,7 +287,7 @@ public class GradeHorariaController implements Initializable {
                     case "segunda":
                         linhaGrade.setSegunda(nomeDisciplina);
                         break;
-                    case "terca":
+                    case "terça":
                         linhaGrade.setTerca(nomeDisciplina);
                         break;
                     case "quarta":
@@ -307,6 +303,7 @@ public class GradeHorariaController implements Initializable {
                         System.out.println("Dia da semana inválido: " + diaSemana);
                         break;
                 }
+
             }
 
             tblViewGrade.getItems().setAll(linhasGrade);
@@ -314,5 +311,35 @@ public class GradeHorariaController implements Initializable {
         } else {
             System.out.println("Selecione todos os filtros primeiro!");
         }
+    }
+
+    @FXML
+    void AlterarTelaCurso(javafx.event.ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroCurso");
+    }
+
+    @FXML
+    void AlterarTelaDisciplina(javafx.event.ActionEvent event) throws Exception {
+        org.example.App.setRoot("cadastroDisciplina");
+    }
+
+    @FXML
+    void AlterarTelaGrade(javafx.event.ActionEvent event) throws Exception {
+        org.example.App.setRoot("gradeHoraria");
+    }
+
+    @FXML
+    void AlterarTelaProfessor(ActionEvent event) throws Exception {
+        org.example.App.setRoot("professor");
+    }
+
+    @FXML
+    void mouseEntrou(MouseEvent event) {
+        ((Region) event.getSource()).setStyle("-fx-background-color: #EAF2FFF;");
+    }
+
+    @FXML
+    void mouseSaiu(MouseEvent event) {
+        ((Region) event.getSource()).setStyle("-fx-background-color: transparent;");
     }
 }

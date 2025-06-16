@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.classes.Curso;
+import org.example.classes.Disciplina;
 import org.example.database.Conexao;
 
 import java.sql.*;
@@ -23,6 +24,30 @@ public class CursoDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao gravar curso: " + e.getMessage());
         }
+    }
+
+    public List<Curso> buscarPorId(int id) {
+        List<Curso> cursos = new ArrayList<>();
+        String sql = "SELECT * FROM curso WHERE id_curso AND deletado = 0 = ?, ?";
+
+        Connection conn = Conexao.conectar();
+        PreparedStatement pst = null;
+
+        try {
+            pst = conn.prepareStatement(sql);
+
+            pst.setInt(1, id);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Curso curso = new Curso(rs.getString("nome"), rs.getString("coordenador"), rs.getString("periodo"));
+                cursos.add(curso);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cursos;
     }
 
     public List<Curso> listarTodos() throws SQLException {

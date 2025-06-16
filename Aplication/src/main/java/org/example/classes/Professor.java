@@ -10,6 +10,7 @@ public class Professor {
     public String toString() {
         return this.nomeProfessor;
     }
+
     public Professor(Integer id,String nomeProfessor, String emailProfessor){
         this.id = id;
         this.nomeProfessor = nomeProfessor;

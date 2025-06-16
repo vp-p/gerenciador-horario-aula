@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DisciplinaDAO {
 
-    public List<Disciplina> listarTodos() {
+    /*public List<Disciplina> listarTodos() {
         List<Disciplina> disciplinas = new ArrayList<>();
         String sql = "SELECT * FROM disciplina WHERE deletado = 0";
 
@@ -32,6 +32,39 @@ public class DisciplinaDAO {
                 disciplinas.add(disciplina);
             }
 
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar disciplinas: " + e.getMessage());
+        }
+
+        return disciplinas;
+    }
+*/
+
+    public List<Disciplina> listarTodos() {
+        List<Disciplina> disciplinas = new ArrayList<>();
+        String sql = "SELECT d.id_disciplina, d.nome, d.id_professor, d.id_curso, d.semestre, " +
+                "p.nome AS nome_professor, c.nome AS nome_curso " +
+                "FROM disciplina d " +
+                "LEFT JOIN professor p ON d.id_professor = p.id_professor " +
+                "LEFT JOIN curso c ON d.id_curso = c.id_curso " +
+                "WHERE d.deletado = 0";
+
+        try (Connection con = Conexao.conectar();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Disciplina disciplina = new Disciplina(
+                        rs.getInt("id_disciplina"),
+                        rs.getString("nome"),
+                        rs.getInt("id_professor"),
+                        rs.getInt("id_curso"),
+                        rs.getInt("semestre"),
+                        rs.getString("nome_professor"),
+                        rs.getString("nome_curso")
+                );
+                disciplinas.add(disciplina);
+            }
         } catch (SQLException e) {
             System.err.println("Erro ao listar disciplinas: " + e.getMessage());
         }
@@ -62,7 +95,7 @@ public class DisciplinaDAO {
             try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 stmt.setString(1, disciplina.getNome());
-                stmt.setInt(2, disciplina.getId_professor());
+                stmt.setInt(2, disciplina.getIdProfessor());
                 stmt.setInt(3, disciplina.getIdCurso());
                 stmt.setInt(4, disciplina.getSemestre());
 
@@ -86,7 +119,7 @@ public class DisciplinaDAO {
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
 
                 stmt.setString(1, disciplina.getNome());
-                stmt.setLong(3, disciplina.getId_professor());
+                stmt.setLong(3, disciplina.getIdProfessor());
                 stmt.setLong(4, disciplina.getIdCurso());
                 stmt.setLong(5, disciplina.getId());
 
@@ -238,7 +271,7 @@ public class DisciplinaDAO {
                         rs.getInt("id_curso"),
                         rs.getInt("semestre")
                 );
-                disciplina.setId(rs.getInt("id"));
+                disciplina.setId(rs.getInt("id_disciplina"));
                 disciplinas.add(disciplina);
             }
 
@@ -287,7 +320,7 @@ public class DisciplinaDAO {
             try (PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 stmt.setString(1, disciplina.getNome());
-                stmt.setInt(2, disciplina.getId_professor());
+                stmt.setInt(2, disciplina.getIdProfessor());
                 stmt.setInt(3, disciplina.getIdCurso());
                 stmt.setInt(4, disciplina.getSemestre());
 

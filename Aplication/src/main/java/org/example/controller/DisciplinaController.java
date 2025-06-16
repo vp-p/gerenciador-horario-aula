@@ -63,9 +63,9 @@ public class DisciplinaController {
     private TableColumn<Disciplina, String> nomeDisciplina;
 
     @FXML
-    private TableColumn<Disciplina, Integer> idProfessor;
+    private TableColumn<Disciplina, String> nomeProfessor;
     @FXML
-    private TableColumn<Disciplina, Integer> idCurso;
+    private TableColumn<Disciplina, String> nomeCurso;
 
     @FXML
     private TableColumn<Disciplina, Integer> semestre;
@@ -530,11 +530,11 @@ public class DisciplinaController {
 
     @FXML
     public void initialize() {
-        idDisciplina.setCellValueFactory(new PropertyValueFactory<Disciplina, Integer>("id"));
-        nomeDisciplina.setCellValueFactory(new PropertyValueFactory<Disciplina, String>("nome"));
-        idProfessor.setCellValueFactory(new PropertyValueFactory<Disciplina, Integer>("id_professor"));
-        idCurso.setCellValueFactory(new PropertyValueFactory<Disciplina, Integer>("idCurso"));
-        semestre.setCellValueFactory(new PropertyValueFactory<Disciplina, Integer>("semestre"));
+        idDisciplina.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nomeDisciplina.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        nomeProfessor.setCellValueFactory(new PropertyValueFactory<>("nomeProfessor")); // Agora mostra o nome
+        nomeCurso.setCellValueFactory(new PropertyValueFactory<>("nomeCurso"));       // Agora mostra o nome
+        semestre.setCellValueFactory(new PropertyValueFactory<>("semestre"));
 
         atualizar();
     }

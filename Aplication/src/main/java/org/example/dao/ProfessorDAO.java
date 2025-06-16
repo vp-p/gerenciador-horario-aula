@@ -120,7 +120,6 @@ public class ProfessorDAO {
         String sql = "UPDATE professor " +
                 "SET nome = ?, email = ? " +
                 "WHERE (id_professor = ?)";
-
         Connection conn = Conexao.conectar();
         PreparedStatement pst = null;
 

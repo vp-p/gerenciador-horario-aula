@@ -204,8 +204,8 @@
             <columns>
                 <TableColumn fx:id="idDisciplina" prefWidth="200.0" text="ID" />
                 <TableColumn fx:id="nomeDisciplina" prefWidth="200.0" text="Nome" />
-                <TableColumn fx:id="idProfessor" prefWidth="200.0" text="Professor" />
-                <TableColumn fx:id="idCurso" prefWidth="200.0" text="Curso" />
+                <TableColumn fx:id="nomeProfessor" prefWidth="200.0" text="Professor" />
+                <TableColumn fx:id="nomeCurso" prefWidth="200.0" text="Curso" />
                 <TableColumn fx:id="semestre" prefWidth="150.0" text="Semestre" />
             </columns>
         </TableView>

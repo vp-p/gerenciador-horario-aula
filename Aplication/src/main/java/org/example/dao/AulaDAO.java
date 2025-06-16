@@ -58,7 +58,7 @@ public class AulaDAO {
                     .collect(Collectors.joining(", "));
 
             ProfessorDAO professorDAO = new ProfessorDAO();
-            List<Professor> disponiveis = professorDAO.buscarVarios(ids);
+            List<Professor> disponiveis = professorDAO.buscarProfessores();
 
             String texto = "A aula pode estar conflitando com outros horarios. \n " +
                     "Segue os professores disponiveis para esse horario: ";
@@ -249,7 +249,7 @@ public class AulaDAO {
     public List<Integer> buscarProfessoresPorCursoESemestre(Aula aula, int semestre) throws SQLException {
 
         CursoDAO cursodao = new CursoDAO();
-        Curso curso =  cursodao.buscarPorId(aula.getIdCurso());
+        Curso curso = (Curso) cursodao.buscarPorId(aula.getIdCurso());
 
         String sql = "SELECT DISTINCT prof.id_professor, prof.nome " +
                 "FROM professor prof " +

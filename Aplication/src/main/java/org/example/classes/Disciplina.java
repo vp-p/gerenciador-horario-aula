@@ -4,26 +4,46 @@ package org.example.classes;
 public class Disciplina {
     private Integer id;
     private String nome;
-    private Integer id_professor;
+    private Integer idProfessor;
     private Integer idCurso;
     private Integer semestre;
-
+    private String nomeProfessor;
+    private String nomeCurso;
 
     public Disciplina(String nome, Integer idProfessor, Integer idCurso, Integer semestre) {
         this.nome = nome;
-        this.id_professor = idProfessor;
+        this.idProfessor = idProfessor;
         this.idCurso = idCurso;
         this.semestre = semestre;
     }
 
-    public Disciplina(Integer id, String nome, Integer idProfessor, Integer idCurso,Integer semestre) {
+    public Disciplina(Integer id, String nome, Integer idProfessor, Integer idCurso, Integer semestre,
+                      String nomeProfessor, String nomeCurso) {
         this.id = id;
         this.nome = nome;
-        this.id_professor = idProfessor;
+        this.idProfessor = idProfessor;
         this.idCurso = idCurso;
         this.semestre = semestre;
+        this.nomeProfessor = nomeProfessor;
+        this.nomeCurso = nomeCurso;
     }
 
+
+    public String getNomeProfessor() {
+        return nomeProfessor;
+    }
+
+    public void setNomeProfessor(String nomeProfessor) {
+        this.nomeProfessor = nomeProfessor;
+    }
+
+    public String getNomeCurso() {
+        return nomeCurso;
+    }
+
+    public void setNomeCurso(String nomeCurso) {
+        this.nomeCurso = nomeCurso;
+    }
 
     public Integer getId() {
         return id;
@@ -42,21 +62,25 @@ public class Disciplina {
     }
 
 
-    public Integer getId_professor() {
-        return id_professor;
+    public Integer getIdProfessor() {
+        return idProfessor;
     }
 
-    public void setId_professor(Integer professor) {
-        this.id_professor = id_professor;
-    }
+//    public String getNomeProfessor() {
+//        return id_professor != null ? new Professor(id_professor, "", "").toString() : "Sem Professor";
+//    }
+
+//    public void setId_professor(Integer professor) {
+//        this.id_professor = id_professor;
+//    }
 
     public Integer getIdCurso() {
         return idCurso;
     }
 
-    public void setIdCurso(Integer curso) {
-        this.idCurso = idCurso;
-    }
+//    public void setIdCurso(Integer curso) {
+//        this.nomeCurso = nomeCurso;
+//    }
 
     @Override
     public String toString() {

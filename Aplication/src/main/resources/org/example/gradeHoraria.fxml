@@ -33,7 +33,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnGradeHoraria" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Grade de Aula">
+            <Button fx:id="btnGradeHoraria" alignment="BASELINE_LEFT" onAction="#AlterarTelaGrade" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Grade de Aula">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnProfessor" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Professores">
+            <Button fx:id="btnProfessor" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaProfessor" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Professores">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -64,21 +64,6 @@
                   <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/User.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="15.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnCoordenador" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Coordenadores">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/FolderUser.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -94,37 +79,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnCursos" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Cursos">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/red.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="15.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnSemestres" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Semestres">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/blue.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <VBox.margin>
-                  <Insets left="15.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btnDisciplinas" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Disciplinas">
+            <Button fx:id="btnDisciplinas" alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#AlterarTelaDisciplina" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Disciplinas">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -139,6 +94,22 @@
                   <Insets left="15.0" top="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="btnCursos" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaCurso" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Cursos">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/red.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="15.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+
          </children>
       </VBox>
       <HBox layoutX="238.0" layoutY="88.0" prefHeight="66.0" prefWidth="942.0" style="-fx-background-color: white;">
@@ -175,7 +146,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnFiltro" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Filtros">
+            <Button fx:id="btnFiltro2" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: white;" text="Filtros">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -240,14 +211,22 @@
          </children>
       </HBox>
       <TableView fx:id="tblViewGrade" layoutX="238.0" layoutY="250.0" prefHeight="317.0" prefWidth="919.0" style="-fx-background-color: white;">
-        <columns>
-          <TableColumn fx:id="tblColSeg" prefWidth="190.0" text="Segunda" />
-          <TableColumn fx:id="tblColTer" prefWidth="190.0" text="Terça" />
+         <columns>
+            <TableColumn fx:id="tblColSeg" prefWidth="190.0" text="Segunda" />
+            <TableColumn fx:id="tblColTer" prefWidth="190.0" text="Terça" />
             <TableColumn fx:id="tblColQuar" prefWidth="190.0" text="Quarta" />
             <TableColumn fx:id="tblColQui" prefWidth="190.0" text="Quinta" />
             <TableColumn fx:id="tblColSex" prefWidth="190.0" text="Sexta" />
-        </columns>
+         </columns>
       </TableView>
+      <HBox layoutX="238.0" layoutY="250.0" spacing="10.0">
+         <children>
+            <!-- Coluna de horários -->
+            <VBox fx:id="vboxHorarios" spacing="10.0" alignment="CENTER_LEFT" prefWidth="120.0">
+               <!-- Os horários serão inseridos via código Java -->
+            </VBox>
+         </children>
+      </HBox>
       <ComboBox fx:id="combocurso" layoutX="265.0" layoutY="191.0" prefWidth="150.0" />
       <ComboBox fx:id="comboperiodo" layoutX="449.0" layoutY="191.0" prefWidth="150.0" />
       <ComboBox fx:id="combosemestre" layoutX="634.0" layoutY="191.0" prefWidth="150.0" />
