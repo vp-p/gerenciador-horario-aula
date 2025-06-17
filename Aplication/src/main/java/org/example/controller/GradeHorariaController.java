@@ -34,6 +34,9 @@ public class GradeHorariaController implements Initializable {
     private ComboBox<Curso> combocurso;
 
     @FXML
+    private TableColumn<LinhaGrade, String> tblColHorario;
+
+    @FXML
     private ComboBox<String> comboperiodo;
 
     @FXML
@@ -80,6 +83,12 @@ public class GradeHorariaController implements Initializable {
             tblColQui.setCellValueFactory(new PropertyValueFactory<>("quinta"));
             tblColSex.setCellValueFactory(new PropertyValueFactory<>("sexta"));
 
+            comboperiodo.setOnAction(event -> {
+                String periodo = comboperiodo.getValue();
+                if (periodo != null) {
+                    configurarColunaHorarios(periodo);
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -312,6 +321,33 @@ public class GradeHorariaController implements Initializable {
             System.out.println("Selecione todos os filtros primeiro!");
         }
     }
+
+    private void configurarColunaHorarios(String periodo) {
+        // Limpa os itens anteriores
+        tblViewGrade.getItems().clear();
+
+        List<String> horarios = new ArrayList<>();
+        if ("Manhã".equals(periodo)) {
+            horarios = List.of("07:10", "08:00", "09:15", "10:05", "10:55", "11:45");
+        } else if ("Noite".equals(periodo)) {
+            horarios = List.of("18:45", "19:35", "20:25", "21:25", "22:15");
+        }
+
+        // Cria as linhas da grade com os horários
+        List<LinhaGrade> linhasGrade = new ArrayList<>();
+        for (String hora : horarios) {
+            LinhaGrade linha = new LinhaGrade();
+            linha.setHorario(hora);
+            linhasGrade.add(linha);
+        }
+
+        // Define os dados na TableView
+        tblViewGrade.getItems().setAll(linhasGrade);
+
+        // Configura a coluna de horários
+        tblColHorario.setCellValueFactory(cellData -> cellData.getValue().horarioProperty());
+    }
+
 
     @FXML
     void AlterarTelaCurso(javafx.event.ActionEvent event) throws Exception {

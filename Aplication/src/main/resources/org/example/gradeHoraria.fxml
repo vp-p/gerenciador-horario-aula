@@ -33,7 +33,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnGradeHoraria" alignment="BASELINE_LEFT" onAction="#AlterarTelaGrade" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" graphicTextGap="7.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Grade de Aula">
+            <Button fx:id="btnGradeHoraria" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaGrade" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Grade de Aula">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Insets left="15.0" top="17.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnDisciplinas" alignment="BASELINE_LEFT" graphicTextGap="7.0" onAction="#AlterarTelaDisciplina" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Disciplinas">
+            <Button fx:id="btnDisciplinas" alignment="BASELINE_LEFT" graphicTextGap="7.0" mnemonicParsing="false" onAction="#AlterarTelaDisciplina" onMouseEntered="#mouseEntrou" onMouseExited="#mouseSaiu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: white;" text="Disciplinas">
                <font>
                   <Font name="Arial Bold" size="12.0" />
                </font>
@@ -210,26 +210,27 @@
             </ImageView>
          </children>
       </HBox>
-      <TableView fx:id="tblViewGrade" layoutX="238.0" layoutY="250.0" prefHeight="317.0" prefWidth="919.0" style="-fx-background-color: white;">
+      <TableView fx:id="tblViewGrade" layoutX="265.0" layoutY="250.0" prefHeight="173.0" prefWidth="791.0" style="-fx-background-color: white;">
          <columns>
-            <TableColumn fx:id="tblColSeg" prefWidth="190.0" text="Segunda" />
-            <TableColumn fx:id="tblColTer" prefWidth="190.0" text="Terça" />
-            <TableColumn fx:id="tblColQuar" prefWidth="190.0" text="Quarta" />
-            <TableColumn fx:id="tblColQui" prefWidth="190.0" text="Quinta" />
-            <TableColumn fx:id="tblColSex" prefWidth="190.0" text="Sexta" />
+            <TableColumn fx:id="tblColHorario" prefWidth="41.59999084472656" text="-" />
+            <TableColumn fx:id="tblColSeg" prefWidth="148.80001831054688" text="Segunda" />
+            <TableColumn fx:id="tblColTer" prefWidth="148.80001831054688" text="Terça" />
+            <TableColumn fx:id="tblColQuar" prefWidth="148.80001831054688" text="Quarta" />
+            <TableColumn fx:id="tblColQui" prefWidth="148.80001831054688" text="Quinta" />
+            <TableColumn fx:id="tblColSex" prefWidth="148.80001831054688" text="Sexta" />
          </columns>
       </TableView>
       <HBox layoutX="238.0" layoutY="250.0" spacing="10.0">
          <children>
             <!-- Coluna de horários -->
-            <VBox fx:id="vboxHorarios" spacing="10.0" alignment="CENTER_LEFT" prefWidth="120.0">
+            <VBox fx:id="vboxHorarios" alignment="CENTER_LEFT" prefWidth="120.0" spacing="10.0">
                <!-- Os horários serão inseridos via código Java -->
             </VBox>
          </children>
       </HBox>
-      <ComboBox fx:id="combocurso" layoutX="265.0" layoutY="191.0" prefWidth="150.0" />
-      <ComboBox fx:id="comboperiodo" layoutX="449.0" layoutY="191.0" prefWidth="150.0" />
-      <ComboBox fx:id="combosemestre" layoutX="634.0" layoutY="191.0" prefWidth="150.0" />
+      <ComboBox fx:id="combocurso" layoutX="265.0" layoutY="191.0" prefWidth="150.0" promptText="Curso" />
+      <ComboBox fx:id="comboperiodo" layoutX="449.0" layoutY="191.0" prefWidth="150.0" promptText="Período" />
+      <ComboBox fx:id="combosemestre" layoutX="634.0" layoutY="191.0" prefWidth="150.0" promptText="Disciplina" />
       <Button fx:id="btnatualizar" layoutX="938.0" layoutY="191.0" mnemonicParsing="false" onAction="#AtualizaGrade" text="Atualizar Grade" />
    </children>
 </AnchorPane>

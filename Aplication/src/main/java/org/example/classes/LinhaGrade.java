@@ -1,14 +1,34 @@
 package org.example.classes;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class LinhaGrade {
+    // Propriedade observável para horário
+    private final StringProperty horario = new SimpleStringProperty();
+
+    // Propriedades para os dias da semana
     private String segunda;
     private String terca;
     private String quarta;
     private String quinta;
     private String sexta;
 
-    public LinhaGrade() {}
+    // Getter e Setter para horário
+    public String getHorario() {
+        return horario.get();
+    }
 
+    public void setHorario(String horario) {
+        this.horario.set(horario);
+    }
+
+    // Método para obter a propriedade observável de horário
+    public StringProperty horarioProperty() {
+        return horario;
+    }
+
+    // Getters e Setters para os dias da semana
     public String getSegunda() {
         return segunda;
     }
